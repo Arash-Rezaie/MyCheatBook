@@ -74,7 +74,7 @@ function getBeanContainer() {
                 </Java>
             </FlexRow>
             <Important>ApplicationContext provides multiple configuration file registration.</Important>
-            <div className={'float-holder'} className={'center-horizontally-relative inline'}>
+            <div className={'float-holder center-horizontally-relative inline'}>
                 <img src={appContext} alt={'application context implementations'} style={{width: '1200px'}}/>
                 <Float l={1000} t={180} lineTo={[1072, 262]}>
                     <div style={{width: '190px'}}>To fetch xml configuration from a file inside the application itself
@@ -1445,15 +1445,15 @@ function getMultipleCandidate() {
                     </bean>
 
                     <!--qualifier with custom selection property-->
-                    <bean id="lamborghini"className="com.arash.models.multiplecandidates.Lamborghini">
+                    <bean id="lamborghini" className="com.arash.models.multiplecandidates.Lamborghini">
                         <qualifier type="com.arash.models.multiplecandidates.MyQualifier">
-                            <attribute key="color"value="green"/>
+                            <attribute key="color" value="green"/>
                         </qualifier>
                     </bean>
 
-                    <bean id="pagani"className="com.arash.models.multiplecandidates.Pagani">
+                    <bean id="pagani" className="com.arash.models.multiplecandidates.Pagani">
                         <qualifier type="com.arash.models.multiplecandidates.MyQualifier">
-                            <attribute key="color"value="black"/>
+                            <attribute key="color" value="black"/>
                         </qualifier>
                     </bean>`}
                     </Xml>
