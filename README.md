@@ -1,5 +1,6 @@
-# Getting Started with Create React App
-
+MyCheatBook is just a collection of examples of what I've come across with till now
+# Getting Involved With MyCheatBook project
+Start with installing react app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -12,9 +12,10 @@ export class Index extends MyButton {
         return 'Spring Cheats'
     }
 
-    componentDidMount() {
-        this.setContent(<CoreCheats/>)
-    }
+    // suitable for develop time (it shows CoreCheats just after loading page without any extra click)
+    // componentDidMount() {
+    //     this.setContent(<CoreCheats/>)
+    // }
 
     setContent(content) {
         PopupHandler.hidePopup('springMenu')
