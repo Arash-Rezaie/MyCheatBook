@@ -1,5 +1,11 @@
 MyCheatBook is just a collection of examples of what I've come across with till now
 # Getting Involved With MyCheatBook project
+Clone this project: 
+1. git clone https://github.com/Arash-Rezaie/MyCheatBook.git
+2. cd into the project
+3. npm init
+4. npm
+
 Start with installing react app
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
