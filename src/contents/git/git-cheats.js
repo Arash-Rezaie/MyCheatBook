@@ -917,9 +917,9 @@ function getConnectingToRemoteRepo() {
                 <Bullet title={'⚫'} level={1}>to test it: <Bold>git config --list</Bold></Bullet>
             </Bullet>
             <Bullet title={'4.'}>Connect through ssh session. This way involve a pair of private & public key:<br/>
-                <Bullet title={'● check key existence:'} level={1}><Bold>ls -al ~/.ssh"</Bold>. If you want to use the
+                <Bullet title={'Ⅰ. check key existence:'} level={1}><Bold>ls -al ~/.ssh"</Bold>. If you want to use the
                     generated file, ignore generating new one</Bullet>
-                <Bullet title={'● generate new key:'} level={1}>the following commands create a ssh-key file. By default
+                <Bullet title={'Ⅱ. generate new key:'} level={1}>the following commands create a ssh-key file. By default
                     it will be stored in home directory. ex. "~/.ssh/id_ed25519.pub"<br/>
                     <Bold>ssh-keygen -t ed25519 -C "your_email@example.com"</Bold> or<br/>
                     <Bold>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</Bold>
@@ -928,15 +928,15 @@ function getConnectingToRemoteRepo() {
                     file </Bullet>
                 <Bullet title={'⚫ passphrase:'} level={2}>if someone reaches your computer, then the connection is
                     no more secure, so you can define a password for accessing the connection at this level. </Bullet>
-                <Bullet title={'● add ssh-key to the ssh-agent:'} level={1}><br/></Bullet>
+                <Bullet title={'Ⅲ. add ssh-key to the ssh-agent:'} level={1}><br/></Bullet>
                 <Bullet title={'⚫ start ssh-agent: '} level={2}><Bold>eval "$(ssh-agent -s)"</Bold></Bullet>
                 <Bullet title={'⚫ add ssh-key to ssh-agent: '} level={2}><Bold>ssh-add
                     ~/.ssh/generated-ssh-key-file-name</Bold>
                 </Bullet>
-                <Bullet title={'● identify the ssh-key to your server repo: '} level={1}>in Github, copy your ssh-key
+                <Bullet title={'Ⅳ. identify the ssh-key to your server repo: '} level={1}>in Github, copy your ssh-key
                     into "your profile > settings > SSH and GPG keys"
                 </Bullet>
-                <Bullet title={'● test the ssh conn: '} level={1}><Bold>ssh -T git@github.com</Bold></Bullet>
+                <Bullet title={'Ⅴ. test the ssh conn: '} level={1}><Bold>ssh -T git@github.com</Bold></Bullet>
             </Bullet>
         </Frame>
     )
