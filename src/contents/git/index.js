@@ -1,13 +1,13 @@
 import React from "react";
 import {MyButton} from "../../components/my-button";
-import {MavenCheats} from "./maven-cheats";
+import {GitCheats} from "./git-cheats";
 
 export class Index extends MyButton {
     getTitle() {
-        return 'Maven Cheats'
+        return 'Git Cheats'
     }
 
     handleOnClick() {
-        this.setContent(<MavenCheats/>)
+        this.setContent(<GitCheats/>);
     }
 }

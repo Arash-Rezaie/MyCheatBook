@@ -212,6 +212,243 @@ function getScanningFilter() {
     )
 }
 
+function getMerging() {
+    return (
+        <Frame title={'Merging configuration files'}>
+            <Xml description={'merging other configurations into xml'}>
+                {`
+                    <beans ...>
+                        <context:annotation-config/>
+                        
+                        <!-- scan a package to figure out its Components -->
+                        <context:component-scan base-package="com"/>
+                    </beans>
+                `}
+            </Xml>
+            <Java description={'merging other configurations into java class'}>
+                {`
+                //merge other classes
+                @Import(OtherAppConfig.class)
+                
+                //merge xml files
+                @ImportResource(locations = "classpath:containerconfig.xml")
+                
+                @Configuration
+                public class AppConfig {
+                }
+                `}
+            </Java>
+        </Frame>
+    )
+}
+
+function getProfile() {
+    return (
+        <Frame title={'Profile selection'}>
+            <InfoIcon>
+                <Java>
+                    {`
+                    // To check a property existence:
+                    context.getEnvironment().containsProperty("who's_your_daddy");
+                    
+                    //all environments are not available in spring and some are provide by jvm
+                    System.getProperty("propertyName");
+                    `}
+                </Java>
+                <br/>
+                To change profile at runtime:
+                <Red>!Not tested!</Red>
+                <Bash>{'java -Dspring.profiles.active.pro -jar myJar.jar'}</Bash>
+            </InfoIcon>
+            We can switch to another config via profile.<br/>
+            First of, mark all classes belong to a profile
+            <Java description={'source code'}>
+                {`
+                @Profile("develop","!dev")//! => active profile
+                public class Bean1 {
+                
+                    //access your desired environment
+                    @Autowired
+                    public EnvironmentConfiguration env;
+                }`}
+            </Java>
+            In xml, we have to assign a file for a profile:
+            <Xml>
+                {`
+                <beans
+                    ...
+                    profile="develop">
+                ...
+                </beans>`}
+            </Xml>
+            <HorizontalLine/>
+            Now, select a profile:
+            <Xml description={'pom.xml'}>
+                {`
+                <profiles>
+                    <profile>
+                        <id>develop</id>
+                        <activation>
+                            <activeByDefault>true</activeByDefault>
+                        </activation>
+                    </profile>
+                </profiles>`}
+            </Xml>
+            <HorizontalLine/>
+            To catch active profile:
+            <Java>
+                {`
+                @Component
+                public class Bean1 {
+                    @Autowired
+                    public Environment env;
+                
+                    public void loopThroughActiveProfiles() {
+                        Arrays.stream(env.getActiveProfiles())
+                            .forEach(System.out::println);
+                    }
+                    
+                    @Value("#{$\{spring.profiles.active}}")
+                    String activeProfile;
+                
+                    @Autowired
+                    private ConfigurableEnvironment cfgEnv;
+                    
+                    public void setActiveProfile(String pName) {
+                        //other information is available here
+                        cfgEnv.setActiveProfiles("develop");
+                    }
+                }`}
+            </Java>
+            <div style={{width: '22rem'}}>
+                <Highlight>You have to follow <Bold>profile</Bold> structure in the whole of project when you mention
+                    it.</Highlight>
+            </div>
+        </Frame>
+    )
+}
+
+function getMultipleCandidate() {
+    return (
+        <Frame title={'multiple candidate'}>
+            <div style={{width: '50rem'}}>
+                There is possibility to have more than 1 candidate when you request a bean. To make spring to return
+                true
+            </div>
+            object you can use <Bold>primary</Bold> and <Bold>qualifier</Bold> key words.
+            <Bullet title={'1.'}>
+                <Bold>Primary:</Bold><br/>
+                Set a bean as primary
+                <FlexRow>
+                    <Xml title={1}>
+                        {`
+                    <bean class="com.arash.models.multicandidate.Ferrari"
+                            id="ferrai" primary="true"/>
+                    <bean class="com.arash.models.multicandidate.Lamborghini"
+                            id="lamborghini" >`}
+                    </Xml>
+                    <Java title={1}>
+                        {`
+                        @Configuration
+                        public class AppConfig {
+                            @Primary
+                            @Bean
+                            public Car getLamborghini() {
+                                return new Lamborghini();
+                            }
+        
+                            @Bean
+                            public Car getFerrari() {
+                                return new Ferrari();
+                            }
+                        }`}
+                    </Java>
+                </FlexRow>
+            </Bullet>
+            <Bullet title={'2.'}>
+                <Bold>Qualifier:</Bold><br/>
+                determine what object should be injected based on the given information
+                <Java description={'custom qualifier'}>
+                    {`
+                    @Target(ElementType.FIELD)
+                    @Retention(RetentionPolicy.RUNTIME)
+                    @Qualifier
+                    public @interface MyQualifier {
+                        String value() default "";
+                        String color();
+                    }`}
+                </Java>
+                <FlexRow>
+                    <Xml title={1}>
+                        {`
+                    <!--qualifier with a simple string-->
+                    <bean className="com.arash.models.multicandidate.Ferrari"
+                            id="ferrai">
+                        <qualifier value="ferrari"/>
+                    </bean>
+
+                    <!--qualifier with custom selection property-->
+                    <bean className="com.arash.models.multicandidate.Lamborghini"
+                            id="lamborghini">
+                        <qualifier type="com.arash.models.multicandidate.MyQualifier">
+                            <attribute key="color" value="green"/>
+                        </qualifier>
+                    </bean>
+
+                    <bean className="com.arash.models.multicandidate.Pagani"
+                            id="pagani">
+                        <qualifier type="com.arash.models.multicandidate.MyQualifier">
+                            <attribute key="color" value="black"/>
+                        </qualifier>
+                    </bean>`}
+                    </Xml>
+                    <Java title={1}>
+                        {`
+                        @Configuration
+                        public class AppConfig {
+                            @Qualifier("ferrari")
+                            @Bean
+                            public Car getFerrari() {
+                                return new Ferrari();
+                            }
+        
+                            @MyQualifier(
+                                name = "lambo", color = "green")
+                            @Bean
+                            public Car getLamborghini() {
+                                return new Lamborghini();
+                            }
+        
+                            @Bean
+                            @MyQualifier(
+                                name = "lambo", color = "black")
+                            public Car getPagani(){
+                                return new Pagani();
+                            }
+                        }`}
+                    </Java>
+                </FlexRow>
+                <Java description={'usage'}>
+                    {`
+                    public class Engineer extends Person {
+                        @MyQualifier(name = "lambo", color = "black")
+                        @Autowired
+                        private Car car1;
+    
+                        @Autowired
+                        @MyQualifier(name = "lambo", color = "green")
+                        private Car car2;
+    
+                        @Autowired
+                        @Qualifier("ferrari")
+                        private Car car3;
+                    }`}
+                </Java>
+            </Bullet>
+        </Frame>
+    )
+}
+
 function getXmlBasic() {
     return (
         <Frame title={'Passing arguments in xml'}>
@@ -309,8 +546,12 @@ function getXmlBasic() {
                     `}
             </Xml>
 
-            <Important>Using property is recommended over constructor when we face "circular dependency" or "different
-                life length"</Important>
+            <Important>
+                <div style={{width: '35rem', display: 'inline-table'}}>Using property is recommended over constructor
+                    when we face "circular dependency" or "different life length"
+                </div>
+            </Important>
+
         </Frame>
     )
 }
@@ -397,6 +638,66 @@ function getAnnotationBasic() {
                 }
                 `}
             </Java>
+        </Frame>
+    )
+}
+
+function getAlias() {
+    return (
+        <Frame title={'Alias'}>
+            <Xml title={1}>
+                {`
+                <bean id="car" name="car" class="com.arash.models.Car"/>
+                <alias name="car" alias="automobile"/>
+                <alias name="car" alias="vehicle"/>
+                `}
+            </Xml>
+            <Java title={1}>
+                {`
+                @Bean({"car", "automobile", "vehicle"})
+                private Car getCar() {
+                    return new Car("ford", -16711936);
+                }`}
+            </Java>
+            <Java description={'usage'}>
+                {`
+                ApplicationContext ctx = ContextProvider.getXmlContext();
+                Car car = (Car) ctx.getBean("car");
+                Car car2 = (Car) ctx.getBean("automobile");
+                Car car3 = (Car) ctx.getBean("vehicle");`}
+            </Java>
+        </Frame>
+    )
+}
+
+function getPrivateConstructor() {
+    return (
+        <Frame title={'Private constructor'}>
+            <Java>
+                {`
+                public class PrivateConstructor {
+                
+                    private PrivateConstructor() {
+                    }
+                    
+                    public static PrivateConstructor getInstance(){
+                        return new PrivateConstructor();
+                    }
+                }`}
+            </Java>
+            <Xml>
+                {`
+                <!-- 
+                    as spring is all about reflection, so program elements scope makes no problem.
+                    It works pretty nice in spring 4. Also, some other ways are avaiable
+                -->
+                <bean id="privateConstructor" class="com.arash.models.privateconstructor.PrivateConstructor"/>
+                
+                <!-- access through static method -->
+                <bean id="privateConstructor2" class="com.arash.models.privateconstructor.PrivateConstructor"
+                    factory-method="getInstance"/>
+                `}
+            </Xml>
         </Frame>
     )
 }
@@ -529,66 +830,6 @@ function getAnnotationLocalClass() {
     )
 }
 
-function getAlias() {
-    return (
-        <Frame title={'Alias'}>
-            <Xml title={1}>
-                {`
-                <bean id="car" name="car" class="com.arash.models.Car"/>
-                <alias name="car" alias="automobile"/>
-                <alias name="car" alias="vehicle"/>
-                `}
-            </Xml>
-            <Java title={1}>
-                {`
-                @Bean({"car", "automobile", "vehicle"})
-                private Car getCar() {
-                    return new Car("ford", -16711936);
-                }`}
-            </Java>
-            <Java description={'usage'}>
-                {`
-                ApplicationContext ctx = ContextProvider.getXmlContext();
-                Car car = (Car) ctx.getBean("car");
-                Car car2 = (Car) ctx.getBean("automobile");
-                Car car3 = (Car) ctx.getBean("vehicle");`}
-            </Java>
-        </Frame>
-    )
-}
-
-function getPrivateConstructor() {
-    return (
-        <Frame title={'Private constructor'}>
-            <Java>
-                {`
-                public class PrivateConstructor {
-                
-                    private PrivateConstructor() {
-                    }
-                    
-                    public static PrivateConstructor getInstance(){
-                        return new PrivateConstructor();
-                    }
-                }`}
-            </Java>
-            <Xml>
-                {`
-                <!-- 
-                    as spring is all about reflection, so program elements scope makes no problem.
-                    It works pretty nice in spring 4. Also, some other ways are avaiable
-                -->
-                <bean id="privateConstructor" class="com.arash.models.privateconstructor.PrivateConstructor"/>
-                
-                <!-- access through static method -->
-                <bean id="privateConstructor2" class="com.arash.models.privateconstructor.PrivateConstructor"
-                    factory-method="getInstance"/>
-                `}
-            </Xml>
-        </Frame>
-    )
-}
-
 function getXmlCircularDependencies() {
     return (
         <Frame title={'Circular dependency in xml configuration'}>
@@ -652,28 +893,31 @@ function getXmlCircularDependencies() {
                             }
                         }
                         
-                        ----------------------------------------------------------
+                        ------------------------------------------
                         
                         //usage
-                        ApplicationContext ctx = ContextProvider.getXmlContext();
+                        ApplicationContext ctx;
+                        ctx = ContextProvider.getXmlContext();
                         
                         //correct order
-                        Student student = (Student) ctx.getBean("student");
+                        Student student = ctx.getBean(Student.class);
                         Shoes shoes= (Shoes) ctx.getBean("shoes");
                         
                         //incorrect order
                         Shoes shoes= (Shoes) ctx.getBean("shoes");
-                        Student student = (Student) ctx.getBean("student");
+                        Student student = ctx.getBean(Student.class);
                         `}
                     </Java>
                     <Xml title={true}
                          description={'one property & one constructor'}>
                         {`
-                        <bean id="student" class="com.arash.models.circulardep.Student">
+                        <bean id="student"
+                                class="com.arash.models.circulardep.Student">
                             <property name="shoes" ref="shoes"/>
                         </bean>
                         
-                        <bean id="shoes" class="com.arash.models.circulardep.Shoes">
+                        <bean id="shoes"
+                                class="com.arash.models.circulardep.Shoes">
                             <constructor-arg ref="student"/>
                         </bean>`}
                     </Xml>
@@ -704,18 +948,19 @@ function getXmlCircularDependencies() {
                     </Java>
                     <Xml title={true} description={'define who has to laod at first'}>
                         {`
-                         <bean id="student" class="com.arash.models.circulardep.Student" lazy-init="false">
+                         <bean id="student" lazy-init="false"
+                                class="com.arash.models.circulardep.Student">
                              <property name="student" ref="shoes"/>
                          </bean>
                         
-                         <bean id="shoes" class="com.arash.models.circulardep.Shoes" lazy-init="true">
+                         <bean id="shoes" lazy-init="true"
+                                class="com.arash.models.circulardep.Shoes">
                              <constructor-arg ref="student"/>
                          </bean>`}
                     </Xml>
                 </FlexRow>
             </Bullet><br/>
-            <Bullet title={'3.'}>Using idref (idref is id of a bean as string, but it checks the existence of the
-                bean)
+            <Bullet title={'3.'}>Using idref (idref is id of a bean as string, but it checks the existence of the bean)
                 <FlexRow>
                     <Java title={true} description={'save idref and init before use'}>
                         {`
@@ -728,19 +973,22 @@ function getXmlCircularDependencies() {
                             }
                         
                             public void init(){
-                                ApplicationContext ctx = ContextProvider.getXmlContext();
+                                ApplicationContext ctx;
+                                ctx = ContextProvider.getXmlContext();
                                 shoes = (Shoes) ctx.getBean(shoesId);
                             }
                         }`}
                     </Java>
-                    <Xml title={true} description={'pass idref insted of ref'}>
+                    <Xml title={true} description={'pass idref instead of ref'}>
                         {`
-                        <bean id="student" class="com.arash.models.circulardep.Student">
+                        <bean id="student"
+                                class="com.arash.models.circulardep.Student">
                             <constructor-arg>
                                 <idref bean="shoes"/>
                             </constructor-arg>
                         </bean>
-                        <bean id="shoes" class="com.arash.models.circulardep.Shoes">
+                        <bean id="shoes"
+                                class="com.arash.models.circulardep.Shoes">
                             <constructor-arg ref="student"/>
                         </bean>`}
                     </Xml>
@@ -769,11 +1017,13 @@ function getXmlCircularDependencies() {
                     </Java>
                     <Xml title={true} description={'define who depends on who'}>
                         {`
-                        <bean id="student" class="com.arash.models.circulardep.Student">
+                        <bean id="student"
+                                class="com.arash.models.circulardep.Student">
                             <property name="student" ref="shoes"/>
                         </bean>
                     
-                        <bean id="shoes" class="com.arash.models.circulardep.Shoes" depends-on="student" >
+                        <bean id="shoes" depends-on="student"
+                                class="com.arash.models.circulardep.Shoes">
                             <constructor-arg ref="student"/>
                         </bean>`}
                     </Xml>
@@ -901,8 +1151,12 @@ function getJavaLoadFromFile() {
             </Bullet>
             <Bullet title={'2.'}>
                 Via <Blue>@Value</Blue>:<br/>
-                use <Blue>@PropertySource</Blue> on configuration file and
-                define <Blue>PropertySourcesPlaceholderConfigurer</Blue> bean
+                <Bullet levle={1} title={'⚫'}>
+                    <div style={{width: '30rem'}}>
+                        return a <Blue>PropertySourcesPlaceholderConfigurer</Blue> bean which is loaded
+                        by <Blue>@PropertySource</Blue>
+                    </div>
+                </Bullet>
                 <Java>
                     {`
                     @Configuration
@@ -919,7 +1173,7 @@ function getJavaLoadFromFile() {
                         }
                     }
                     
-                    // Please notice that you must follow format "#{'$\{prop-name}'}" for @Value
+                    // Notice that you must follow format "#{'$\{prop-name}'}" for @Value
                     @Component
                     public class JdbcProp {
                         @Value("#{'$\{jdbc.driverClassName}'}")
@@ -1033,6 +1287,184 @@ function getXmlChangingMethodBody() {
                     `}
                 </Xml>
             </Bullet>
+        </Frame>
+    )
+}
+
+function getCollections() {
+    return (
+        <Frame title={'Collections'}>
+            <Xml>
+                {`
+                <bean id="propCollection" class="com.arash.models.collections.PropertyCollection">
+                    <property name="map">
+                        <props>
+                            <prop key="key1">value1</prop>
+                            <prop key="key2">value2</prop>
+                        </props>
+                    </property>
+                </bean>
+                
+                <bean id="mapCollection" class="com.arash.models.collections.MapCollection">
+                    <property name="map">
+                        <map>
+                            <entry key="key1" value="value1"/>
+                            <entry key="key2" value="value2"/>
+                        </map>
+                    </property>
+                </bean>
+                
+                <bean id="listCollection" class="com.arash.models.collections.ListCollection">
+                    <property name="map">
+                        <list>
+                            <value>entry1</value>
+                            <ref bean="bean1"/>
+                        </list>
+                    </property>
+                </bean>
+                
+                <bean id="setCollection" class="com.arash.models.collections.SetCollection">
+                    <property name="map">
+                        <set>
+                            <value>entry1</value>
+                            <ref bean="bean1"/>
+                        </set>
+                    </property>
+                </bean>`}
+            </Xml>
+        </Frame>
+    )
+}
+
+function getSpel() {
+    return (
+        <Frame title={'Spring Expression Language (SPEL)'}>
+            this expression is useful when we are willing to pass some data via @Value or XML or to execute a tiny piece
+            of
+            code easily.<br/>
+            The general format is <Bold>{'#{SPEL}'}</Bold><br/><br/>
+            <Purple>Usage:</Purple>
+            <Bullet title={'1.'} level={1}>
+                <Bold>java:</Bold>
+                <Java>
+                    {`
+                    ExpressionParser parser = new SpelExpressionParser();
+                    Expression exp = parser.parseExpression("'Hello World'");
+                    String message = (String) exp.getValue();`}
+                </Java>
+            </Bullet>
+            <Bullet title={'2.'} level={1}>
+                <Bold>xml:</Bold>
+                <Xml>
+                    {`
+                    <!--calculate some value by spel-->
+                    <bean id="numberGuess" class="com.arash.models.ANumber">
+                    <property name="randomNumber" value="#{T(java.lang.Math).random() * 100.0}"/>
+                    </bean>
+
+                    <!--using a property of another class-->
+                    <bean id="shapeGuess" class="com.arash.models.ANumber">
+                    <property name="randomNumber" value="#{someClass.prop}"/>
+                    </bean>`}
+                </Xml>
+            </Bullet>
+            <Bullet title={'1.'} level={1}>
+                <Bold>annotation:</Bold>
+                <Java>
+                    {`
+                    public class ANumber {
+                    @Value("900")
+                    private int randomNumber;
+
+                    public void setRandomNumber(int randomNumber) {
+                    this.randomNumber = randomNumber;
+                    }
+                    }`}
+                </Java>
+            </Bullet>
+            <HorizontalLine/>
+            <Java>
+                {`
+                    /*** literal expression ***/
+                    “'Hello World'”
+                    "6.0221415E+23"
+                    "0x7FFFFFFF"
+                    "true"
+                    "null"
+
+                    /*** properties, arrays, lists, maps, indexers ***/
+                    "Birthdate.Year + 1900"
+                    "Members[0].Inventions[6]"
+                    "Officers['president'].PlaceOfBirth.City"
+
+                    StandardEvaluationContext context = new StandardEvaluationContext();
+
+                    /*** inline lists, Maps ***/
+                    List numbers = (List) parser.parseExpression("{1,2,3,4}").getValue(context);
+                    List listOfLists = (List) parser.parseExpression("{{'a','b'},{'x','y'}}").getValue(context);
+                    Map lst = (Map) parser.parseExpression("{'k1':'v1','k2':'v2'}").getValue(context);
+
+                    /*** array construction ***/
+                    int[] numbers1 = (int[]) parser.parseExpression("new int[4]").getValue(context);
+                    int[] numbers2 = (int[]) parser.parseExpression("new int[]{1,2,3}").getValue(context);
+                    int[][] numbers3 = (int[][]) parser.parseExpression("new int[4][5]").getValue(context);
+
+                    /*** methods ***/
+                    String c = parser.parseExpression("'abc'.substring(2, 3)").getValue(String.class);
+
+                    /*** operators ***/
+                    boolean a = parser.parseExpression("2 == 2").getValue(Boolean.class); //true
+                    boolean b = parser.parseExpression("2 < -5.0").getValue(Boolean.class); //false
+                    boolean c = parser.parseExpression("'black' < 'block'").getValue(Boolean.class); //true
+                    boolean d = parser.parseExpression("'5.00' matches '^-?\\\\d+(\\\\.\\\\d{2})?$'").getValue(Boolean.class); //true
+                    boolean e = parser.parseExpression("true and false").getValue(Boolean.class); //false
+                    String expression = "isMember('Nikola Tesla') and isMember('Mihajlo Pupin')";
+                    boolean f = parser.parseExpression("!true").getValue(Boolean.class); //false
+                    int two = parser.parseExpression("1 + 1").getValue(Integer.class); // 2
+                    String g = parser.parseExpression("'test' + ' ' + 'string'").getValue(String.class);  // 'test string'
+                    double h = parser.parseExpression("1000.00 - 1e4").getValue(Double.class); // -9000
+                    String i = parser.parseExpression("Name = 'Alexandar Seovic'").getValue(context, String.class);
+
+                    /*** types ***/
+                    Class dateClass = parser.parseExpression("T(java.util.Date)").getValue(Class.class);
+                    Class stringClass = parser.parseExpression("T(String)").getValue(Class.class);
+                    boolean j = parser.parseExpression("T(java.math.RoundingMode).CEILING < T(java.math.RoundingMode).FLOOR").getValue(Boolean.class); //true
+
+                    /*** constructors ***/
+                    Inventor einstein = parser.parseExpression("new com.arash.Inventor('Albert Einstein', 'German')").getValue(Inventor.class);
+
+                    /*** variables ***/
+                    Inventor tesla = new Inventor("Nikola Tesla", "Serbian");
+                    StandardEvaluationContext context2 = new StandardEvaluationContext(tesla);
+                    context2.setVariable("newName", "Mike Tesla");
+                    parser.parseExpression("Name = #newName").getValue(context);
+                    System.out.println(tesla.getName()); // "Mike Tesla"
+
+                    /*** another sample ***/
+                    List<Integer> primes = new ArrayList<Integer>();
+                    primes.addAll(Arrays.asList(2, 3, 5, 7, 11, 13, 17));
+                    context2.setVariable("primes", primes);
+                    List<Integer> primes2 = (List<Integer>) parser.parseExpression("#primes.?[#this>10]").getValue(context); // select of numbers > 10
+
+                    /*** functions ***/
+                    context2.registerFunction("reverseString", StringUtils.class.getDeclaredMethod("reverseString", new Class[]{String.class}));
+                    String helloWorldReversed = parser.parseExpression("#reverseString('hello')").getValue(context, String.class);
+                    context2.setBeanResolver(new MyBeanResolver());
+                    Object bean = parser.parseExpression("@foo").getValue(context);
+
+                    /*** ternary Operator (If - Then - Else) ***/
+                    String falseString = parser.parseExpression("false ? 'trueExp' : 'falseExp'").getValue(String.class);
+
+                    /*** collection Selection ***/
+                    List<Inventor> list = (List<Inventor>) parser.parseExpression("Members.?[Nationality == 'Serbian']").getValue(context2);
+                    Map newMap = (Map) parser.parseExpression("map.?[value<27]").getValue();
+                    List placesOfBirth = (List) parser.parseExpression("Members.![placeOfBirth.city]");
+
+
+                    /*** expression templating ***/
+                    String randomPhrase = parser.parseExpression("random number is #{T(java.lang.Math).random()}", new TemplateParserContext()).getValue(String.class);
+                `}
+            </Java>
         </Frame>
     )
 }
@@ -1162,51 +1594,6 @@ function getScopeIssue() {
                 <Highlight>When {'<aop:scoped-proxy/>'} is in root node, all beans will be serialized at first, then
                     on request, the bean will be deserialized, so the instance is a copy of the object.</Highlight>
             </div>
-        </Frame>
-    )
-}
-
-function getCollections() {
-    return (
-        <Frame title={'Collections'}>
-            <Xml>
-                {`
-                <bean id="propCollection" class="com.arash.models.collections.PropertyCollection">
-                    <property name="map">
-                        <props>
-                            <prop key="key1">value1</prop>
-                            <prop key="key2">value2</prop>
-                        </props>
-                    </property>
-                </bean>
-                
-                <bean id="mapCollection" class="com.arash.models.collections.MapCollection">
-                    <property name="map">
-                        <map>
-                            <entry key="key1" value="value1"/>
-                            <entry key="key2" value="value2"/>
-                        </map>
-                    </property>
-                </bean>
-                
-                <bean id="listCollection" class="com.arash.models.collections.ListCollection">
-                    <property name="map">
-                        <list>
-                            <value>entry1</value>
-                            <ref bean="bean1"/>
-                        </list>
-                    </property>
-                </bean>
-                
-                <bean id="setCollection" class="com.arash.models.collections.SetCollection">
-                    <property name="map">
-                        <set>
-                            <value>entry1</value>
-                            <ref bean="bean1"/>
-                        </set>
-                    </property>
-                </bean>`}
-            </Xml>
         </Frame>
     )
 }
@@ -1357,366 +1744,6 @@ function getTemplateClass() {
                 </Xml>
             </FlexRow>
 
-        </Frame>
-    )
-}
-
-function getMerging() {
-    return (
-        <Frame title={'Merging configuration files'}>
-            <Xml description={'merging other configurations into xml'}>
-                {`
-                    <beans ...>
-                        <context:annotation-config/>
-                        
-                        <!-- scan a package to figure out its Components -->
-                        <context:component-scan base-package="com"/>
-                    </beans>
-                `}
-            </Xml>
-            <Java description={'merging other configurations into java class'}>
-                {`
-                //merge other classes
-                @Import(OtherAppConfig.class)
-                
-                //merge xml files
-                @ImportResource(locations = "classpath:containerconfig.xml")
-                
-                @Configuration
-                public class AppConfig {
-                }
-                `}
-            </Java>
-        </Frame>
-    )
-}
-
-function getMultipleCandidate() {
-    return (
-        <Frame title={'multiple candidate'}>
-            There is possibility to have more than 1 candidate when you request a bean. To make spring to return true
-            object you can use <Bold>primary</Bold> and <Bold>qualifier</Bold> key words.
-            <Bullet title={'1.'}>
-                <Bold>Primary:</Bold><br/>
-                Set a bean as primary
-                <FlexRow>
-                    <Xml title={1}>
-                        {`
-                    <bean id="ferrai" class="com.arash.models.multiplecandidates.Ferrari" primary="true"/>
-                    <bean id="lamborghini" class="com.arash.models.multiplecandidates.Lamborghini">`}
-                    </Xml>
-                    <Java title={1}>
-                        {`
-                    @Configuration
-                    public class AppConfig {
-                        @Primary
-                        @Bean
-                        public Car getLamborghini() {
-                            return new Lamborghini();
-                        }
-    
-                        @Bean
-                        public Car getFerrari() {
-                            return new Ferrari();
-                        }
-                    }`}
-                    </Java>
-                </FlexRow>
-            </Bullet>
-            <Bullet title={'2.'}>
-                <Bold>Qualifier:</Bold><br/>
-                determine what object should be injected based on the given information
-                <Java description={'custom qualifier'}>
-                    {`
-                    @Target(ElementType.FIELD)
-                    @Retention(RetentionPolicy.RUNTIME)
-                    @Qualifier
-                    public @interface MyQualifier {
-                        String value() default "";
-                        String color();
-                    }`}
-                </Java>
-                <FlexRow>
-                    <Xml title={1}>
-                        {`
-                    <!--qualifier with a simple string-->
-                    <bean id="ferrai" className="com.arash.models.multiplecandidates.Ferrari">
-                        <qualifier value="ferrari"/>
-                    </bean>
-
-                    <!--qualifier with custom selection property-->
-                    <bean id="lamborghini" className="com.arash.models.multiplecandidates.Lamborghini">
-                        <qualifier type="com.arash.models.multiplecandidates.MyQualifier">
-                            <attribute key="color" value="green"/>
-                        </qualifier>
-                    </bean>
-
-                    <bean id="pagani" className="com.arash.models.multiplecandidates.Pagani">
-                        <qualifier type="com.arash.models.multiplecandidates.MyQualifier">
-                            <attribute key="color" value="black"/>
-                        </qualifier>
-                    </bean>`}
-                    </Xml>
-                    <Java title={1}>
-                        {`
-                    @Configuration
-                    public class AppConfig {
-                        @Qualifier("ferrari")
-                        @Bean
-                        public Car getFerrari() {
-                            return new Ferrari();
-                        }
-    
-                        @MyQualifier(name = "lambo",color = "green")
-                        @Bean
-                        public Car getLamborghini() {
-                            return new Lamborghini();
-                        }
-    
-                        @Bean
-                        @MyQualifier(name = "lambo",color = "black")
-                        public Car getPagani(){
-                            return new Pagani();
-                        }
-                    }`}
-                    </Java>
-                </FlexRow>
-                <Java description={'usage'}>
-                    {`
-                    public class Engineer extends Person {
-                        @MyQualifier(name = "lambo", color = "black")
-                        @Autowired
-                        private Car car1;
-    
-                        @Autowired
-                        @MyQualifier(name = "lambo", color = "green")
-                        private Car car2;
-    
-                        @Autowired
-                        @Qualifier("ferrari")
-                        private Car car3;
-                    }`}
-                </Java>
-            </Bullet>
-        </Frame>
-    )
-}
-
-function getSpel() {
-    return (
-        <Frame title={'Spring Expression Language (SPEL)'}>
-            this expression is useful when we are willing to pass some data via @Value or XML or to execute a tiny piece
-            of
-            code easily.<br/>
-            The general format is <Bold>{'#{SPEL}'}</Bold><br/><br/>
-            <Purple>Usage:</Purple>
-            <Bullet title={'1.'} level={1}>
-                <Bold>java:</Bold>
-                <Java>
-                    {`
-                    ExpressionParser parser = new SpelExpressionParser();
-                    Expression exp = parser.parseExpression("'Hello World'");
-                    String message = (String) exp.getValue();`}
-                </Java>
-            </Bullet>
-            <Bullet title={'2.'} level={1}>
-                <Bold>xml:</Bold>
-                <Xml>
-                    {`
-                    <!--calculate some value by spel-->
-                    <bean id="numberGuess" class="com.arash.models.ANumber">
-                    <property name="randomNumber" value="#{T(java.lang.Math).random() * 100.0}"/>
-                    </bean>
-
-                    <!--using a property of another class-->
-                    <bean id="shapeGuess" class="com.arash.models.ANumber">
-                    <property name="randomNumber" value="#{someClass.prop}"/>
-                    </bean>`}
-                </Xml>
-            </Bullet>
-            <Bullet title={'1.'} level={1}>
-                <Bold>annotation:</Bold>
-                <Java>
-                    {`
-                    public class ANumber {
-                    @Value("900")
-                    private int randomNumber;
-
-                    public void setRandomNumber(int randomNumber) {
-                    this.randomNumber = randomNumber;
-                    }
-                    }`}
-                </Java>
-            </Bullet>
-            <HorizontalLine/>
-            <Java>
-                {`
-                    /*** literal expression ***/
-                    “'Hello World'”
-                    "6.0221415E+23"
-                    "0x7FFFFFFF"
-                    "true"
-                    "null"
-
-                    /*** properties, arrays, lists, maps, indexers ***/
-                    "Birthdate.Year + 1900"
-                    "Members[0].Inventions[6]"
-                    "Officers['president'].PlaceOfBirth.City"
-
-                    StandardEvaluationContext context = new StandardEvaluationContext();
-
-                    /*** inline lists, Maps ***/
-                    List numbers = (List) parser.parseExpression("{1,2,3,4}").getValue(context);
-                    List listOfLists = (List) parser.parseExpression("{{'a','b'},{'x','y'}}").getValue(context);
-                    Map lst = (Map) parser.parseExpression("{'k1':'v1','k2':'v2'}").getValue(context);
-
-                    /*** array construction ***/
-                    int[] numbers1 = (int[]) parser.parseExpression("new int[4]").getValue(context);
-                    int[] numbers2 = (int[]) parser.parseExpression("new int[]{1,2,3}").getValue(context);
-                    int[][] numbers3 = (int[][]) parser.parseExpression("new int[4][5]").getValue(context);
-
-                    /*** methods ***/
-                    String c = parser.parseExpression("'abc'.substring(2, 3)").getValue(String.class);
-
-                    /*** operators ***/
-                    boolean a = parser.parseExpression("2 == 2").getValue(Boolean.class); //true
-                    boolean b = parser.parseExpression("2 < -5.0").getValue(Boolean.class); //false
-                    boolean c = parser.parseExpression("'black' < 'block'").getValue(Boolean.class); //true
-                    boolean d = parser.parseExpression("'5.00' matches '^-?\\\\d+(\\\\.\\\\d{2})?$'").getValue(Boolean.class); //true
-                    boolean e = parser.parseExpression("true and false").getValue(Boolean.class); //false
-                    String expression = "isMember('Nikola Tesla') and isMember('Mihajlo Pupin')";
-                    boolean f = parser.parseExpression("!true").getValue(Boolean.class); //false
-                    int two = parser.parseExpression("1 + 1").getValue(Integer.class); // 2
-                    String g = parser.parseExpression("'test' + ' ' + 'string'").getValue(String.class);  // 'test string'
-                    double h = parser.parseExpression("1000.00 - 1e4").getValue(Double.class); // -9000
-                    String i = parser.parseExpression("Name = 'Alexandar Seovic'").getValue(context, String.class);
-
-                    /*** types ***/
-                    Class dateClass = parser.parseExpression("T(java.util.Date)").getValue(Class.class);
-                    Class stringClass = parser.parseExpression("T(String)").getValue(Class.class);
-                    boolean j = parser.parseExpression("T(java.math.RoundingMode).CEILING < T(java.math.RoundingMode).FLOOR").getValue(Boolean.class); //true
-
-                    /*** constructors ***/
-                    Inventor einstein = parser.parseExpression("new com.arash.Inventor('Albert Einstein', 'German')").getValue(Inventor.class);
-
-                    /*** variables ***/
-                    Inventor tesla = new Inventor("Nikola Tesla", "Serbian");
-                    StandardEvaluationContext context2 = new StandardEvaluationContext(tesla);
-                    context2.setVariable("newName", "Mike Tesla");
-                    parser.parseExpression("Name = #newName").getValue(context);
-                    System.out.println(tesla.getName()); // "Mike Tesla"
-
-                    /*** another sample ***/
-                    List<Integer> primes = new ArrayList<Integer>();
-                    primes.addAll(Arrays.asList(2, 3, 5, 7, 11, 13, 17));
-                    context2.setVariable("primes", primes);
-                    List<Integer> primes2 = (List<Integer>) parser.parseExpression("#primes.?[#this>10]").getValue(context); // select of numbers > 10
-
-                    /*** functions ***/
-                    context2.registerFunction("reverseString", StringUtils.class.getDeclaredMethod("reverseString", new Class[]{String.class}));
-                    String helloWorldReversed = parser.parseExpression("#reverseString('hello')").getValue(context, String.class);
-                    context2.setBeanResolver(new MyBeanResolver());
-                    Object bean = parser.parseExpression("@foo").getValue(context);
-
-                    /*** ternary Operator (If - Then - Else) ***/
-                    String falseString = parser.parseExpression("false ? 'trueExp' : 'falseExp'").getValue(String.class);
-
-                    /*** collection Selection ***/
-                    List<Inventor> list = (List<Inventor>) parser.parseExpression("Members.?[Nationality == 'Serbian']").getValue(context2);
-                    Map newMap = (Map) parser.parseExpression("map.?[value<27]").getValue();
-                    List placesOfBirth = (List) parser.parseExpression("Members.![placeOfBirth.city]");
-
-
-                    /*** expression templating ***/
-                    String randomPhrase = parser.parseExpression("random number is #{T(java.lang.Math).random()}", new TemplateParserContext()).getValue(String.class);
-                `}
-            </Java>
-        </Frame>
-    )
-}
-
-function getProfile() {
-    return (
-        <Frame title={'Profile selection'}>
-            <InfoIcon>
-                <Java>
-                    {`
-                    // To check a property existence:
-                    context.getEnvironment().containsProperty("who_is_your_daddy");
-                    
-                    //all environments are not available in spring and some are provide by jvm
-                    System.getProperty("propertyName");
-                    `}
-                </Java>
-                <br/>
-                To change profile at runtime:
-                <Red>!Not tested!</Red>
-                <Bash>{'java -Dspring.profiles.active.pro -jar myJar.jar'}</Bash>
-            </InfoIcon>
-            We can switch to another config via profile.<br/>
-            First of, mark all classes belong to a profile
-            <Java description={'source code'}>
-                {`
-                @Profile("develop","!dev")//! => active profile
-                public class Bean1 {
-                
-                    //access your desired environment
-                    @Autowired
-                    public EnvironmentConfiguration env;
-                }`}
-            </Java>
-            In xml, we have to assign a file for a profile:
-            <Xml>
-                {`
-                <beans
-                    ...
-                    profile="develop">
-                ...
-                </beans>`}
-            </Xml>
-            <HorizontalLine/>
-            Now, select a profile:
-            <Xml description={'pom.xml'}>
-                {`
-                <profiles>
-                    <profile>
-                        <id>develop</id>
-                        <activation>
-                            <activeByDefault>true</activeByDefault>
-                        </activation>
-                    </profile>
-                </profiles>`}
-            </Xml>
-            <HorizontalLine/>
-            To catch active profile:
-            <Java>
-                {`
-                @Component
-                public class Bean1 {
-                    @Autowired
-                    public Environment env;
-                
-                    public void loopThroughActiveProfiles() {
-                        Arrays.stream(env.getActiveProfiles())
-                            .forEach(System.out::println);
-                    }
-                    
-                    @Value("#\{$\{spring.profiles.active}}")
-                    String activeProfile;
-                
-                    @Autowired
-                    private ConfigurableEnvironment cfgEnv;
-                    
-                    public void setActiveProfile(String pName) {
-                        //other information is available here
-                        cfgEnv.setActiveProfiles("develop");
-                    }
-                }`}
-            </Java>
-            <div style={{width: '22rem'}}>
-                <Highlight>You have to follow <Bold>profile</Bold> structure in the whole of project when you mention
-                    it.</Highlight>
-            </div>
         </Frame>
     )
 }

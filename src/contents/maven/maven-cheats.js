@@ -52,7 +52,7 @@ function getMavenStructure() {
                     └── README.txt`}
             </GenericCode>
             <InfoIcon>
-                <Important>Maven path must include no space</Important>
+                <Important>Maven path must /media/arash/SanDisk/my-cheat-book2 no space</Important>
                 <p>
                     current mave version is 2 but its lib version may be higher.<br/>
                     Maven is going to handle dependency managing, compiling, building, testing, reporting,… .
@@ -88,8 +88,8 @@ function getMavenDuty() {
                     [INFO]
                     [INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ maventest ---
                     [INFO] org.example:maventest:jar:1.0-SNAPSHOT
-                    [INFO] \- mysql:mysql-connector-java:jar:8.0.22:compile
-                    [INFO]    \- com.google.protobuf:protobuf-java:jar:3.11.4:compile
+                    [INFO] - mysql:mysql-connector-java:jar:8.0.22:compile
+                    [INFO]    - com.google.protobuf:protobuf-java:jar:3.11.4:compile
                     [INFO] ------------------------------------------------------------------------
                     [INFO] BUILD SUCCESS
                     [INFO] ------------------------------------------------------------------------

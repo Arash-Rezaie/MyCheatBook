@@ -4,9 +4,10 @@ import React from "react";
  * !!unsafe!!
  * Chrome and Firefox result are not the same when you use float for texts. It is recommended to hire this component on fixed coordination elements such as images
  * props:<br>
- *     l:number<br>
- *     t:number<br>
- *     edge:[top,right,bottom,left]<br>
+ *     l:number<br/>
+ *     t:number<br/>
+ *     lineto:[number, number]<br/>
+ *     edge:[top,right,bottom,left]<br/>
  *
  */
 export class Float extends React.Component {

@@ -1,11 +1,11 @@
 import React from "react";
 
-export function Title(props) {
-    return <span className={'title'}>{props.children}</span>
+export function Title1(props) {
+    return <span className={'title1'}>{props.children}</span>
 }
 
-export function Header(props) {
-    return <span className={'header blue'}>{props.children}</span>
+export function Title2(props) {
+    return <span className={'title2'}>{props.children}</span>
 }
 
 export function Blue(props) {
@@ -55,13 +55,24 @@ export function BlueBold(props) {
  * @constructor
  */
 export function Bullet(props) {
+    const r = React.useRef();
+    React.useEffect(() => {
+        let title = r.current.children[0];
+        let w = title.offsetWidth;
+        if (w === 0) {
+            w = title.clientWidth;
+        }
+
+        if (w > 0)
+            r.current.children[1].style.textIndent = (w - 10) + 'px';
+    });
     let indent = 0;
     if (props.level)
-        indent = props.level * 10 + 'px';
+        indent = props.level * props.level * 5 + 'px';
     return (
-        <div style={{marginLeft: indent}} className={'bullet'}>
-            <span className={'blue bold bullet-first-child'}>{props.title}</span>
-            <div className={'inline'}>{props.children}</div>
+        <div style={{marginLeft: indent}} className={'bullet'} ref={r}>
+            <span className={'blue bold'}>{props.title}</span>
+            <p style={{textIndent: (props.title.length / 1.75) + 'em'}}>{props.children}</p>
         </div>
     )
 }
@@ -81,7 +92,7 @@ export function LocationFinder() {
 
     const handleRemove = e => {
         e.stopPropagation();
-        setLocation(location.filter((v, i) => i != location.length - 1));
+        setLocation(location.filter((v, i) => i !== location.length - 1));
     };
 
     return (

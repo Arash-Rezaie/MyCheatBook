@@ -12,7 +12,6 @@ export class Bubble extends React.Component {
     }
 
     showBubble(e) {
-        console.log('show popup');
         PopupHandler.showPopup('bubble', this.r.current, this.props.children[1], {
             arrow: true,
             // placement: 'right',

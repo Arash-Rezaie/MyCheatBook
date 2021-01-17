@@ -464,17 +464,14 @@ function getNio() {
             </Java>
             Buffer has 4 attributes:<br/>
 
-            <Bullet title={'1.'}><span className={'bold vlue'}>Capacity: </span>The maximum number of data elements
-                the buffer can hold. The capacity is set when the buffer is created and can never be changed.</Bullet>
-            <Bullet title={'2.'}><span className={'bold vlue'}>Limit: </span>The first element of the buffer that
-                should not be read or written. In other words, the count of live elements in the
-                buffer.</Bullet>
-            <Bullet title={'3.'}><span className={'bold vlue'}>Position: </span>The index of the next element to be
-                read or written. The position is updated automatically by relative get() and put()
-                methods.</Bullet>
-            <Bullet title={'4.'}><span className={'bold vlue'}>Mark: </span>A remembered position. Calling mark()
-                sets mark = position. Calling reset( ) sets position = mark. The mark is undefined until
-                set.</Bullet>
+            <Bullet title={'1. Capacity:'}>The maximum number of data elements the buffer can hold. The capacity is set
+                when the buffer is created and can never be changed.</Bullet>
+            <Bullet title={'2. Limit:'}>The first element of the buffer that should not be read or written. In other
+                words, the count of live elements in the buffer.</Bullet>
+            <Bullet title={'3. Position:'}>The index of the next element to be read or written. The position is updated
+                automatically by relative get() and put() methods.</Bullet>
+            <Bullet title={'4. Mark:'}>A remembered position. Calling mark() sets mark = position. Calling reset( ) sets
+                position = mark. The mark is undefined until set.</Bullet>
 
             <p>Check out the following example:</p>
 
