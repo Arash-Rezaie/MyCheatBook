@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/MyCheatBook/static/css/main.40c0486a.chunk.css",
-    "main.js": "/MyCheatBook/static/js/main.7877925d.chunk.js",
-    "main.js.map": "/MyCheatBook/static/js/main.7877925d.chunk.js.map",
+    "main.css": "/MyCheatBook/static/css/main.476f9953.chunk.css",
+    "main.js": "/MyCheatBook/static/js/main.e9a5d7ab.chunk.js",
+    "main.js.map": "/MyCheatBook/static/js/main.e9a5d7ab.chunk.js.map",
     "runtime-main.js": "/MyCheatBook/static/js/runtime-main.fd62c2b4.js",
     "runtime-main.js.map": "/MyCheatBook/static/js/runtime-main.fd62c2b4.js.map",
-    "static/js/2.469c1ce0.chunk.js": "/MyCheatBook/static/js/2.469c1ce0.chunk.js",
-    "static/js/2.469c1ce0.chunk.js.map": "/MyCheatBook/static/js/2.469c1ce0.chunk.js.map",
+    "static/js/2.b0318fde.chunk.js": "/MyCheatBook/static/js/2.b0318fde.chunk.js",
+    "static/js/2.b0318fde.chunk.js.map": "/MyCheatBook/static/js/2.b0318fde.chunk.js.map",
     "index.html": "/MyCheatBook/index.html",
-    "static/css/main.40c0486a.chunk.css.map": "/MyCheatBook/static/css/main.40c0486a.chunk.css.map",
-    "static/js/2.469c1ce0.chunk.js.LICENSE.txt": "/MyCheatBook/static/js/2.469c1ce0.chunk.js.LICENSE.txt",
+    "static/css/main.476f9953.chunk.css.map": "/MyCheatBook/static/css/main.476f9953.chunk.css.map",
+    "static/js/2.b0318fde.chunk.js.LICENSE.txt": "/MyCheatBook/static/js/2.b0318fde.chunk.js.LICENSE.txt",
     "static/media/ApplicationContext.fa4b5916.png": "/MyCheatBook/static/media/ApplicationContext.fa4b5916.png",
     "static/media/bean-life-cycle.e37ec3ea.png": "/MyCheatBook/static/media/bean-life-cycle.e37ec3ea.png",
     "static/media/buffers.45d1c0cb.png": "/MyCheatBook/static/media/buffers.45d1c0cb.png",
@@ -18,6 +18,7 @@
     "static/media/channel3.9052fe1f.png": "/MyCheatBook/static/media/channel3.9052fe1f.png",
     "static/media/channel4.f01f9169.png": "/MyCheatBook/static/media/channel4.f01f9169.png",
     "static/media/channels.6f0fe650.png": "/MyCheatBook/static/media/channels.6f0fe650.png",
+    "static/media/git-work-flow.72d058ea.png": "/MyCheatBook/static/media/git-work-flow.72d058ea.png",
     "static/media/maven_embedded.f3b18f35.png": "/MyCheatBook/static/media/maven_embedded.f3b18f35.png",
     "static/media/maven_interaction.c7051b76.png": "/MyCheatBook/static/media/maven_interaction.c7051b76.png",
     "static/media/maven_lifecycle.e668e46e.png": "/MyCheatBook/static/media/maven_lifecycle.e668e46e.png",
@@ -26,8 +27,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.fd62c2b4.js",
-    "static/js/2.469c1ce0.chunk.js",
-    "static/css/main.40c0486a.chunk.css",
-    "static/js/main.7877925d.chunk.js"
+    "static/js/2.b0318fde.chunk.js",
+    "static/css/main.476f9953.chunk.css",
+    "static/js/main.e9a5d7ab.chunk.js"
   ]
 }
