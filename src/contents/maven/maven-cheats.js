@@ -440,13 +440,17 @@ function getPomStructure() {
                     <!-- you can define any variable here and it can be a new one or builtin.Ref: $\{propertyName} -->
                     <properties>
                         <mysql.version>8.0.22</mysql.version>
+                        
+                        <!-- you have to determine jdk version via these lines or inside <build/> -->
+                        <maven.compiler.source>1.8</maven.compiler.source>
+                        <maven.compiler.target>1.8</maven.compiler.target>
                     </properties>
                 
                     <profiles>
                         <profile>
                             <id>develop</id>
                             <activation>
-                                <!-- address a file indide project -->
+                                <!-- address a file in class-path -->
                                 <file>
                                     <exists>/src/main/lib.jar</exists>
                                 </file>
@@ -470,6 +474,19 @@ function getPomStructure() {
                                     <systemPath>local address</systemPath>
                                 </dependency>
                             </dependencies>
+                            <build>
+                                <plugins>
+                                    <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-compiler-plugin</artifactId>
+                                        <version>3.8.1</version>
+                                        <configuration>
+                                            <source>1.8</source>
+                                            <target>1.8</target>
+                                        </configuration>
+                                    </plugin>
+                                </plugins>
+                            </build>
                         </profile>
                     </profiles>
                 </project>

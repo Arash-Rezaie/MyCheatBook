@@ -2,16 +2,7 @@ import React from "react";
 import {Bash, Frame, GenericCode, Java, Xml} from "../../../components/blocks";
 import {InfoIcon} from "../../../components/bubble";
 import {
-    Blue,
-    BlueBold,
-    Bold,
-    Bullet,
-    FlexRow,
-    Highlight,
-    HorizontalLine,
-    Important,
-    Purple,
-    Red
+    Blue, BlueBold, Bold, Bullet, FlexRow, Highlight, HorizontalLine, Important, Purple, Red
 } from "../../../components/components";
 import {Float} from "../../../components/float";
 import appContext from '../../../res/images/ApplicationContext.png';
@@ -45,6 +36,7 @@ export function CoreCheats() {
             {getBeanAware()}
             {getTemplateClass()}
             {getEvent()}
+            {getAsyncJob()}
         </>
     )
 }
@@ -1752,33 +1744,34 @@ function getEvent() {
     return (
         <Frame title={'Events'}>
             <InfoIcon>
+                <Bold><Red>!!Notice that the event mechanism is synchronous and the process has to wait till the event
+                    process terminates!!</Red></Bold>
                 <p>
-                    In every event 3 parties are
-                    involved: <Bold>Publisher</Bold>, <Bold>Listener</Bold> and <Bold>EvnetObject</Bold>
-                </p>
-                <p>
-                    If event extends <Bold>ApplicationEvent</Bold>, it is called <Blue>standard evnet</Blue> and if it
-                    implements <Bold>EvnetListener</Bold>, it is called <Blue>custom</Blue> evnet.<br/>
-                </p>
-                <p>
-                    There are limited standard evnets:<br/>
-                    <Bullet title={'ContextStartedEvent'}>When the ApplicationContext is started using the start()
+                    There are two types of event, <Blue>standard</Blue> and <Blue>custom</Blue>. Standard ones are
+                    limited:
+                    <Bullet title={'ContextStartedEvent:'}>When the ApplicationContext is started using the start()
                         method on the ConfigurableApplicationContext interface. You can poll your database or you can
                         restart any stopped application after receiving this event.</Bullet>
-                    <Bullet title={'ContextStopedEvnet'}>When the ApplicationContext is stopped using the stop() method
+                    <Bullet title={'ContextStoppedEvent:'}>When the ApplicationContext is stopped using the stop()
+                        method
                         on the ConfigurableApplicationContext interface. You can do required housekeep work after
                         receiving this event.</Bullet>
-                    <Bullet title={'ContextClosedEvent'}>When the ApplicationContext is closed using the close() method
+                    <Bullet title={'ContextClosedEvent:'}>When the ApplicationContext is closed using the close() method
                         on the ConfigurableApplicationContext interface.</Bullet>
-                    <Bullet title={'ContextRefreshedEvnet'}>When the ApplicationContext is either initialized or
+                    <Bullet title={'ContextRefreshedEvent:'}>When the ApplicationContext is either initialized or
                         refreshed. This can also be raised using the refresh() method on the
                         ConfigurableApplicationContext interface.</Bullet>
-                    <Bullet title={'RequestHandledEvnet'}>This is a web-specific event telling all beans that an HTTP
+                    <Bullet title={'RequestHandledEvent:'}>This is a web-specific event telling all beans that an HTTP
                         request has been serviced.</Bullet>
-                    <Bullet title={'ServletRequestHandledEvent'}>This one is child of the previous one and refers those
+                    <Bullet title={'ServletRequestHandledEvent:'}>This one is child of the previous one and refers those
                         requests from servlet</Bullet>
                 </p>
             </InfoIcon>
+            In every event propagation 3 parties are
+            involved: <Bold>Publisher</Bold>, <Bold>Listener</Bold> and <Bold>EventObject</Bold> itself.
+            <br/><br/>
+            About standard events, event object and publisher are defined previously and you have to declare only
+            listener.<br/>
             To raise a standard event:
             <Java>
                 {`
@@ -1799,20 +1792,24 @@ function getEvent() {
                 context started
                 `}
             </Java>
+            But for publishing custom event you have to declare all three parties.<br/>
             To raise custom event:
             <Java>
                 {`
                 // event object 
                 public class RegisterPersonEvent extends ApplicationEvent {
-                    public RegisterPersonEvent(Object source) {
+                    public String registeredBy;
+                    
+                    public RegisterPersonEvent(Object source, String registeredBy) {
                         super(source);
+                        this.registeredBy = registeredBy;
                     }
                 }
                 
                 // publisher object
                 @Component
                 public class RegisterPersonEventPublisher implements ApplicationEventPublisherAware {
-                
+                    /*you can also autowire this field and ignore 'ApplicationEventPublisherAware' implementation*/                
                     private ApplicationEventPublisher publisher;
                 
                     @Override
@@ -1820,8 +1817,8 @@ function getEvent() {
                         this.publisher = applicationEventPublisher;
                     }
                 
-                    public void send() {
-                        publisher.publishEvent(new RegisterPersonEvent(this));
+                    public void send(String registeredBy) {
+                        publisher.publishEvent(new RegisterPersonEvent(this, registeredBy));
                     }
                 }
                 
@@ -1831,37 +1828,100 @@ function getEvent() {
                 
                     @Override
                     public void onApplicationEvent(RegisterPersonEvent registerPersonEvent) {
-                        System.out.println("register person raised");
+                        System.out.println("register person raised by " + registerPersonEvent.registeredBy);
                     }
                 }
                 `}
             </Java>
-            <Red>This event mechanism is synched and used has to wait till the event process finish.</Red><br/>
-            To come over this issue, we should go to asynch event mechanism:<br/>
+            Listener can be declared via annotation too. Notice that you may have more than 1 listeners, os you have to
+            define some selection argument. By default, method argument determines what listener is suitable for an
+            event and in some versions name become important to.
             <Java>
                 {`
-                //by annotation
-                @EnableAsync
-                
-                //by java
-                public class MyExecutor implements AsyncConfigurer {
-                    @Override
-                    public Executor getAsyncExecutor() {
-                        return new ThreadPoolTaskExecutor();
-                    }
-                }
+                /*
+                 * in some versions, name of the listener is important 
+                 * and you must follow rule "process"+EventName
+                 * In this way listener is selected with the argument
+                 */
+                @EventListener
+                public void processUserRegistrationEvent(UserRegistrationEvent event) {}
                 `}
             </Java>
-            <Xml>{'<task:annotation-driven executor="anExecutor"/>'}</Xml><br/>
+            also you can identify the event in some other ways:
+            <Java>
+                {`
+                @EventListener({UserRegistrationEvent.class, ContextStartedEvent.class})
+                or
+                @EventListener(condition = "#blEvnet.name='someName'") //check out this on the Internet
+                public void processUserRegistrationEvent(UserRegistrationEvent event) {}
+                `}
+            </Java>
+            <Blue>
+                If there are more than 1 listener available and you need to organize theme,
+                use <Bold>@Order(intValue)</Bold> on method.
+            </Blue>
         </Frame>
     )
 }
 
-// function get() {
-//     return (
-//         <Frame title={''}></Frame>
-//     )
-// }
+function getAsyncJob() {
+    return (
+        <Frame title={'Asynchronous'}>
+            You must define an executor and prepare spring for asynchronous operation, then you have to determine which
+            method is going to be executed asynchronously by @Async annotation.
+            <p>
+                <Blue>Notice that the method which annotated with @Async must be public and you can not do
+                    self-invocation as it bypasses a proxy </Blue>
+            </p>
+            <p>
+                As asynched method is passed through a proxy, return value must be void or Future
+            </p>
+            <FlexRow>
+                <Java description={'Configuring asynchronous operation via java'}>
+                    {`
+                    @Configuration
+                    @ComponentScan("com.arash")
+                    @EnableAsync
+                    public class AnnoConfig {
+                    
+                        @Bean(name = "executor")//give it a name
+                        public Executor getAsyncExecutor() {
+                            ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+                            //configure executor as you want
+                            executor.setCorePoolSize(2);
+                            executor.setMaxPoolSize(10);
+                            executor.setKeepAliveSeconds(20);
+                            executor.setQueueCapacity(10);
+                            executor.setThreadNamePrefix("listener");
+                            executor.initialize();
+                            return executor;
+                        }
+                    }
+                    
+                    @Component
+                    public class Counter {
+                        @Async("executor") //this name points to the defined executor.
+                        public void startCounting(int start, int end, String msg) throws InterruptedException {
+                            System.out.println("counter: " + Thread.currentThread().getName());
+                            for (int i = start; i < end; i++) {
+                                System.out.println(msg + " -> " + i);
+                                Thread.currentThread().sleep(1000);
+                            }
+                        }
+                    }
+                    `}
+                </Java>
+                <Xml description={'Configuring asynchronous operation via xml'}>
+                    {`
+                    <task:executor id="executor1" pool-size="10" queue-capacity="10"/>
+                    <task:annotation-driven executor="executor1"/>
+                    `}
+                </Xml>
+            </FlexRow>
+        </Frame>
+    )
+}
+
 // function get() {
 //     return (
 //         <Frame title={''}></Frame>

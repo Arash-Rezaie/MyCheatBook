@@ -5,12 +5,12 @@ import {Index as JavaIndex} from "../contents/java8";
 import {Index as MavenIndex} from "../contents/maven";
 import {Index as RegexIndex} from "../contents/regex";
 import {Index as GitIndex} from "../contents/git";
-import {GitCheats} from "../contents/git/git-cheats";
+import {CoreCheats} from "../contents/spring5/core/core-cheats";
 
 export function Content() {
     const [data, setData] = useState();
     React.useEffect(() => {
-        setData(<GitCheats/>);
+        setData(<CoreCheats/>);
     }, []);
     return (
         <div style={{margin: '3px'}}>
