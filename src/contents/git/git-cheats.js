@@ -3,7 +3,7 @@ import React from "react";
 import workFlow from "../../res/images/git-work-flow.png";
 import {InfoIcon} from "../../components/bubble";
 import {Blue, Bold, Bullet, Title2, HorizontalLine, Purple, Title1} from "../../components/components";
-import {DrawBoxHandler} from "./draw-box-handler";
+import {DrawBoxHandler} from "../../components/drawbox/draw-box-handler";
 import {DrawBoxComponent} from "./git-components";
 import {Float} from "../../components/float";
 

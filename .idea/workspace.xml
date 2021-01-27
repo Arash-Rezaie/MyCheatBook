@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="adding event and asynchronous ops">
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/extended/caption.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/extended/extended-line.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/extended/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/simple/circle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/simple/text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/res/images/application-context-structure.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tools/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/utils.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/my-cheat-book.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MyCheatBook.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contents/maven/maven-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/maven/maven-cheats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/draw-box.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contents/git/draw-box-handler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contents/git/git-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/git/git-cheats.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contents/spring5/core/core-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/spring5/core/core-cheats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +52,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1nIaExl07IdEF5VzSmjcG1aluuZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -58,6 +67,14 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/drawbox/simple" />
+      <recent name="$PROJECT_DIR$/src/components/drawbox" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -81,8 +98,22 @@
       <option name="presentableId" value="Default" />
       <updated>1611079979850</updated>
       <workItem from="1611079998567" duration="593000" />
-      <workItem from="1611092488484" duration="5208000" />
+      <workItem from="1611092488484" duration="6273000" />
+      <workItem from="1611132750767" duration="9821000" />
+      <workItem from="1611189166096" duration="4620000" />
+      <workItem from="1611503348429" duration="22610000" />
+      <workItem from="1611570158746" duration="42758000" />
+      <workItem from="1611650918581" duration="666000" />
+      <workItem from="1611666250146" duration="3467000" />
     </task>
+    <task id="LOCAL-00001" summary="adding event and asynchronous ops">
+      <created>1611099458806</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611099458806</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,19 +122,124 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/media/arash/SanDisk/MyCheatBook/node_modules" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+        <entry key="2" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding event and asynchronous ops" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding event and asynchronous ops" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="119" y="100" width="1153" height="573" key="DiffContextDialog" timestamp="1611741421670">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="119" y="100" width="1153" height="573" key="DiffContextDialog/25.0.1341.768@25.0.1341.768" timestamp="1611741421670" />
+    <state x="172" y="31" width="1022" height="737" key="SettingsEditor" timestamp="1611132858034">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="172" y="31" width="1022" height="737" key="SettingsEditor/0.28.1366.740@0.28.1366.740" timestamp="1611132858034" />
+    <state width="498" height="445" key="SwitcherDM" timestamp="1611599015658">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state width="498" height="445" key="SwitcherDM/25.0.1341.768@25.0.1341.768" timestamp="1611599015658" />
+    <state x="483" y="124" width="427" height="528" key="VcsDiffUtil.ChangesDialog" timestamp="1611741384815">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="483" y="124" width="427" height="528" key="VcsDiffUtil.ChangesDialog/25.0.1341.768@25.0.1341.768" timestamp="1611741384815" />
+    <state x="119" y="100" width="1153" height="573" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1611741421670">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="119" y="100" width="1153" height="573" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/25.0.1341.768@25.0.1341.768" timestamp="1611741421670" />
     <state x="0" y="28" width="782" height="740" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1611098721082">
       <screen x="0" y="28" width="1366" height="740" />
     </state>
     <state x="0" y="28" width="782" height="740" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.28.1366.740@0.28.1366.740" timestamp="1611098721082" />
+    <state x="468" y="314" width="432" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611193792152">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="468" y="314" width="432" height="179" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.28.1366.740@0.28.1366.740" timestamp="1611193792152" />
+    <state x="373" y="133" width="620" height="592" key="find.popup" timestamp="1611134065946">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="373" y="133" width="620" height="592" key="find.popup/0.28.1366.740@0.28.1366.740" timestamp="1611134065946" />
+    <state x="365" y="63" width="672" height="704" key="search.everywhere.popup" timestamp="1611608651263">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.28.1366.740@0.28.1366.740" timestamp="1611189340903" />
+    <state x="365" y="63" width="672" height="704" key="search.everywhere.popup/25.0.1341.768@25.0.1341.768" timestamp="1611608651263" />
   </component>
 </project>
