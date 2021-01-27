@@ -1847,7 +1847,7 @@ function getEvent() {
                 public void processUserRegistrationEvent(UserRegistrationEvent event) {}
                 `}
             </Java>
-            also you can identify the event in some other ways:
+            also you can identify the event in some other ways (class or spel):
             <Java>
                 {`
                 @EventListener({UserRegistrationEvent.class, ContextStartedEvent.class})
