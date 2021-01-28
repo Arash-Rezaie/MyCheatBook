@@ -1,4 +1,4 @@
-import {Text} from "./simple/text";
+import {Text} from "./simple/shape";
 import {Circle} from "./simple/circle";
 import {Rectangle} from "./simple/rectangle";
 import {DrawBox} from "./draw-box";

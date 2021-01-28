@@ -5,11 +5,68 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="" />
+    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0e79f00c717a0980d86aa3608a54301e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0fb93feaef148c1942a6c2e23e989217.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/116af4ddae4d7960c5f39bbadf336628.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/119a51846a994c3a603f9b7f30c48f6c.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1714d76a6273c8272e45344e2eee568e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1edb4075f0c426309f728fbc0561f742.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1f8bceb8c19d4904bab1d0bb007349b2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/22556e3348bb6a2dcfe8c37998677ff7.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/38719aa9964bb9b117164d76d022fc9f.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/39b4cfbe663104124d7729159d6b533a.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3f09c922c4d6cbfd89c452e6264c4051.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/410f34f6b371a4bf45ddf8140c778eb0.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4389f90d1c67edd6526ff9d4dceeff52.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4c528fd33f360106d12ca655a9da2944.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6c802d367861ef4a66832b01e694b609.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6d76948277d1d010b45a44952609feef.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6de9663191bb24c693e2b96149d72b43.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/86c820a14890e67d937145035c86f503.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/8c48a789cdeebaed334336b0286a85b2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/8f0a282597a9e118d9c6d5f094171af2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a902ea56cc16ffbe6a87a72cc1908154.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/aa2b9d0017965ea69a294def5fded197.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/ad6e679c0bf4fc6b76a8b1b5177462ad.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/bf045ba8635432f0444f3a114b6539db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/d4a7014bd227573a892a5a6bb4a9be5e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/e8d7e2915287abb570b62ef973aa1f58.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/ebe01685e3c056116725a2daf69ddae1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f3537544cc6de54aafdaf5ed21a9b255.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f82e0d763e29796f63f8ea204cd40b2f.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/drawbox/simple/line2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/drawbox/line.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/drawbox/mock-context-2d.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/utils/utils.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/caption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/extended/caption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/extended-line.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/extended/extended-line.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/node.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/extended/node.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/circle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/circle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/text.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/utils.test.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="test" />
@@ -40,6 +97,13 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
@@ -55,6 +119,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="utils.test.js" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/test/utils/utils.test.js" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,6 +140,7 @@
       <updated>1611079979850</updated>
       <workItem from="1611079998567" duration="593000" />
       <workItem from="1611092488484" duration="5208000" />
+      <workItem from="1611826476383" duration="18554000" />
     </task>
     <servers />
   </component>
@@ -95,9 +170,33 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="428" y="137" width="536" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611848873514">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="428" y="137" width="536" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/25.0.1341.768@25.0.1341.768" timestamp="1611848873514" />
+    <state x="119" y="100" width="1153" height="573" key="DiffContextDialog" timestamp="1611763968968">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="119" y="100" width="1153" height="573" key="DiffContextDialog/25.0.1341.768@25.0.1341.768" timestamp="1611763968968" />
     <state x="0" y="28" width="782" height="740" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1611098721082">
       <screen x="0" y="28" width="1366" height="740" />
     </state>
     <state x="0" y="28" width="782" height="740" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.28.1366.740@0.28.1366.740" timestamp="1611098721082" />
+    <state x="514" y="304" width="364" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1611848696411">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="514" y="304" width="364" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/25.0.1341.768@25.0.1341.768" timestamp="1611848696411" />
+    <state x="128" y="92" width="1137" height="592" key="new project wizard" timestamp="1611768625843">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="128" y="92" width="1137" height="592" key="new project wizard/25.0.1341.768@25.0.1341.768" timestamp="1611768625843" />
+    <state x="353" y="169" key="run.anything.popup" timestamp="1611851992717">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="353" y="169" key="run.anything.popup/25.0.1341.768@25.0.1341.768" timestamp="1611851992717" />
+    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1611848771658">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup/25.0.1341.768@25.0.1341.768" timestamp="1611848771658" />
   </component>
 </project>

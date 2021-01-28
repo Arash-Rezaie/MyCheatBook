@@ -1,6 +1,5 @@
-import {Shape} from "./shape";
 import {Utils} from "../../../tools/utils";
-import {Text} from "./text";
+import {Shape,Text} from "./shape";
 
 export class Line extends Shape {
     start;

@@ -1,6 +1,5 @@
 import {Circle} from "../simple/circle";
-import {Text} from "../simple/text";
-import {Vector} from "../simple/line";
+import {Text} from "../simple/shape";
 import {Caption} from "./caption";
 import {ExtendedVector} from "./extended-line";
 

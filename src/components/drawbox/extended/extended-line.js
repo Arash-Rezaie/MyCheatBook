@@ -1,5 +1,5 @@
 import {Line} from "../simple/line";
-import {Text} from "../simple/text";
+import {Text} from "../simple/shape";
 
 export class ExtendedLine extends Line {
     constructor(handler) {

@@ -1,5 +1,5 @@
-import {Shape} from "./shape";
 import {Utils} from "../../../tools/utils";
+import {Shape} from "./shape";
 
 export class Rectangle extends Shape {
 

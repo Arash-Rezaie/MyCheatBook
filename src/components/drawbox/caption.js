@@ -1,5 +1,5 @@
 import {Rectangle} from "./simple/rectangle";
-import {Text} from "./simple/text";
+import {Text} from "./simple/shape";
 import {Line} from "./simple/line";
 
 export class Caption extends Rectangle {
