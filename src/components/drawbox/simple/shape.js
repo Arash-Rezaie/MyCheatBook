@@ -82,9 +82,6 @@ export class Shape {
      * @returns {Shape}
      */
     setLabel(label) {
-        if (label.label) {
-            debugger
-        }
         if (typeof label === "string") {
             label = new Text()
                 .setPosition(this.getCenterPoint())
@@ -99,7 +96,7 @@ export class Shape {
      * @returns {Shape}
      */
     setPosition(position) {
-        this.basePosition = position;
+        this.basePosition = [position[0], position[1]];
         this.calculateFinalPosition();
         return this;
     }
@@ -109,7 +106,7 @@ export class Shape {
      * @returns {Shape}
      */
     setOffset(offset) {
-        this.offset = offset;
+        this.offset = [offset[0], offset[1]];
         this.calculateFinalPosition();
         return this;
     }
@@ -128,7 +125,7 @@ export class Shape {
      * @returns {*[]}
      */
     getPosition() {
-        return this.xy;
+        return [this.xy[0], this.xy[1]];
     }
 
     /**

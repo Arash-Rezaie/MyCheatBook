@@ -2,7 +2,6 @@ import {Utils} from "../../../tools/utils";
 import {Shape} from "./shape";
 
 export class Circle extends Shape {
-
     setRadius(radius) {
         this.r = radius;
         return this;

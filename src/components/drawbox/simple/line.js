@@ -1,5 +1,134 @@
 import {Utils} from "../../../tools/utils";
-import {Shape,Text} from "./shape";
+import {Shape} from "./shape";
+
+class Point {
+    pos;
+
+    constructor(initValues) {
+        this.pos = initValues;
+    }
+
+    setOffset(offset = [0, 0]) {
+        this.pos[0] += offset[0];
+        this.pos[1] += offset[1];
+    }
+
+    locateByPoint(point) {
+    }
+
+    getPosition() {
+        return this.pos;
+    }
+
+    getAnchorPointByAngle(angle) {
+        return this.pos;
+    }
+
+    getAnchorPointByPoint(point) {
+        return this.pos;
+    }
+
+    locateAnchor(...points) {
+    }
+
+    getAnchor() {
+        return this.pos;
+    }
+}
+
+class AnglePoint extends Point {
+    constructor(initValues) {
+        super();
+        let i = initValues[0].length - 1;
+        let c = initValues[0][i];
+        let v = Number(initValues[0].substring(0, i));
+        if (c === 'R' || c === 'r') {
+            this.angle = Utils.normalizeRadian(v);
+            this.distance = initValues[1];
+        } else if (c === 'D' || c === 'd') {
+            this.angle = Utils.normalizeRadian(Utils.deg2Rad(v));
+            this.distance = initValues[1];
+        } else {
+            throw new Error('wrong input');
+        }
+    }
+
+    locateByPoint(point) {
+        let anchor = point.getAnchorPointByAngle(this.angle);
+        this.pos = Utils.getPointByAngle(anchor, this.angle, this.distance);
+    }
+}
+
+class ShapePoint extends Point {
+    cache = []; //item sample: [angles] => {points: [p], anchor: a}
+
+    constructor(initValues) {
+        super();
+        this.shape = initValues[0];
+        this.gap = initValues[1];
+    }
+
+    locateByPoint(point) {
+        this.pos = this.shape.getCenterPoint();
+    }
+
+    getAnchorPointByAngle(angle) {
+        if (this.cache[angle] == null)
+            this.cache[angle] = {'pos': this.shape.getExternalPoint(angle, this.gap)};
+        return this.cache[angle]['pos'];
+    }
+
+    getAnchorPointByPoint(point) {
+        let angle = this.cachePointAndGetAngle(point);
+        return this.cache[angle]['pos'];
+    }
+
+    cachePointAndGetAngle(point) {
+        let angle = this.searchCacheByPoint(point);
+
+        //catch the angle
+        if (angle == null) {
+            angle = Utils.getAngleByPoint(this.shape.getCenterPoint(), point.getPosition());
+
+            //store angle-pos pair
+            this.getAnchorPointByAngle(angle);
+        }
+
+        //store angle-point pair
+        this.cache[angle]['point'] = point;
+
+        return angle;
+    }
+
+    searchCacheByPoint(point) {
+        for (let k in this.cache)
+            if (this.cache[k]['point'] === point)
+                return k;
+    }
+
+    getAvgAngle(angles) {
+        let avg = angles[0];
+        for (let i = 1; i < angles.length; i++) {
+            let midAngle = (avg + angles[i]) / 2;
+            if (Math.abs(avg - angles[i]) > Math.PI) //if angle1 - angle3 > 180deg => correct mid angle
+                midAngle = Utils.reverseRad(midAngle);
+            avg = midAngle;
+        }
+        return avg;
+    }
+
+    locateAnchor(...points) {
+        let angles = [];
+        points.forEach(v => angles.push(this.cachePointAndGetAngle(v)));
+        if (angles.length > 1)
+            angles = this.getAvgAngle(angles);
+        this.anchor = this.getAnchorPointByAngle(angles);
+    }
+
+    getAnchor() {
+        return this.anchor;
+    }
+}
 
 export class Line extends Shape {
     start;
@@ -35,33 +164,16 @@ export class Line extends Shape {
      * @param point [x,y] or [intR, length] for radian, [intD, length] for degree or [shape,gap].<br/>
      */
     getPointObject(point) {
-        let ans = {};
         switch (this.getTypeOf(point)) {
             case "number,number"://[x,y]
-                ans["xy"] = point;
-                break;
+                return new Point(point);
             case "string,number"://[intR,length] or [intD,length]
-                let i = point[0].length - 1;
-                let c = point[0][i];
-                let v = Number(point[0].substring(0, i));
-                if (c === 'R' || c === 'r') {
-                    ans["angle"] = Utils.normalizeRadian(v);
-                    ans["gap"] = point[1];
-                } else if (c === 'D' || c === 'd') {
-                    ans["angle"] = Utils.normalizeRadian(Utils.deg2Rad(v));
-                    ans["gap"] = point[1];
-                } else {
-                    throw new Error('wrong input');
-                }
-                break;
+                return new AnglePoint(point);
             case "object,number"://[shape,gap]
-                ans["shape"] = point[0];
-                ans["gap"] = point[1];
-                break;
+                return new ShapePoint(point);
             default:
                 throw new Error('wrong input');
         }
-        return ans;
     }
 
     getTypeOf(point) {
@@ -70,112 +182,61 @@ export class Line extends Shape {
 
     render(canvasCtx) {
         this.preparePoints();
+        let ps = this.start.getAnchor();
+        let pe = this.end.getAnchor();
+
         canvasCtx.beginPath();
         canvasCtx.fillStyle = 'transparent';
-        canvasCtx.moveTo(this.start["xy"][0], this.start["xy"][1]);
-        if (this.qCurve)
-            canvasCtx.quadraticCurveTo(this.qCurve["xy"][0], this.qCurve["xy"][1], this.end["xy"][0], this.end["xy"][1]);
-        else
-            canvasCtx.lineTo(this.end["xy"][0], this.end["xy"][1]);
-        // canvasCtx.closePath();
+        canvasCtx.moveTo(ps[0], ps[1]);
+        if (this.qCurve) {
+            let p2 = this.qCurve.getAnchor();
+            canvasCtx.quadraticCurveTo(p2[0], p2[1], pe[0], pe[1]);
+        } else {
+            canvasCtx.lineTo(pe[0], pe[1]);
+        }
         this.fillColor2 = this.fillColor;
         this.fillColor = undefined;
         super.render(canvasCtx);
         this.fillColor = this.fillColor2;
         if (this.direction !== undefined && this.places !== undefined) {
             let info = this.getArrowInfo();
-            let p1 = this.start["xy"];
-            let p2 = this.end["xy"];
             let x, y;
             for (let i = 0; i < info.length; i++) {
-                x = p1[0] + (p2[0] - p1[0]) * info[i][0];
-                y = p1[1] + (p2[1] - p1[1]) * info[i][0];
+                x = ps[0] + (pe[0] - ps[0]) * info[i][0];
+                y = ps[1] + (pe[1] - ps[1]) * info[i][0];
                 this.drawArrow(canvasCtx, 10, info[i][1], x, y);
             }
         }
     }
 
     preparePoints() {
-        debugger
         if (!this.processed) {
+            //locate start
+            this.start.locateByPoint();
+            this.start.setOffset(this.offset);
+
+            //locate end
+            this.end.locateByPoint(this.start);
+
+            //locate connection points. In here it is called anchor point
             if (this.qCurve != null) {
-                //! end must be calculated based on start, but there is a situation than end is shape and the angle could be dynamic, so end can be calculated by curve
-                if (this.qCurve["shape"] != null) {
-                    this.process2PointsXY(this.qCurve, this.start, true);
-                    this.process2PointsXY((this.end["shape"] != null ? this.qCurve : this.start), this.end, true);
-                    this.processCurveAsShape(this.start, this.qCurve, this.end);//pick an accurate point for curve between 2 angles
-                } else {
-                    this.process2PointsXY(this.start, this.qCurve);
-                    this.process2PointsXY((this.end["shape"] != null ? this.qCurve : this.start), this.end);
-                }
+                this.qCurve.locateByPoint(this.start);
+                this.qCurve.locateAnchor(this.start, this.end);
+                this.end.locateAnchor(this.qCurve);
+                this.start.locateAnchor(this.qCurve);
             } else {
-                this.process2PointsXY(this.start, this.end);
+                this.end.locateAnchor(this.start);
+                this.start.locateAnchor(this.end);
             }
             this.processed = true;
         }
     }
 
-    process2PointsXY(p1, p2, ignoreP1XYModification = false) {
-        let c1;
-        if (p2["xy"] == null) {
-            if (p2["angle"] != null) {
-                let angle = p2["angle"];
-                p2["xy"] = Utils.getPointByAngle(this.getTargetXY(p1, angle), angle, p2["gap"]);
-            } else if (p2["shape"] != null) {
-                c1 = this.getPointCenter(p1);
-                let c2 = p2["shape"].getCenterPoint();
-                let angle = Utils.getAngle(c2[0], c2[1], c1[0], c1[1]);//angle from p2 to p1
-                p2["xy"] = this.getTargetXY(p2, angle);
-            } else {
-                throw new Error("no way to calculate point.xy");
-            }
-        }
-
-        if (!ignoreP1XYModification && p1["xy"] == null) {
-            if (c1 == null)
-                c1 = this.getPointCenter(p1);
-            let angle = Utils.getAngleByPoint(c1, p2["xy"]);
-            p1["xy"] = this.getTargetXY(p1, angle);
-        }
-    }
-
-    getPointCenter(p) {
-        if (p["xy"]) {
-            return p["xy"];
-        } else if (p["shape"] != null) {
-            return p["shape"].getCenterPoint();
-        } else {
-            throw new Error("p1 is not acceptable. It must be a point or a shape")
-        }
-    }
-
-    processCurveAsShape(start, curve, end) {
-        let t = this.qCurve["shape"].getCenterPoint();
-        let angle1 = Utils.getAngleByPoint(t, start["xy"]);
-        let angle2 = Utils.getAngleByPoint(t, end["xy"]);
-        curve["xy"] = this.getTargetXY(curve["shape"], this.getMidAngle(angle1, angle2));
-    }
-
-    getMidAngle(angle1, angle2) {
-        let midAngle = (angle1 + angle2) / 2;
-        if (Math.abs(angle1 - angle2) > Math.PI) //if angle1 - angle3 > 180deg => correct mid angle
-            midAngle = Utils.reverseRad(midAngle);
-        return midAngle;
-    }
-    
-    getTargetXY(p, angle) {
-        if (p["shape"] != null) {
-            return p["shape"]["getExternalPoint"] != null ?
-                p["shape"].getExternalPoint(angle, p["gap"]) :
-                Utils.getPointByAngle(p["shape"].getCenterPoint(), angle, p["gap"])
-        } else {
-            return p["xy"];
-        }
-    }
-
     getCenterPoint() {
         this.preparePoints();
-        return [(this.start[0] + this.end[0]) / 2, (this.start[1] + this.end[1]) / 2]
+        let s = this.start.getAnchor();
+        let e = this.end.getAnchor();
+        return [(s[0] + e[0]) / 2, (s[1] + e[1]) / 2]
     }
 
     /**
@@ -212,23 +273,23 @@ export class Line extends Shape {
             this.places.forEach(v => ans.push([v, this.getArrowAngleForQCurve(v)]));
         } else {
             let angle = this.direction ?
-                Utils.getAngleByPoint(this.start["xy"], this.end["xy"]) :
-                Utils.getAngleByPoint(this.end["xy"], this.start["xy"]);
+                Utils.getAngleByPoint(this.start.getAnchor(), this.end.getAnchor()) :
+                Utils.getAngleByPoint(this.end.getAnchor(), this.start.getAnchor());
             this.places.forEach(v => ans.push([v, angle]));
         }
-        this.length = Utils.getLengthByPoints(this.start["xy"], this.end["xy"]);
+        this.length = Utils.getLengthByPoints(this.start.getAnchor(), this.end.getAnchor());
         return ans;
     }
 
     getArrowAngleForQCurve(place) {
         if (this.direction) {
             return place <= 0.5 ?
-                Utils.getAngleByPoint(this.start["xy"], this.qCurve["xy"]) :
-                Utils.getAngleByPoint(this.qCurve["xy"], this.end["xy"]);
+                Utils.getAngleByPoint(this.start.getAnchor(), this.qCurve.getAnchor()) :
+                Utils.getAngleByPoint(this.qCurve.getAnchor(), this.end.getAnchor());
         } else {
             return place <= 0.5 ?
-                Utils.getAngleByPoint(this.qCurve["xy"], this.start["xy"]) :
-                Utils.getAngleByPoint(this.end["xy"], this.qCurve["xy"]);
+                Utils.getAngleByPoint(this.qCurve.getAnchor(), this.start.getAnchor()) :
+                Utils.getAngleByPoint(this.end.getAnchor(), this.qCurve.getAnchor());
         }
     }
 
@@ -236,52 +297,5 @@ export class Line extends Shape {
         let ans = [];
         a.forEach(v => v <= 0.5 ? ans[0] = 0 : ans[1] = 1);
         return ans[0] == null ? [1] : ans;
-    }
-}
-
-export class HLine
-    extends Line {
-    setLength(l) {
-        l > 0 ?
-            this.lineTo(['0D', l]) :
-            this.lineTo(['180D', -l])
-        return this;
-    }
-}
-
-export class VLine extends Line {
-    setLength(l) {
-        l > 0 ?
-            this.lineTo(['90D', l]) :
-            this.lineTo(['270D', -l])
-        return this;
-    }
-}
-
-export class Vector extends Line {
-    constructor() {
-        super();
-        this.setStrokeColor('black')
-            .setFillColor('black')
-            .setStrokeWidth(2)
-            .showArrow(1, 1);
-    }
-}
-
-export class HVector extends Vector {
-    setLabel(label) {
-        if (typeof label === 'string')
-            label = new Text()
-                .setPosition(this.getCenterPoint())
-                .setLabel(label)
-                .setOffset([0, -6])
-                .setFontStyle('');
-        return super.setLabel(label);
-    }
-
-    setLength(l) {
-        return (l > 0) ?
-            this.lineTo(['0D', l]) :
-            this.lineTo(['180D', -l])
     }
 }

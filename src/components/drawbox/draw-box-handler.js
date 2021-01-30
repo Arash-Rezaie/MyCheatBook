@@ -5,6 +5,7 @@ import {DrawBox} from "./draw-box";
 import {ExtendedHVector, ExtendedLine, ExtendedVector, ExtendedVLine} from "./extended/extended-line";
 import {Node} from "./extended/node";
 import {Caption} from "./extended/caption";
+import {Utils} from "../../tools/utils";
 
 export class DrawBoxHandler {
     const
@@ -28,7 +29,9 @@ export class DrawBoxHandler {
         radius: (d, o) => o.setRadius(d),
         fontSize: (d, o) => o.setFontSize(d),
         fontStyle: (d, o) => o.setFontStyle(d),
-        lineto: (d, o) => o.lineto(d),
+        s:(d, o) => o.setStart(d),
+        e:(d, o) => o.setEnd(d),
+        q:(d, o) => o.setQuadraticPoint(d),
         arrow: (d, o) => o.showArrow(d[0], d[1]),
         len: (d, o) => o.setLength(d),
         between: (d, o) => o.between(d[0], d[1], d[2]),
@@ -68,7 +71,7 @@ export class DrawBoxHandler {
      *    fontStyle: ['bold', 'italic', 'bold italic'<br/>
      *
      *    --- all line types ------<br/>
-     *    lineto: [x,y] or [intR, length] or [intD, length]<br/>
+     *    s,e,q: [x,y] or [intR, length] or [intD, length]<br/>
      *    arrow: [dir([true, false]), places([0 - 1])]<br/>
      *    between: [id1, id2, gap]<br/>
      *

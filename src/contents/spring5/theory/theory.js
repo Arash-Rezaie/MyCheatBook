@@ -78,9 +78,9 @@ function getBasics() {
                 IoC container does this by provided configuration which which comes from XML, annotations or java
                 code.<br/>
                 <Blue>Main tasks performed by IoC container are:</Blue><br/>
-                <Bullet title={'⚫'}>to instantiate the application class</Bullet>
-                <Bullet title={'⚫'}>to configure the object</Bullet>
-                <Bullet title={'⚫'}>to assemble the dependencies between the objects</Bullet>
+                <Bullet title={'●'}>to instantiate the application class</Bullet>
+                <Bullet title={'●'}>to configure the object</Bullet>
+                <Bullet title={'●'}>to assemble the dependencies between the objects</Bullet>
             </p>
             <br/><br/>
             In fact IOC container Injects required dependencies. DI means providing dependency not the literal
@@ -94,9 +94,9 @@ function getBasics() {
             rules:<br/>
             <Bullet title={'1.'}>Use interface as much as possible instead of cement classes</Bullet>
             <Bullet title={'2.'}>Do not new your classes and let just somebody else give it to you</Bullet>
-            <Bullet title={'⚫'} level={1}>one way is to use a factory. Therefore, you can leave instantiation to the
+            <Bullet title={'●'} level={1}>one way is to use a factory. Therefore, you can leave instantiation to the
                 factory</Bullet>
-            <Bullet title={'⚫'} level={1}>Just announce your desired dependency by annotation and let others inject
+            <Bullet title={'●'} level={1}>Just announce your desired dependency by annotation and let others inject
                 it for you</Bullet>
         </Frame>
     )
@@ -107,20 +107,20 @@ function getInjectionTypes() {
         <Frame title={'Injection types'}>
             There are 3 ways available to inject a dependency:<br/>
             <Bullet title={'1. Constructor injection:'}>assert your dependency in class constructor</Bullet>
-            <Bullet title={'⚫ Pros:'} level={1}>we make sure that the desired dependencies are resolved as
+            <Bullet title={'● Pros:'} level={1}>we make sure that the desired dependencies are resolved as
                 constructor runs at first</Bullet>
-            <Bullet title={'⚫ Cons:'} level={1}>there is no way to alter a dependency as constructor gets called only
+            <Bullet title={'● Cons:'} level={1}>there is no way to alter a dependency as constructor gets called only
                 once</Bullet>
             <br/>
             <Bullet title={'2. Setter injection:'}>assert your dependency with setters</Bullet>
-            <Bullet title={'⚫ Pros:'} level={1}>the dependency can be altered later by calling its setter</Bullet>
-            <Bullet title={'⚫ Cons:'} level={1}>there is probability of NullPointerException as usage may happen
+            <Bullet title={'● Pros:'} level={1}>the dependency can be altered later by calling its setter</Bullet>
+            <Bullet title={'● Cons:'} level={1}>there is probability of NullPointerException as usage may happen
                 before setter</Bullet>
             <br/>
             <Bullet title={'3. Field injection:'}>assert your dependency with field and container will do it via
                 reflection</Bullet>
-            <Bullet title={'⚫ Pros:'} level={1}>the dependency can be altered later by calling its setter</Bullet>
-            <Bullet title={'⚫ Cons:'} level={1}>there is probability of NullPointerException as usage may happen
+            <Bullet title={'● Pros:'} level={1}>the dependency can be altered later by calling its setter</Bullet>
+            <Bullet title={'● Cons:'} level={1}>there is probability of NullPointerException as usage may happen
                 before setter</Bullet>
         </Frame>
     )

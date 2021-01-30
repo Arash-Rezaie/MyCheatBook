@@ -31,7 +31,7 @@ function getCommands() {
                     </thead>
                     <tbody>
                     <tr>
-                        <td>git init <blue>{'<directory>'}</blue></td>
+                        <td>git init <Blue>{'<directory>'}</Blue></td>
                         <td>
                             Create empty Git repo in specified directory. Run with no arguments to initialize the
                             current directory as a git repository.
@@ -475,22 +475,19 @@ function getGitWorkFlow() {
                 <Bullet title={'Remote Repository:'}>This repository is on a server</Bullet>
             </InfoIcon>
             Git is a Version Control System (VCS) <Purple>"some call it Revision Control System"</Purple>. In fact, it
-            is
-            a container for files with the ability of tracking file history, so whenever you are willing to catch a
+            is a container for files with the ability of tracking file history, so whenever you are willing to catch a
             specific version of a file, git is able to provide that file.
             <p>
                 Git does tracking by making hash-code out of any file. When file changes, the generated hash-code
                 changes too, then git stores it and ignores unchanged files.
             </p>
-            <p>
-                You have to command git to do what you desire, via some provided facilities such as:<br/>
-                <Bullet title={'⚫'}>to make git aware of changes use <Bold>add</Bold> and <Bold>commit</Bold></Bullet>
-                <Bullet title={'⚫'}>to access a file from git use <Bold>checkout</Bold></Bullet>
-                <Bullet title={'⚫'}>to combine files use <Bold>merge</Bold></Bullet>
-                <Bullet title={'⚫'}>to send files to the remote repo use <Bold>push</Bold></Bullet>
-                <Bullet title={'⚫'}>to retrieve files from the remote repo use <Bold>pull</Bold></Bullet>
-                <Bullet title={'⚫'}>to sync local repo and the remote repo use <Bold>fetch</Bold></Bullet>
-            </p>
+            You have to command git to do what you desire, via some provided facilities such as:<br/>
+            <Bullet title={'●'}>to make git aware of changes use <Bold>add</Bold> and <Bold>commit</Bold></Bullet>
+            <Bullet title={'●'}>to access a file from git use <Bold>checkout</Bold></Bullet>
+            <Bullet title={'●'}>to combine files use <Bold>merge</Bold></Bullet>
+            <Bullet title={'●'}>to send files to the remote repo use <Bold>push</Bold></Bullet>
+            <Bullet title={'●'}>to retrieve files from the remote repo use <Bold>pull</Bold></Bullet>
+            <Bullet title={'●'}>to sync local repo and the remote repo use <Bold>fetch</Bold></Bullet>
             <br/><br/>
             <img src={workFlow} alt={'git workflow'}/>
         </Frame>
@@ -876,7 +873,8 @@ function getVisualizeBasicCommands() {
                                 captions: [{t: 'main', w: 40, c: 'orange'}, {t: 'HEAD', w: 40, c: 'green'}]
                             })
                             .addShape({
-                                shape: 'vect', between: ['c8', 'c12', 5], arrow: [1, 1], color: 'red'
+                                shape: 'vect', between: ['c8', 'c12', 5], arrow: [1, 1], color: 'red',
+                                label: {shape: 'text', offset: [6, -6], label: 'copy'}
                             })
                             .addShape({
                                 shape: 'vect', between: ['c10', 'c13', 5], arrow: [1, 1], color: 'red',
@@ -908,29 +906,30 @@ function getConnectingToRemoteRepo() {
             </Bullet>
             <Bullet title={'3.'}>Use global configurations, so they will be available in all git transactions (
                 <Purple>global key work make configuration globally. You can emmit it.</Purple>):<br/>
-                <Bullet title={'⚫'} level={1}>
+                <Bullet title={'●'} level={1}>
                     <Bold>
                         git config --global user.name "Your Name"<br/>
                         git config --global user.email "youremail@yourdomain.com"
                     </Bold>
                 </Bullet>
-                <Bullet title={'⚫'} level={1}>to test it: <Bold>git config --list</Bold></Bullet>
+                <Bullet title={'●'} level={1}>to test it: <Bold>git config --list</Bold></Bullet>
             </Bullet>
             <Bullet title={'4.'}>Connect through ssh session. This way involve a pair of private & public key:<br/>
                 <Bullet title={'Ⅰ. check key existence:'} level={1}><Bold>ls -al ~/.ssh"</Bold>. If you want to use the
                     generated file, ignore generating new one</Bullet>
-                <Bullet title={'Ⅱ. generate new key:'} level={1}>the following commands create a ssh-key file. By default
+                <Bullet title={'Ⅱ. generate new key:'} level={1}>the following commands create a ssh-key file. By
+                    default
                     it will be stored in home directory. ex. "~/.ssh/id_ed25519.pub"<br/>
                     <Bold>ssh-keygen -t ed25519 -C "your_email@example.com"</Bold> or<br/>
                     <Bold>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</Bold>
                 </Bullet>
-                <Bullet title={'⚫ ssh key file location:'} level={2}>you can choose a location for ssh key
+                <Bullet title={'● ssh key file location:'} level={2}>you can choose a location for ssh key
                     file </Bullet>
-                <Bullet title={'⚫ passphrase:'} level={2}>if someone reaches your computer, then the connection is
+                <Bullet title={'● passphrase:'} level={2}>if someone reaches your computer, then the connection is
                     no more secure, so you can define a password for accessing the connection at this level. </Bullet>
                 <Bullet title={'Ⅲ. add ssh-key to the ssh-agent:'} level={1}><br/></Bullet>
-                <Bullet title={'⚫ start ssh-agent: '} level={2}><Bold>eval "$(ssh-agent -s)"</Bold></Bullet>
-                <Bullet title={'⚫ add ssh-key to ssh-agent: '} level={2}><Bold>ssh-add
+                <Bullet title={'● start ssh-agent: '} level={2}><Bold>eval "$(ssh-agent -s)"</Bold></Bullet>
+                <Bullet title={'● add ssh-key to ssh-agent: '} level={2}><Bold>ssh-add
                     ~/.ssh/generated-ssh-key-file-name</Bold>
                 </Bullet>
                 <Bullet title={'Ⅳ. identify the ssh-key to your server repo: '} level={1}>in Github, copy your ssh-key

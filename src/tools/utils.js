@@ -1,7 +1,6 @@
 import {DrawBox} from "../components/drawbox/draw-box";
 
 export class Utils {
-    static db = new DrawBox();
     static _PI6 = Math.PI / 6;   //30deg
     static _2PI = 2 * Math.PI;   //360deg
 

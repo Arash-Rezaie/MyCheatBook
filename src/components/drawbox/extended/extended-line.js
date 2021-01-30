@@ -12,19 +12,33 @@ export class ExtendedLine extends Line {
     }
 
     between(shape1, shape2, gap = 0) {
-        return super.between(this.getTargetShape(shape1), this.getTargetShape(shape2), gap);
+        this.setStart([shape1, gap]);
+        this.setEnd([shape2, gap]);
+        return this;
     }
 
-    getTargetShape(shape) {
-        return (typeof shape === 'string') ? this.handler.getTargetShape(shape) : shape;
+    setStart(point) {
+        return super.setStart([this.getTargetShape(point[0]), point[1]]);
+    }
+
+    setEnd(point) {
+        return super.setEnd([this.getTargetShape(point[0]), point[1]]);
+    }
+
+    setQuadraticPoint(point) {
+        return super.setQuadraticPoint([this.getTargetShape(point[0]), point[1]]);
+    }
+
+    getTargetShape(value) {
+        return (typeof value === 'string' && !value.match('\\d+[dDrR]')) ? this.handler.getTargetShape(value) : value;
     }
 }
 
 export class ExtendedHLine extends ExtendedLine {
     setLength(l) {
         l > 0 ?
-            this.lineTo(['0D', l]) :
-            this.lineTo(['180D', -l])
+            this.setEnd(['0D', l]) :
+            this.setEnd(['180D', -l])
         return this;
     }
 }
@@ -32,8 +46,8 @@ export class ExtendedHLine extends ExtendedLine {
 export class ExtendedVLine extends ExtendedLine {
     setLength(l) {
         l > 0 ?
-            this.lineTo(['90D', l]) :
-            this.lineTo(['270D', -l])
+            this.setEnd(['90D', l]) :
+            this.setEnd(['270D', -l])
         return this;
     }
 }
@@ -51,8 +65,8 @@ export class ExtendedVector extends ExtendedLine {
 export class ExtendedHVector extends ExtendedVector {
     setLength(l) {
         return (l > 0) ?
-            this.lineTo(['0D', l]) :
-            this.lineTo(['180D', -l])
+            this.setEnd(['0D', l]) :
+            this.setEnd(['180D', -l])
     }
 
     setLabel(label) {

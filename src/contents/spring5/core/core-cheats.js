@@ -1143,7 +1143,7 @@ function getJavaLoadFromFile() {
             </Bullet>
             <Bullet title={'2.'}>
                 Via <Blue>@Value</Blue>:<br/>
-                <Bullet levle={1} title={'⚫'}>
+                <Bullet levle={1} title={'●'}>
                     <div style={{width: '30rem'}}>
                         return a <Blue>PropertySourcesPlaceholderConfigurer</Blue> bean which is loaded
                         by <Blue>@PropertySource</Blue>
