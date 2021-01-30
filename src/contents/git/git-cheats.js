@@ -2,7 +2,7 @@ import {Frame} from "../../components/blocks";
 import React from "react";
 import workFlow from "../../res/images/git-work-flow.png";
 import {InfoIcon} from "../../components/bubble";
-import {Blue, Bold, Bullet, Title2, HorizontalLine, Purple, Title1} from "../../components/components";
+import {Blue, Bold, Bullet, Purple, Title1, Title2} from "../../components/components";
 import {DrawBoxHandler} from "../../components/drawbox/draw-box-handler";
 import {DrawBoxComponent} from "./git-components";
 import {Float} from "../../components/float";
@@ -918,8 +918,7 @@ function getConnectingToRemoteRepo() {
                 <Bullet title={'Ⅰ. check key existence:'} level={1}><Bold>ls -al ~/.ssh"</Bold>. If you want to use the
                     generated file, ignore generating new one</Bullet>
                 <Bullet title={'Ⅱ. generate new key:'} level={1}>the following commands create a ssh-key file. By
-                    default
-                    it will be stored in home directory. ex. "~/.ssh/id_ed25519.pub"<br/>
+                    default it will be stored in home directory. ex. "~/.ssh/id_ed25519.pub"<br/>
                     <Bold>ssh-keygen -t ed25519 -C "your_email@example.com"</Bold> or<br/>
                     <Bold>ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</Bold>
                 </Bullet>

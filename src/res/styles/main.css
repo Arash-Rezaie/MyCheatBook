@@ -108,12 +108,7 @@ canvas {
 
 .bullet > span {
     margin-right: 5px;
-}
-
-.bullet > p {
-    margin-top: -1rem;
-    margin-left: 20px;
-    text-indent: 50px;
+    vertical-align: top;
 }
 
 .float-root {
@@ -352,12 +347,16 @@ table {
     border-radius: 5px;
 }
 
+.text-top{
+    vertical-align: top;
+}
+
 /*** git table **************************************************/
 .grid-git-sheet {
     display: flex;
     flex-flow: row wrap;
     gap: 5px;
-    align-content: start;
+    align-content: flex-start;
 }
 
 @media screen and (max-width: 768px) {

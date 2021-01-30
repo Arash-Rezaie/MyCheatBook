@@ -63,16 +63,19 @@ export function Bullet(props) {
             w = title.clientWidth;
         }
 
-        if (w > 0)
+        if (w > 0) {
             r.current.children[1].style.textIndent = (w - 10) + 'px';
+            r.current.children[1].style.marginLeft = (-w + 15) + 'px';
+        }
     });
-    let indent = 0;
+
+    let leftMargin = 0;
     if (props.level)
-        indent = props.level * props.level * 5 + 'px';
+        leftMargin = props.level * props.level * 5 + 'px';
     return (
-        <div style={{marginLeft: indent}} className={'bullet'} ref={r}>
+        <div style={{marginLeft: leftMargin}} className={'bullet'} ref={r}>
             <span className={'blue bold'}>{props.title}</span>
-            <p style={{textIndent: (props.title.length / 1.75) + 'em'}}>{props.children}</p>
+            <div className={'inline'} style={{textIndent: (props.title.length / 1.75) + 'em'}}>{props.children}</div>
         </div>
     )
 }

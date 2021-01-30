@@ -5,7 +5,6 @@ import {DrawBox} from "./draw-box";
 import {ExtendedHVector, ExtendedLine, ExtendedVector, ExtendedVLine} from "./extended/extended-line";
 import {Node} from "./extended/node";
 import {Caption} from "./extended/caption";
-import {Utils} from "../../tools/utils";
 
 export class DrawBoxHandler {
     const

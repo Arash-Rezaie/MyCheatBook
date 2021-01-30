@@ -71,17 +71,15 @@ function getBasics() {
                     </div>
                 </Float>
             </FloatHolder>
-
-            <p>
-                Every operation in Spring is based on a container. <Blue>What is IOC container?</Blue><br/>
-                The IoC container is responsible to instantiate, configure and assemble the objects we need.<br/>
-                IoC container does this by provided configuration which which comes from XML, annotations or java
-                code.<br/>
-                <Blue>Main tasks performed by IoC container are:</Blue><br/>
-                <Bullet title={'●'}>to instantiate the application class</Bullet>
-                <Bullet title={'●'}>to configure the object</Bullet>
-                <Bullet title={'●'}>to assemble the dependencies between the objects</Bullet>
-            </p>
+            <br/>
+            Every operation in Spring is based on a container. <Blue>What is IOC container?</Blue><br/>
+            The IoC container is responsible to instantiate, configure and assemble the objects we need.<br/>
+            IoC container does this by provided configuration which which comes from XML, annotations or java
+            code.<br/>
+            <Blue>Main tasks performed by IoC container are:</Blue><br/>
+            <Bullet title={'●'}>to instantiate the application class</Bullet>
+            <Bullet title={'●'}>to configure the object</Bullet>
+            <Bullet title={'●'}>to assemble the dependencies between the objects</Bullet>
             <br/><br/>
             In fact IOC container Injects required dependencies. DI means providing dependency not the literal
             word.<br/>
