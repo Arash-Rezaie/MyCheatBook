@@ -3,51 +3,55 @@ import ReactDOM from 'react-dom';
 import './res/styles/main.css';
 import {Content} from "./components/content";
 import PopupHandler from "./components/popup-handler";
+import {DrawBox} from "./components/drawbox/draw-box";
+import {Type} from "./components/drawbox/simple/type";
+import {DrawBoxComponent} from "./contents/git/git-components";
+import {Path} from "./components/drawbox/simple/path";
 
 function getMainContent() {
     return <><Content/><PopupHandler/></>;
 }
 
-// function getScript() {
-//     let c1 = new Circle()
-//         .setPosition([300, 400])
-//         .setRadius(20)
-//         .setStrokeWidth(1);
-//
-//     let c2 = new Circle()
-//         .setPosition([150, 200])
-//         .setRadius(50)
-//         .setStrokeWidth(1);
-//
-//     let c3 = new Circle()
-//         .setPosition([200, 310])
-//         .setRadius(10)
-//         .setStrokeWidth(1);
-//
-//     let p1 = [100, 150];
-//     let p2 = [90, 300];
-//     let p3 = [210, 223];
-//     let p4 = ['65d', 100];
-//     let p5 = ['190d', 150];
-//     let p6 = [c1, 5];//[300,400] r:20 gap:5
-//     let p7 = [c2, 15];//[150,200] r:50 gap:15
-//     let p8 = [c3, 0];//[200,310] r:10 gap:0
-//
-//     let l1 = new Line()
-//         .setStart(p6)
-//         .setQuadraticPoint(p7)
-//         .setEnd(p8);
-//
-//     Utils.db
-//         .addShape(c1)
-//         .addShape(c2)
-//         .addShape(c3)
-//         .addShape(l1)
-//
-//     return (
-//         <DrawBoxComponent wh={[500, 500]} shapeFactory={Utils.db}/>
-//     )
-// }
+function getScript() {
+    let t1 = new Type()
+        .setPosition([200, 200])
+        .setWidth(100)
+        .setType('interface')
+        .setLabel("Runnable")
+
+    let t2 = new Type()
+        .setPosition([200, 230])
+        .setWidth(100)
+        .setType('class')
+        .setLabel("Main")
+
+    let t3 = new Type()
+        .setPosition([200, 260])
+        .setWidth(100)
+        .setType('annotation')
+        .setLabel("Configurer")
+
+    let p1 = new Path()
+        .setStart([100, 100])
+        .setColor('blue')
+        .lineTo([150, 130])
+        .lineTo(['40d', 100])
+        .lineTo([t3, 0])
+        .quadraticTo([t1, 5], ['-30d', 100])
+        .setStrokeStyle([5, 10])
+        .showArrow(1, [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+
+    let db = new DrawBox()
+        .addShape(t1)
+        .addShape(t2)
+        .addShape(t3)
+        .addShape(p1)
+
+
+    return (
+        <DrawBoxComponent wh={[500, 500]} shapeFactory={db}/>
+    )
+}
 
 ReactDOM.render(getMainContent(), document.querySelector('#root'));
 // ReactDOM.render(getScript(), document.querySelector('#root'));

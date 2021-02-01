@@ -2,7 +2,6 @@ import {Utils} from "../../../tools/utils";
 import {Shape} from "./shape";
 
 export class Rectangle extends Shape {
-
     setWidth(width) {
         this.width = width;
         return this;

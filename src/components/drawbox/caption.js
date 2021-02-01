@@ -2,15 +2,16 @@ import {Rectangle} from "./simple/rectangle";
 import {Text} from "./simple/shape";
 
 export class Caption extends Rectangle {
-    setLabel(label) {
-        return super.setLabel(new Text()
+    getLabel() {
+        let lbl = super.getLabel();
+        return new Text()
             .setPosition(this.getCenterPoint())
-            .setLabel(label)
+            .setLabel(lbl)
             .setOffset([0, 5])
-            .setFontStyle('bold'));
+            .setFontStyle('bold');
     }
 
-    getConnectionLine(){
+    getConnectionLine() {
 
     }
 }

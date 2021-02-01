@@ -3,14 +3,14 @@ import {Shape} from "./shape";
 
 class Point {
     pos;
+    offset = [0, 0];
 
     constructor(initValues) {
         this.pos = initValues;
     }
 
-    setOffset(offset = [0, 0]) {
-        this.pos[0] += offset[0];
-        this.pos[1] += offset[1];
+    setOffset(offsetX = 0, offsetY = 0) {
+        this.offset = [offsetX, offsetY];
     }
 
     locateByPoint(point) {
@@ -29,6 +29,13 @@ class Point {
     }
 
     locateAnchor(...points) {
+        this.pos[0] += this.offset[0];
+        this.pos[1] += this.offset[1];
+    }
+
+    applyShapeOffset(shapeOffset) {
+        this.pos[0] += shapeOffset[0];
+        this.pos[1] += shapeOffset[1];
     }
 
     getAnchor() {
@@ -60,12 +67,11 @@ class AnglePoint extends Point {
 }
 
 class ShapePoint extends Point {
-    cache = []; //item sample: [angles] => {points: [p], anchor: a}
-
     constructor(initValues) {
         super();
         this.shape = initValues[0];
         this.gap = initValues[1];
+        this.cache = [];//item sample: [angles] => {points: [p], anchor: a}
     }
 
     locateByPoint(point) {
@@ -123,6 +129,13 @@ class ShapePoint extends Point {
         if (angles.length > 1)
             angles = this.getAvgAngle(angles);
         this.anchor = this.getAnchorPointByAngle(angles);
+        this.anchor[0] += this.offset[0];
+        this.anchor[1] += this.offset[1];
+    }
+
+    applyShapeOffset(shapeOffset) {
+        this.anchor[0] += shapeOffset[0];
+        this.anchor[1] += shapeOffset[1];
     }
 
     getAnchor() {
@@ -142,6 +155,8 @@ export class Line extends Shape {
     }
 
     setPosition(position) {
+        if (typeof position[0] === 'string')
+            throw new Error('Wrong input')
         this.start = this.getPointObject(position);
         return this;
     }
@@ -161,16 +176,23 @@ export class Line extends Shape {
     }
 
     /**
-     * @param point [x,y] or [intR, length] for radian, [intD, length] for degree or [shape,gap].<br/>
+     * @param point [x,y,ox,oy] or [intR,length,ox,oy] for radian, [intD,length,ox,oy] for degree or [shape,gap,ox,oy].<br/>
      */
     getPointObject(point) {
+        let p;
         switch (this.getTypeOf(point)) {
             case "number,number"://[x,y]
-                return new Point(point);
+                p = new Point(point);
+                p.setOffset(point[2], point[3]);
+                return p;
             case "string,number"://[intR,length] or [intD,length]
-                return new AnglePoint(point);
+                p = new AnglePoint(point);
+                p.setOffset(point[2], point[3]);
+                return p;
             case "object,number"://[shape,gap]
-                return new ShapePoint(point);
+                p = new ShapePoint(point);
+                p.setOffset(point[2], point[3]);
+                return p;
             default:
                 throw new Error('wrong input');
         }
@@ -194,10 +216,12 @@ export class Line extends Shape {
         } else {
             canvasCtx.lineTo(pe[0], pe[1]);
         }
+
         this.fillColor2 = this.fillColor;
         this.fillColor = undefined;
         super.render(canvasCtx);
         this.fillColor = this.fillColor2;
+        this.setStrokeStyle([1, 0]);
         if (this.direction !== undefined && this.places !== undefined) {
             let info = this.getArrowInfo();
             let x, y;
@@ -213,7 +237,6 @@ export class Line extends Shape {
         if (!this.processed) {
             //locate start
             this.start.locateByPoint();
-            this.start.setOffset(this.offset);
 
             //locate end
             this.end.locateByPoint(this.start);
@@ -228,6 +251,13 @@ export class Line extends Shape {
                 this.end.locateAnchor(this.start);
                 this.start.locateAnchor(this.end);
             }
+
+            //apply shape offset
+            this.start.applyShapeOffset(this.offset);
+            this.end.applyShapeOffset(this.offset);
+            if (this.qCurve != null)
+                this.qCurve.applyShapeOffset(this.offset);
+
             this.processed = true;
         }
     }
@@ -277,7 +307,6 @@ export class Line extends Shape {
                 Utils.getAngleByPoint(this.end.getAnchor(), this.start.getAnchor());
             this.places.forEach(v => ans.push([v, angle]));
         }
-        this.length = Utils.getLengthByPoints(this.start.getAnchor(), this.end.getAnchor());
         return ans;
     }
 
@@ -297,5 +326,20 @@ export class Line extends Shape {
         let ans = [];
         a.forEach(v => v <= 0.5 ? ans[0] = 0 : ans[1] = 1);
         return ans[0] == null ? [1] : ans;
+    }
+
+    getStart() {
+        this.preparePoints();
+        return this.start.getAnchor();
+    }
+
+    getEnd() {
+        this.preparePoints();
+        return this.end.getAnchor();
+    }
+
+    getLength() {
+        this.preparePoints();
+        return Utils.getLengthByPoints(this.start.getAnchor(), this.end.getAnchor());
     }
 }

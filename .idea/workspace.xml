@@ -5,17 +5,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="new line with qCurve fixed and tested and applied">
+    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="source cleared a little bit">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/components.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/drawbox/caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/caption.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box-wrapper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-caption.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/extended-line.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-line.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/node.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-node.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contents/git/git-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/git/git-cheats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contents/spring5/theory/theory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/spring5/theory/theory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contents/spring5/core/core-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/spring5/core/core-cheats.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/res/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +65,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/drawbox/simple" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -101,7 +105,9 @@
       <workItem from="1611092488484" duration="5208000" />
       <workItem from="1611826476383" duration="18554000" />
       <workItem from="1611925470644" duration="10897000" />
-      <workItem from="1612020365223" duration="10682000" />
+      <workItem from="1612020365223" duration="21222000" />
+      <workItem from="1612048610850" duration="4754000" />
+      <workItem from="1612107803071" duration="19683000" />
     </task>
     <task id="LOCAL-00001" summary="new line with qCurve fixed and tested and applied">
       <created>1612029218510</created>
@@ -110,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612029218510</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="source cleared a little bit">
+      <created>1612031726881</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612031726881</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +153,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new line with qCurve fixed and tested and applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="new line with qCurve fixed and tested and applied" />
+    <MESSAGE value="source cleared a little bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="source cleared a little bit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="137" width="536" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611931668928">
@@ -155,34 +169,42 @@
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="25" y="246" width="1341" height="287" key="FileDocumentManager.FileCacheConflict/25.0.1341.768@25.0.1341.768" timestamp="1611931723843" />
+    <state width="498" height="445" key="SwitcherDM" timestamp="1612127888415">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state width="498" height="445" key="SwitcherDM/25.0.1341.768@25.0.1341.768" timestamp="1612127888415" />
     <state x="201" y="124" width="990" height="528" key="VcsDiffUtil.ChangesDialog" timestamp="1612029454146">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="201" y="124" width="990" height="528" key="VcsDiffUtil.ChangesDialog/25.0.1341.768@25.0.1341.768" timestamp="1612029454146" />
-    <state x="25" y="0" width="782" height="768" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1611930629235">
+    <state x="119" y="100" width="1153" height="573" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1612145249050">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="119" y="100" width="1153" height="573" key="com.intellij.history.integration.ui.views.FileHistoryDialog/25.0.1341.768@25.0.1341.768" timestamp="1612145249050" />
+    <state x="25" y="0" width="782" height="768" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1612134462076">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="0" y="28" width="782" height="740" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.28.1366.740@0.28.1366.740" timestamp="1611098721082" />
-    <state x="25" y="0" width="782" height="768" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/25.0.1341.768@25.0.1341.768" timestamp="1611930629235" />
+    <state x="25" y="0" width="782" height="768" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/25.0.1341.768@25.0.1341.768" timestamp="1612134462076" />
     <state x="514" y="304" width="364" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1612029726834">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="514" y="304" width="364" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/25.0.1341.768@25.0.1341.768" timestamp="1612029726834" />
-    <state x="402" y="142" width="586" height="546" key="find.popup" timestamp="1612031551284">
+    <state x="402" y="142" width="586" height="546" key="find.popup" timestamp="1612143027515">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
-    <state x="402" y="142" width="586" height="546" key="find.popup/25.0.1341.768@25.0.1341.768" timestamp="1612031551284" />
+    <state x="402" y="142" width="586" height="546" key="find.popup/25.0.1341.768@25.0.1341.768" timestamp="1612143027515" />
     <state x="128" y="92" width="1137" height="592" key="new project wizard" timestamp="1611768625843">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="128" y="92" width="1137" height="592" key="new project wizard/25.0.1341.768@25.0.1341.768" timestamp="1611768625843" />
-    <state x="353" y="169" key="run.anything.popup" timestamp="1611851992717">
+    <state x="353" y="169" key="run.anything.popup" timestamp="1612137618946">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
-    <state x="353" y="169" key="run.anything.popup/25.0.1341.768@25.0.1341.768" timestamp="1611851992717" />
-    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1612031396080">
+    <state x="353" y="169" key="run.anything.popup/25.0.1341.768@25.0.1341.768" timestamp="1612137618946" />
+    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1612141191904">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
-    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup/25.0.1341.768@25.0.1341.768" timestamp="1612031396080" />
+    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup/25.0.1341.768@25.0.1341.768" timestamp="1612141191904" />
   </component>
 </project>

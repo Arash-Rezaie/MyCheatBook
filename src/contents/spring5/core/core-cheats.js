@@ -9,6 +9,8 @@ import appContext from '../../../res/images/ApplicationContext.png';
 import circularDependency from "../../../res/images/circular-dependency.png";
 import beanLifecycle from "../../../res/images/bean-life-cycle.png";
 import components from "../../../res/images/components.png";
+import {DrawBoxComponent} from "../../git/git-components";
+import {DrawBoxWrapper} from "../../../components/drawbox/draw-box-wrapper";
 
 export function CoreCheats() {
     return (
@@ -66,7 +68,80 @@ function getBeanContainer() {
                 </Java>
             </FlexRow>
             <Important>ApplicationContext provides multiple configuration file registration.</Important>
+            <DrawBoxComponent wh={[1200, 800]} shapeFactory={
+                new DrawBoxWrapper()
+                    .addShape({shape: 'type', id: 'i1', label: 'ResourceLoader', t: 'i', pos: [40, 20], width: 125})
+                    .addShape({
+                        shape: 'type', id: 'i2', label: 'ResourcePatternResolver', t: 'i', align: 'i1',
+                        offset: [-88, 60], width: 175
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i3', label: 'ListableBeanFactory', t: 'i', align: 'i2', offset: [100, -12],
+                        width: 150
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i4', label: 'HierarchicalBeanFactory', t: 'i', align: 'i3',
+                        offset: [87, -12], width: 168
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i5', label: 'MessageSource', t: 'i', align: 'i4', offset: [95, -12],
+                        width: 125
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i6', label: 'EnvironmentCapable', t: 'i', align: 'i5', offset: [75, -12],
+                        width: 150
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i7', label: 'ApplicationEventPublisher', t: 'i', align: 'i6',
+                        offset: [87, -12], width: 175
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i8', label: 'BeanFactory', t: 'i', align: 'i1', offset: [200, -12],
+                        width: 105
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i9', label: 'FunctionalInterface', t: '@', align: 'i8', offset: [500, -12],
+                        width: 145
+                    })
+                    .addShape({
+                        shape: 'type', id: 'i10', label: 'ApplicationContext', t: 'i', align: 'i4', offset: [0, 90],
+                        width: 145
+                    })
+                    .addShape({
+                        shape: 'type', id: 'c1', label: 'GenericApplicationContext', t: 'c', align: 'i10',
+                        offset: [-295, 60], width: 180
+                    })
+                    .addShape({
+                        shape: 'type', id: 'c2', label: 'FileSystemXmlApplicationContext', t: 'c', align: 'c1',
+                        offset: [105, -12], width: 218
+                    })
+                    .addShape({
+                        shape: 'type', id: 'c3', label: 'ClassPathXmlApplicationContext', t: 'c', align: 'c2',
+                        offset: [123, -12], width: 215
+                    })
+                    .addShape({
+                        shape: 'type', id: 'c4', label: 'StaticApplicationContext', t: 'c', align: 'c1',
+                        offset: [-300, 60], width: 170
+                    })
+                    .addShape({
+                        shape: 'type', id: 'c5', label: 'AnnotationConfigApplicationContext', t: 'c', align: 'c4',
+                        offset: [100, -12], width: 230
+                    })
+                    .addShape({
+                        shape: 'type', id: 'c6', label: 'GenericGroovyApplicationContext', t: 'c', align: 'c5',
+                        offset: [123, -12], width: 220
+                    })
+                    .addShape({
+                        shape: 'path', id: 'p1', start: ['i2', 0], lineTo: ['i1', 0], color: 'green', arrow: [1, 1]
+                    })
+                    .addShape({
+                        shape: 'path', id: 'p2', start: ['i3', 0], color: 'green', arrow: [1, 1], offset2: [-20, 0],
+                        lineTo: ['270d', 30],
+
+                    })
+            }/>
             <div className={'float-holder center-horizontally-relative inline'}>
+
                 <img src={appContext} alt={'application context implementations'} style={{width: '1200px'}}/>
                 <Float l={1000} t={180} lineTo={[1072, 262]}>
                     <div style={{width: '190px'}}>To fetch xml configuration from a file inside the application itself

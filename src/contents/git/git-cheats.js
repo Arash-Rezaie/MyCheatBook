@@ -3,7 +3,7 @@ import React from "react";
 import workFlow from "../../res/images/git-work-flow.png";
 import {InfoIcon} from "../../components/bubble";
 import {Blue, Bold, Bullet, Purple, Title1, Title2} from "../../components/components";
-import {DrawBoxHandler} from "../../components/drawbox/draw-box-handler";
+import {DrawBoxWrapper} from "../../components/drawbox/draw-box-wrapper";
 import {DrawBoxComponent} from "./git-components";
 import {Float} from "../../components/float";
 
@@ -508,7 +508,7 @@ function getVisualizeBasicCommands() {
             <div className={'flex-row'}>
                 <DrawBoxComponent wh={[340, 250]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
                             .addShape({
                                 shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0',
@@ -531,7 +531,7 @@ function getVisualizeBasicCommands() {
                 </DrawBoxComponent>
                 <DrawBoxComponent wh={[740, 170]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
                             .addShape({
                                 shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0',
@@ -565,7 +565,7 @@ function getVisualizeBasicCommands() {
                 </DrawBoxComponent>
                 <DrawBoxComponent wh={[640, 340]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [100, 30]})
                             .addShape({shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0'})
                             .addShape({
@@ -598,7 +598,7 @@ function getVisualizeBasicCommands() {
                 </DrawBoxComponent>
                 <DrawBoxComponent wh={[650, 430]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [100, 30]})
                             .addShape({shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0'})
                             .addShape({
@@ -638,12 +638,12 @@ function getVisualizeBasicCommands() {
                                 captions: [{t: 'myBranch', w: 70, c: 'pink'}, {t: 'HEAD', w: 40, c: 'green'}]
                             })
                             .addShape({
-                                shape: 'vect', between: ['c7', 'c10', 5],
-                                label: {shape: 'text', label: 'copy', offset: [5, -5]}, color: 'red', arrow: [1, 1]
+                                shape: 'vect', between: ['c7', 'c10', 5], qCurve: ['0d', 50],
+                                label: {shape: 'text', label: 'copy', offset: [-1, 1]}, color: 'red', arrow: [1, 1]
                             })
                             .addShape({
-                                shape: 'vect', between: ['c8', 'c11', 5],
-                                label: {shape: 'text', label: 'copy', offset: [5, -5]}, color: 'red', arrow: [1, 1]
+                                shape: 'vect', between: ['c8', 'c11', 5], qCurve: ['0d', 50],
+                                label: {shape: 'text', label: 'copy', offset: [-1, 1]}, color: 'red', arrow: [1, 1]
                             })
                             .addShape({
                                 shape: 'cap', id: 't0', align: 'c7', offset: [-100, 30], width: 50, height: 20,
@@ -659,7 +659,7 @@ function getVisualizeBasicCommands() {
             <div className={'flex-row'}>
                 <DrawBoxComponent wh={[860, 340]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
                             .addShape({shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0'})
                             .addShape({shape: 'node', id: 'c2', label: 'c2', align: 'c1', offset: [0, 90], conn: 'c1'})
@@ -721,7 +721,7 @@ function getVisualizeBasicCommands() {
                 </DrawBoxComponent>
                 <DrawBoxComponent wh={[400, 250]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
                             .addShape({shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0'})
                             .addShape({
@@ -746,7 +746,7 @@ function getVisualizeBasicCommands() {
                 </DrawBoxComponent>
                 <DrawBoxComponent wh={[880, 430]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
                             .addShape({shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0'})
                             .addShape({
@@ -803,6 +803,10 @@ function getVisualizeBasicCommands() {
                                 shape: 'node', id: 'c16', label: 'c1՛', align: 'c15', offset: [0, 90], conn: 'c15',
                                 captions: [{t: 'main', w: 40, c: 'orange'}, {t: 'HEAD', w: 40, c: 'green'}]
                             })
+                            .addShape({
+                                shape: 'vect', between: ['c13', 'c16', 5], qCurve: ['120d', 120], color: 'red',
+                                label: {shape: 'text', label: 'copy', offset: [-50, 0]}
+                            })
                             .addShape({shape: 'vline', align: 'c4', offset: [140, -20], len: 400, strokeColor: 'red'})
                     }>
                     <Title2>reverse a branch:</Title2> go back in history is done
@@ -816,16 +820,13 @@ function getVisualizeBasicCommands() {
                             work on remote repository.
                         </div>
                     </Float>
-                    <Float l={650} t={380} lineTo={[775, 405]}>
-                        <div style={{width: '80px'}}>copy of c1</div>
-                    </Float>
                 </DrawBoxComponent>
             </div>
             <Title1>Next level:</Title1>
             <div className={'flex-row'}>
                 <DrawBoxComponent wh={[650, 430]} shapeFactory=
                     {
-                        new DrawBoxHandler()
+                        new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [100, 30]})
                             .addShape({
                                 shape: 'node', id: 'c1', label: 'c1', align: 'c0', offset: [0, 90], conn: 'c0'
@@ -873,12 +874,12 @@ function getVisualizeBasicCommands() {
                                 captions: [{t: 'main', w: 40, c: 'orange'}, {t: 'HEAD', w: 40, c: 'green'}]
                             })
                             .addShape({
-                                shape: 'vect', between: ['c8', 'c12', 5], arrow: [1, 1], color: 'red',
-                                label: {shape: 'text', offset: [6, -6], label: 'copy'}
+                                shape: 'vect', id: 'test', between: ['c8', 'c12', 5], arrow: [1, 1], color: 'red',
+                                label: 'copy', qCurve: ['0d', 60]
                             })
                             .addShape({
-                                shape: 'vect', between: ['c10', 'c13', 5], arrow: [1, 1], color: 'red',
-                                label: {shape: 'text', offset: [0, -5], label: 'copy'}
+                                shape: 'vect', between: ['c10', 'c13', 5], arrow: [1, 1], color: 'red', label: 'copy',
+                                qCurve: ['10d', 40],
                             })
                     }>
                     <Title2>cherry-pick: </Title2>use {'cherry-pick <commit1> <commit2> <...>'} to copy a bunch of

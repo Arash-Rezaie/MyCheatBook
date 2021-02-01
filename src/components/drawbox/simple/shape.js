@@ -8,6 +8,8 @@ export class Shape {
         'brown': ['rgb(153, 102, 0)', 'rgb(102, 51, 0)'],
         'orange': ['rgb(255, 153, 51)', 'rgb(255, 102, 0)'],
         'pink': ['rgb(255, 102, 153)', 'rgb(255, 51, 153)'],
+        'black': ['rgb(29,29,29)', 'rgb(0, 0, 0)'],
+        'white': ['rgb(252,252,252)', 'rgb(177,177,177)'],
     };
 
     constructor() {
@@ -82,13 +84,12 @@ export class Shape {
      * @returns {Shape}
      */
     setLabel(label) {
-        if (typeof label === "string") {
-            label = new Text()
-                .setPosition(this.getCenterPoint())
-                .setLabel(label)
-        }
         this.label = label;
         return this;
+    }
+
+    getLabel() {
+        return this.label;
     }
 
     /**
@@ -144,9 +145,13 @@ export class Shape {
      * @param ctx
      */
     showLabel(ctx) {
-        let p = this.getCenterPoint();
-        this.label.setPosition(p);
-        this.label.render(ctx);
+        let lbl = this.getLabel();
+        if (typeof lbl === "string") {
+            lbl = new Text()
+                .alignTo(this)
+                .setLabel(lbl)
+        }
+        lbl.render(ctx);
     }
 
     /**
