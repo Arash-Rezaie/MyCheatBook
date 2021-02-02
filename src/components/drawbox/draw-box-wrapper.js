@@ -8,6 +8,7 @@ import {WrapperCaption} from "./wrappered/wrapper-caption";
 import Dot from "./simple/dot";
 import {WrapperPath} from "./wrappered/wrapper-path";
 import {Type} from "./simple/type";
+import {WrapperTypeRel} from "./wrappered/wrapper-type-rel";
 
 export class DrawBoxWrapper {
     const
@@ -25,6 +26,7 @@ export class DrawBoxWrapper {
         dot: () => new Dot(),
         path: () => new WrapperPath(this),
         type: () => new Type(),
+        typerel: () => new WrapperTypeRel(this),
         label: (d, o) => o.setLabel(d),
         color: (d, o) => o.setColor(d),
         fillColor: (d, o) => o.setFillColor(d),
@@ -47,6 +49,7 @@ export class DrawBoxWrapper {
         lineTo: (d, o) => o.lineTo(d),
         curveTo: (d, o) => o.quadraticTo(d[0], d[1]),
         t: (d, o) => o.setType(d),
+        p: (d, o) => o.setPath(d),
     };
 
     constructor() {
@@ -57,7 +60,7 @@ export class DrawBoxWrapper {
     /**
      * @param itemConf it is an object with fields:<br/>
      * {
-     *    shape: ['text', 'circle', 'line', 'rect', 'node', 'cap', 'hline', 'vline', 'vect', 'hvect','dot','path', 'type']<br/>
+     *    shape: ['text', 'circle', 'line', 'rect', 'node', 'cap', 'hline', 'vline', 'vect', 'hvect','dot','path', 'type', 'typerel']<br/>
      *
      *    --- generic ------<br/>
      *    id: string<br/>
@@ -87,8 +90,12 @@ export class DrawBoxWrapper {
      *    len: int<br/>
      *
      *    --- path ------<br/>
-     *    start, lineTo:[x,y,ox,oy] | [intR,length,ox,oy] | [intD,length,ox,oy] | [shape,gap,ox,oy]<br/>
-     *    curveTo: [curvePoint, endPoint]<br/>
+     *    p: 'm x y':moveTo([x,y]) | 'l x y':lineTo([x,y]) | 'q x y':quadraticTo([x,y]) | 'o ox oy':offset([ox,oy])<br/>
+     *    t: 'ii' | 'i@' | 'ci' | 'cc' | 'c@' (sides of a relationship)<br/>
+     *
+     *    --- typerel ------<br/>
+     *    between: [[shapeId1,offsetX,offsetY],[shapeId2,offsetX,offsetY],[gap,'|' or '_']]<br/>
+     *    t:'ii' | 'i@' | 'ci' | 'cc' | 'c@' (sides of a relationship)<br/>
      *
      *    --- rectangle ------<br/>
      *    width: int<br/>

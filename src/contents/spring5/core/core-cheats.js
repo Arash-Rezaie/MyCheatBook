@@ -68,96 +68,24 @@ function getBeanContainer() {
                 </Java>
             </FlexRow>
             <Important>ApplicationContext provides multiple configuration file registration.</Important>
-            <DrawBoxComponent wh={[1200, 800]} shapeFactory={
-                new DrawBoxWrapper()
-                    .addShape({shape: 'type', id: 'i1', label: 'ResourceLoader', t: 'i', pos: [40, 20], width: 125})
-                    .addShape({
-                        shape: 'type', id: 'i2', label: 'ResourcePatternResolver', t: 'i', align: 'i1',
-                        offset: [-88, 60], width: 175
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i3', label: 'ListableBeanFactory', t: 'i', align: 'i2', offset: [100, -12],
-                        width: 150
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i4', label: 'HierarchicalBeanFactory', t: 'i', align: 'i3',
-                        offset: [87, -12], width: 168
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i5', label: 'MessageSource', t: 'i', align: 'i4', offset: [95, -12],
-                        width: 125
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i6', label: 'EnvironmentCapable', t: 'i', align: 'i5', offset: [75, -12],
-                        width: 150
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i7', label: 'ApplicationEventPublisher', t: 'i', align: 'i6',
-                        offset: [87, -12], width: 175
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i8', label: 'BeanFactory', t: 'i', align: 'i1', offset: [200, -12],
-                        width: 105
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i9', label: 'FunctionalInterface', t: '@', align: 'i8', offset: [500, -12],
-                        width: 145
-                    })
-                    .addShape({
-                        shape: 'type', id: 'i10', label: 'ApplicationContext', t: 'i', align: 'i4', offset: [0, 90],
-                        width: 145
-                    })
-                    .addShape({
-                        shape: 'type', id: 'c1', label: 'GenericApplicationContext', t: 'c', align: 'i10',
-                        offset: [-295, 60], width: 180
-                    })
-                    .addShape({
-                        shape: 'type', id: 'c2', label: 'FileSystemXmlApplicationContext', t: 'c', align: 'c1',
-                        offset: [105, -12], width: 218
-                    })
-                    .addShape({
-                        shape: 'type', id: 'c3', label: 'ClassPathXmlApplicationContext', t: 'c', align: 'c2',
-                        offset: [123, -12], width: 215
-                    })
-                    .addShape({
-                        shape: 'type', id: 'c4', label: 'StaticApplicationContext', t: 'c', align: 'c1',
-                        offset: [-300, 60], width: 170
-                    })
-                    .addShape({
-                        shape: 'type', id: 'c5', label: 'AnnotationConfigApplicationContext', t: 'c', align: 'c4',
-                        offset: [100, -12], width: 230
-                    })
-                    .addShape({
-                        shape: 'type', id: 'c6', label: 'GenericGroovyApplicationContext', t: 'c', align: 'c5',
-                        offset: [123, -12], width: 220
-                    })
-                    .addShape({
-                        shape: 'path', id: 'p1', start: ['i2', 0], lineTo: ['i1', 0], color: 'green', arrow: [1, 1]
-                    })
-                    .addShape({
-                        shape: 'path', id: 'p2', start: ['i3', 0], color: 'green', arrow: [1, 1], offset2: [-20, 0],
-                        lineTo: ['270d', 30],
-
-                    })
-            }/>
-            <div className={'float-holder center-horizontally-relative inline'}>
-
+            <div className={'float-holder center-horizontally-relative inline'}
+                 style={{width: '1210px', height: '430px'}}>
                 <img src={appContext} alt={'application context implementations'} style={{width: '1200px'}}/>
-                <Float l={1000} t={180} lineTo={[1072, 262]}>
+                <Float l={10} t={210} lineTo={[80, 330]}>
                     <div style={{width: '190px'}}>To fetch xml configuration from a file inside the application itself
                     </div>
                 </Float>
-                <Float l={850} t={120} lineTo={[835, 262]}>
+                <Float l={400} t={255} lineTo={[470, 330]}>
                     <div style={{width: '260px'}}>To read xml configuration from a file system. Path must be relative
                     </div>
                 </Float>
-                <Float l={890} t={362} lineTo={[873, 364]}>
-                    <div style={{width: '300px'}}>To read configuration from groovy file</div>
+                <Float l={930} t={230} lineTo={[1130, 330]}>
+                    <div style={{width: '260px'}}>To read configuration from groovy file</div>
                 </Float>
-                <Float l={250} t={362} lineTo={[625, 365]}>
-                    <div style={{width: '300px'}}>To configure beans by annotations</div>
+                <Float l={700} t={370} lineTo={[819, 355]}>
+                    <div style={{width: '260px'}}>To configure beans by annotations</div>
                 </Float>
-                <Float l={10} t={260} lineTo={[383, 330]}>
+                <Float l={180} t={370} lineTo={[600, 355]}>
                     <div style={{width: '350px'}}>To setup features via programmatic registration, rather than reading
                         bean definitions from external configuration sources. Mainly useful for testing
                     </div>
@@ -251,16 +179,16 @@ function getScanningFilter() {
                 {`
                 @Configuration
                 /*
-                 * type = FilterType.REGEX
-                 * type = FilterType.ANNOTATION
-                 * type = FilterType.ASPECTJ
-                 * type = FilterType.ASSIGNABLE_TYPE
-                 * type = FilterType.CUSTOM
-                 */
+                * type = FilterType.REGEX
+                * type = FilterType.ANNOTATION
+                * type = FilterType.ASPECTJ
+                * type = FilterType.ASSIGNABLE_TYPE
+                * type = FilterType.CUSTOM
+                */
                 @ComponentScan(basePackages = "com", includeFilters = {
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "*.*spring.obje*"),
-                    @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyAnnotation.class),
-                    @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = Person.class)
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = MyAnnotation.class),
+                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = Person.class)
                 })
                 public class AppConfig {
                 }`}
@@ -268,10 +196,10 @@ function getScanningFilter() {
             <Xml title={1}>
                 {`
                 <beans ...>
-                    <context:component-scan base-package="com">
-                        <context:include-filter type="regex" expression="soWhat*"/>
-                        <context:include-filter type="annotation" expression="com.arash.models.common.MyAnnotation"/>
-                    </context:component-scan>
+                <context:component-scan base-package="com">
+                <context:include-filter type="regex" expression="soWhat*"/>
+                <context:include-filter type="annotation" expression="com.arash.models.common.MyAnnotation"/>
+                </context:component-scan>
                 </beans>
                 `}
             </Xml>
@@ -284,22 +212,22 @@ function getMerging() {
         <Frame title={'Merging configuration files'}>
             <Xml description={'merging other configurations into xml'}>
                 {`
-                    <beans ...>
-                        <context:annotation-config/>
-                        
-                        <!-- scan a package to figure out its Components -->
-                        <context:component-scan base-package="com"/>
-                    </beans>
+                <beans ...>
+                <context:annotation-config/>
+
+                <!-- scan a package to figure out its Components -->
+                <context:component-scan base-package="com"/>
+                </beans>
                 `}
             </Xml>
             <Java description={'merging other configurations into java class'}>
                 {`
                 //merge other classes
                 @Import(OtherAppConfig.class)
-                
+
                 //merge xml files
                 @ImportResource(locations = "classpath:containerconfig.xml")
-                
+
                 @Configuration
                 public class AppConfig {
                 }
@@ -315,12 +243,12 @@ function getProfile() {
             <InfoIcon>
                 <Java>
                     {`
-                    // To check a property existence:
-                    context.getEnvironment().containsProperty("who's_your_daddy");
-                    
-                    //all environments are not available in spring and some are provide by jvm
-                    System.getProperty("propertyName");
-                    `}
+                // To check a property existence:
+                context.getEnvironment().containsProperty("who's_your_daddy");
+
+                //all environments are not available in spring and some are provide by jvm
+                System.getProperty("propertyName");
+                `}
                 </Java>
                 <br/>
                 To change profile at runtime:
@@ -333,18 +261,18 @@ function getProfile() {
                 {`
                 @Profile("develop","!dev")//! => active profile
                 public class Bean1 {
-                
-                    //access your desired environment
-                    @Autowired
-                    public EnvironmentConfiguration env;
+
+                //access your desired environment
+                @Autowired
+                public EnvironmentConfiguration env;
                 }`}
             </Java>
             In xml, we have to assign a file for a profile:
             <Xml>
                 {`
                 <beans
-                    ...
-                    profile="develop">
+                ...
+                profile="develop">
                 ...
                 </beans>`}
             </Xml>
@@ -353,12 +281,12 @@ function getProfile() {
             <Xml description={'pom.xml'}>
                 {`
                 <profiles>
-                    <profile>
-                        <id>develop</id>
-                        <activation>
-                            <activeByDefault>true</activeByDefault>
-                        </activation>
-                    </profile>
+                <profile>
+                <id>develop</id>
+                <activation>
+                <activeByDefault>true</activeByDefault>
+                </activation>
+                </profile>
                 </profiles>`}
             </Xml>
             <HorizontalLine/>
@@ -367,24 +295,24 @@ function getProfile() {
                 {`
                 @Component
                 public class Bean1 {
-                    @Autowired
-                    public Environment env;
-                
-                    public void loopThroughActiveProfiles() {
-                        Arrays.stream(env.getActiveProfiles())
-                            .forEach(System.out::println);
-                    }
-                    
-                    @Value("#{$\{spring.profiles.active}}")
-                    String activeProfile;
-                
-                    @Autowired
-                    private ConfigurableEnvironment cfgEnv;
-                    
-                    public void setActiveProfile(String pName) {
-                        //other information is available here
-                        cfgEnv.setActiveProfiles("develop");
-                    }
+                @Autowired
+                public Environment env;
+
+                public void loopThroughActiveProfiles() {
+                Arrays.stream(env.getActiveProfiles())
+                .forEach(System.out::println);
+                }
+
+                @Value("#{$\{spring.profiles.active}}")
+                String activeProfile;
+
+                @Autowired
+                private ConfigurableEnvironment cfgEnv;
+
+                public void setActiveProfile(String pName) {
+                //other information is available here
+                cfgEnv.setActiveProfiles("develop");
+                }
                 }`}
             </Java>
             <div style={{width: '22rem'}}>
@@ -409,26 +337,26 @@ function getMultipleCandidate() {
                 <FlexRow>
                     <Xml title={1}>
                         {`
-                    <bean class="com.arash.models.multicandidate.Ferrari"
-                            id="ferrai" primary="true"/>
-                    <bean class="com.arash.models.multicandidate.Lamborghini"
-                            id="lamborghini" >`}
+                <bean class="com.arash.models.multicandidate.Ferrari"
+                id="ferrai" primary="true"/>
+                <bean class="com.arash.models.multicandidate.Lamborghini"
+                id="lamborghini" >`}
                     </Xml>
                     <Java title={1}>
                         {`
-                        @Configuration
-                        public class AppConfig {
-                            @Primary
-                            @Bean
-                            public Car getLamborghini() {
-                                return new Lamborghini();
-                            }
-        
-                            @Bean
-                            public Car getFerrari() {
-                                return new Ferrari();
-                            }
-                        }`}
+                @Configuration
+                public class AppConfig {
+                @Primary
+                @Bean
+                public Car getLamborghini() {
+                return new Lamborghini();
+                }
+
+                @Bean
+                public Car getFerrari() {
+                return new Ferrari();
+                }
+                }`}
                     </Java>
                 </FlexRow>
             </Bullet>
@@ -437,79 +365,79 @@ function getMultipleCandidate() {
                 determine what object should be injected based on the given information
                 <Java description={'custom qualifier'}>
                     {`
-                    @Target(ElementType.FIELD)
-                    @Retention(RetentionPolicy.RUNTIME)
-                    @Qualifier
-                    public @interface MyQualifier {
-                        String value() default "";
-                        String color();
-                    }`}
+                @Target(ElementType.FIELD)
+                @Retention(RetentionPolicy.RUNTIME)
+                @Qualifier
+                public @interface MyQualifier {
+                String value() default "";
+                String color();
+                }`}
                 </Java>
                 <FlexRow>
                     <Xml title={1}>
                         {`
-                    <!--qualifier with a simple string-->
-                    <bean className="com.arash.models.multicandidate.Ferrari"
-                            id="ferrai">
-                        <qualifier value="ferrari"/>
-                    </bean>
+                <!--qualifier with a simple string-->
+                <bean className="com.arash.models.multicandidate.Ferrari"
+                id="ferrai">
+                <qualifier value="ferrari"/>
+                </bean>
 
-                    <!--qualifier with custom selection property-->
-                    <bean className="com.arash.models.multicandidate.Lamborghini"
-                            id="lamborghini">
-                        <qualifier type="com.arash.models.multicandidate.MyQualifier">
-                            <attribute key="color" value="green"/>
-                        </qualifier>
-                    </bean>
+                <!--qualifier with custom selection property-->
+                <bean className="com.arash.models.multicandidate.Lamborghini"
+                id="lamborghini">
+                <qualifier type="com.arash.models.multicandidate.MyQualifier">
+                <attribute key="color" value="green"/>
+                </qualifier>
+                </bean>
 
-                    <bean className="com.arash.models.multicandidate.Pagani"
-                            id="pagani">
-                        <qualifier type="com.arash.models.multicandidate.MyQualifier">
-                            <attribute key="color" value="black"/>
-                        </qualifier>
-                    </bean>`}
+                <bean className="com.arash.models.multicandidate.Pagani"
+                id="pagani">
+                <qualifier type="com.arash.models.multicandidate.MyQualifier">
+                <attribute key="color" value="black"/>
+                </qualifier>
+                </bean>`}
                     </Xml>
                     <Java title={1}>
                         {`
-                        @Configuration
-                        public class AppConfig {
-                            @Qualifier("ferrari")
-                            @Bean
-                            public Car getFerrari() {
-                                return new Ferrari();
-                            }
-        
-                            @MyQualifier(
-                                name = "lambo", color = "green")
-                            @Bean
-                            public Car getLamborghini() {
-                                return new Lamborghini();
-                            }
-        
-                            @Bean
-                            @MyQualifier(
-                                name = "lambo", color = "black")
-                            public Car getPagani(){
-                                return new Pagani();
-                            }
-                        }`}
+                @Configuration
+                public class AppConfig {
+                @Qualifier("ferrari")
+                @Bean
+                public Car getFerrari() {
+                return new Ferrari();
+                }
+
+                @MyQualifier(
+                name = "lambo", color = "green")
+                @Bean
+                public Car getLamborghini() {
+                return new Lamborghini();
+                }
+
+                @Bean
+                @MyQualifier(
+                name = "lambo", color = "black")
+                public Car getPagani(){
+                return new Pagani();
+                }
+                }`}
                     </Java>
                 </FlexRow>
                 <Java description={'usage'}>
                     {`
-                    public class Engineer extends Person {
-                        @MyQualifier(name = "lambo", color = "black")
-                        @Autowired
-                        private Car car1;
-    
-                        @Autowired
-                        @MyQualifier(name = "lambo", color = "green")
-                        private Car car2;
-    
-                        @Autowired
-                        @Qualifier("ferrari")
-                        private Car car3;
-                    }`}
+                public class Engineer extends Person {
+                @MyQualifier(name = "lambo", color = "black")
+                @Autowired
+                private Car car1;
+
+                @Autowired
+                @MyQualifier(name = "lambo", color = "green")
+                private Car car2;
+
+                @Autowired
+                @Qualifier("ferrari")
+                private Car car3;
+                }`}
                 </Java>
             </Bullet>
         </Frame>
@@ -523,68 +451,68 @@ function getXmlBasic() {
                 Catching data source for mysql sample:
                 <Xml>
                     {`
-                    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-                        <property name="username" value="root"/>
-                        <property name="password" value=""/>
-                        <property name="url" value="jdbc:mysql://localhost:3306/spring"/>
-                    </bean>`}
+                <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+                <property name="username" value="root"/>
+                <property name="password" value=""/>
+                <property name="url" value="jdbc:mysql://localhost:3306/spring"/>
+                </bean>`}
                 </Xml>
             </InfoIcon>
             Passing arguments through xml configuration file is available via constructor and setters.
             <Java>
                 {`
                 public class Car {
-                    private String name;
-                    private int color;
-                
-                    public Car(String name, int color) {
-                        this.name = name;
-                        this.color = color;
-                    }
+                private String name;
+                private int color;
+
+                public Car(String name, int color) {
+                this.name = name;
+                this.color = color;
                 }
-                
+                }
+
                 public class Person {
-                    private String name;
-                    private String email;
-                    private int age;
-                    private int hairColor;
-                    private Car car;
-                
-                    public Person(String name, String email, int age) {
-                        this.name = name;
-                        this.email = email;
-                        this.age = age;
-                    }
-                
-                    public void setHairColor(int hairColor) {
-                        this.hairColor = hairColor;
-                    }
-                    
-                    public void setCar(Car car) {
-                        this.car = car;
-                    }
+                private String name;
+                private String email;
+                private int age;
+                private int hairColor;
+                private Car car;
+
+                public Person(String name, String email, int age) {
+                this.name = name;
+                this.email = email;
+                this.age = age;
+                }
+
+                public void setHairColor(int hairColor) {
+                this.hairColor = hairColor;
+                }
+
+                public void setCar(Car car) {
+                this.car = car;
+                }
                 }
                 `}
             </Java>
             <Xml>
                 {`
                 <bean id="car" class="com.arash.models.multiconfigfiles.Car">
-                    <constructor-arg value="ford"/>
-                    <constructor-arg value="-16711936"/>
+                <constructor-arg value="ford"/>
+                <constructor-arg value="-16711936"/>
                 </bean>
-            
+
                 <bean id="person" class="com.arash.models.multiconfigfiles.Person">
-                    <!--
-                        constructor args are sent by order by default,
-                        but you can provide more information such as type or index
-                    -->
-                    <constructor-arg value="Arash"/>
-                    <constructor-arg index="1" value="arash.12@gmail.com"/>
-                    <constructor-arg type="int" value="33"/>
-                    
-                    <!-- passing parameter by setter -->
-                    <property name="hairColor" value="-16777216"/>
-                    <property name="car" ref="car"/> <!-- sending by ref -->
+                <!--
+                constructor args are sent by order by default,
+                but you can provide more information such as type or index
+                -->
+                <constructor-arg value="Arash"/>
+                <constructor-arg index="1" value="arash.12@gmail.com"/>
+                <constructor-arg type="int" value="33"/>
+
+                <!-- passing parameter by setter -->
+                <property name="hairColor" value="-16777216"/>
+                <property name="car" ref="car"/> <!-- sending by ref -->
                 </bean>
                 `}
             </Xml>
@@ -594,23 +522,23 @@ function getXmlBasic() {
                 header</Highlight>
             <Xml>
                 {`
-                    <?xml version="1.0" encoding="UTF-8"?>
-                    <beans xmlns="http://www.springframework.org/schema/beans"
-                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                           xmlns:p="http://www.springframework.org/schema/p"
-                           xsi:schemaLocation="
-                                http://www.springframework.org/schema/beans
-                                http://www.springframework.org/schema/beans/spring-beans.xsd">
+                <?xml version="1.0" encoding="UTF-8"?>
+                <beans xmlns="http://www.springframework.org/schema/beans"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:p="http://www.springframework.org/schema/p"
+                xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-                        <bean id="person2" class="com.arash.models.xml.namespace.Person"
-                              p:car-ref="car"
-                              p:hairColor="-16711936">
-                            <constructor-arg value="Arash"/>
-                            <constructor-arg index="1" value="arash.12@gmail.com"/>
-                            <constructor-arg type="int" value="33"/>
-                        </bean>
-                    </bean>
-                    `}
+                <bean id="person2" class="com.arash.models.xml.namespace.Person"
+                p:car-ref="car"
+                p:hairColor="-16711936">
+                <constructor-arg value="Arash"/>
+                <constructor-arg index="1" value="arash.12@gmail.com"/>
+                <constructor-arg type="int" value="33"/>
+                </bean>
+                </bean>
+                `}
             </Xml>
 
             <Important>
@@ -679,29 +607,29 @@ function getAnnotationBasic() {
                 {`
                 @Component
                 public class Car {
-                    private String name;
-                    private int color;
-                
-                    public Car(@Value("ford") String name, @Value("-16711936") int color) {
-                        this.name = name;
-                        this.color = color;
-                    }
+                private String name;
+                private int color;
+
+                public Car(@Value("ford") String name, @Value("-16711936") int color) {
+                this.name = name;
+                this.color = color;
                 }
-                
+                }
+
                 @Component
                 public class Person {
-                    private String name;
-                
-                    @Value("-16777216")
-                    private int hairColor;
-                
-                    @Autowired
-                    private Car car;
-                    
-                    @Value("Arash")
-                    public void setName(String name){
-                        this.name = name;
-                    }
+                private String name;
+
+                @Value("-16777216")
+                private int hairColor;
+
+                @Autowired
+                private Car car;
+
+                @Value("Arash")
+                public void setName(String name){
+                this.name = name;
+                }
                 }
                 `}
             </Java>
@@ -723,7 +651,7 @@ function getAlias() {
                 {`
                 @Bean({"car", "automobile", "vehicle"})
                 private Car getCar() {
-                    return new Car("ford", -16711936);
+                return new Car("ford", -16711936);
                 }`}
             </Java>
             <Java description={'usage'}>
@@ -743,26 +671,26 @@ function getPrivateConstructor() {
             <Java>
                 {`
                 public class PrivateConstructor {
-                
-                    private PrivateConstructor() {
-                    }
-                    
-                    public static PrivateConstructor getInstance(){
-                        return new PrivateConstructor();
-                    }
+
+                private PrivateConstructor() {
+                }
+
+                public static PrivateConstructor getInstance(){
+                return new PrivateConstructor();
+                }
                 }`}
             </Java>
             <Xml>
                 {`
-                <!-- 
-                    as spring is all about reflection, so program elements scope makes no problem.
-                    It works pretty nice in spring 4. Also, some other ways are avaiable
+                <!--
+                as spring is all about reflection, so program elements scope makes no problem.
+                It works pretty nice in spring 4. Also, some other ways are avaiable
                 -->
                 <bean id="privateConstructor" class="com.arash.models.privateconstructor.PrivateConstructor"/>
-                
+
                 <!-- access through static method -->
                 <bean id="privateConstructor2" class="com.arash.models.privateconstructor.PrivateConstructor"
-                    factory-method="getInstance"/>
+                factory-method="getInstance"/>
                 `}
             </Xml>
         </Frame>
@@ -775,95 +703,95 @@ function getXmlLocalClass() {
             Instantiating nested class is easy as the class is static
             <Java>
                 {`
-                    public class ParentClass {
-                        
-                        public static class NestedClass {
-                        }
-                        
-                        public class InnerClass {
-                        }
-                    }
-                    
-                    //how to get instance in java
-                    ParentClass parentClass = new ParentClass();
-                    ParentClass.NestedClass nestedClass = new ParentClass.NestedClass();
-                    ParentClass.InnerClass innerClass = pc.new InnerClass();`}
+                public class ParentClass {
+
+                public static class NestedClass {
+                }
+
+                public class InnerClass {
+                }
+                }
+
+                //how to get instance in java
+                ParentClass parentClass = new ParentClass();
+                ParentClass.NestedClass nestedClass = new ParentClass.NestedClass();
+                ParentClass.InnerClass innerClass = pc.new InnerClass();`}
             </Java>
             <Xml>
                 {`
-                    <!-- parent class: -->
-                    <bean id="parentClass" class="ParentClass"/>
-                    
-                    <!-- creating public nested class is easy. Use '$' instead of '.' -->
-                    <bean id="nestedClass" class="ParentClass$NestedClass"/>
-                    `}
+                <!-- parent class: -->
+                <bean id="parentClass" class="ParentClass"/>
+
+                <!-- creating public nested class is easy. Use '$' instead of '.' -->
+                <bean id="nestedClass" class="ParentClass$NestedClass"/>
+                `}
             </Xml>
             Instantiating inner class is a bit more complicated as it needs its parent class instance.<br/>
             To do that, we should hire a generator<br/><br/>
             <Bullet title={'1.'}><BlueBold>factory-bean:</BlueBold>
                 <Java>
                     {`
-                        public class ParentClass {
-                        
-                            public static class NestedClass {
-                            }
-                            
-                            public class InnerClass {
-                            }
-                        }
-                        
-                        public class InnerClassFactory implements FactoryBean<ParentClass.InnerClass> {
-                
-                            @Override
-                            public ParentClass.InnerClass getObject() throws Exception {
-                                ApplicationContext ctx = ContextProvider.getXmlContext();
-                                ParentClass pc = (ParentClass) ctx.getBean("parentClass");
-                                return pc.new InnerClass();
-                            }
-                        
-                            @Override
-                            public Class<?> getObjectType() {
-                                return ParentClass.InnerClass.class;
-                            }
-                            
-                            @Override
-                            public boolean isSingleton() {
-                                return false;
-                            }
-                        }
-                        `}
+                public class ParentClass {
+
+                public static class NestedClass {
+                }
+
+                public class InnerClass {
+                }
+                }
+
+                public class InnerClassFactory implements FactoryBean<ParentClass.InnerClass> {
+
+                @Override
+                public ParentClass.InnerClass getObject() throws Exception {
+                ApplicationContext ctx = ContextProvider.getXmlContext();
+                ParentClass pc = (ParentClass) ctx.getBean("parentClass");
+                return pc.new InnerClass();
+                }
+
+                @Override
+                public Class<?> getObjectType() {
+                return ParentClass.InnerClass.class;
+                }
+
+                @Override
+                public boolean isSingleton() {
+                return false;
+                }
+                }
+                `}
                 </Java>
                 <Xml>
                     {`
-                        <bean id="parentClass" class="ParentClass"/>
-                                
-                        <!-- creating InnerClass by factory bean. Factory class must implement FactoryBean -->
-                        <bean id="innerClass" class="com.arash.models.localclass.InnerClassFactory">`}
+                <bean id="parentClass" class="ParentClass"/>
+
+                <!-- creating InnerClass by factory bean. Factory class must implement FactoryBean -->
+                <bean id="innerClass" class="com.arash.models.localclass.InnerClassFactory">`}
                 </Xml>
 
             </Bullet>
             <Bullet title={'2.'}><BlueBold>factory-method:</BlueBold>
                 <Java>
                     {`
-                        public class ParentClass {
-                            public static class NestedClass {
-                            }
-                        
-                            public class InnerClass {
-                            }
-                            
-                            public InnerClass getInnerClassInstance() {
-                                return new InnerClass();
-                            }
-                        }`}
+                public class ParentClass {
+                public static class NestedClass {
+                }
+
+                public class InnerClass {
+                }
+
+                public InnerClass getInnerClassInstance() {
+                return new InnerClass();
+                }
+                }`}
                 </Java>
                 <Xml>
                     {`
-                        <bean id="parentClass" class="ParentClass"/>
-                        
-                        <!-- creating InnerClass by factory method -->
-                        <bean id="innerClass" class="com.arash.models.localclass.ParentClass.InnerClass"
-                                factory-bean="parentClass" factory-method="getInnerClassInstance"/>`}
+                <bean id="parentClass" class="ParentClass"/>
+
+                <!-- creating InnerClass by factory method -->
+                <bean id="innerClass" class="com.arash.models.localclass.ParentClass.InnerClass"
+                factory-bean="parentClass" factory-method="getInnerClassInstance"/>`}
                 </Xml>
             </Bullet>
         </Frame>
@@ -877,15 +805,15 @@ function getAnnotationLocalClass() {
                 {`
                 @Component
                 public class ParentClass {
-                    @Component
-                    public static class NestedClass {
-                    }
-                
-                    @Component
-                    public class InnerClass {
-                    }
+                @Component
+                public static class NestedClass {
                 }
-                
+
+                @Component
+                public class InnerClass {
+                }
+                }
+
                 //usage>>>
                 ApplicationContext ctx = ContextProvider.getAnnotaionContext();
                 ParentClass pc = ctx.getBean(ParentClass.class);
@@ -906,30 +834,30 @@ function getXmlCircularDependencies() {
             <FlexRow>
                 <Java title={true}>
                     {`
-                    public class Student {
-                        private Shoes shoes;
-        
-                        public Student(Shoes shoes) {
-                            this.shoes = shoes;
-                        }
-                    }
-                    
-                    public class Shoes {
-                        private Student student;
-                    
-                        public Shoes(Student student) {
-                            this.student = student;
-                        }
-                    }`}
+                public class Student {
+                private Shoes shoes;
+
+                public Student(Shoes shoes) {
+                this.shoes = shoes;
+                }
+                }
+
+                public class Shoes {
+                private Student student;
+
+                public Shoes(Student student) {
+                this.student = student;
+                }
+                }`}
                 </Java>
                 <Xml title={true} description={'this config fails'}>
                     {`
-                    <bean id="student" class="com.arash.models.circulardep.Student">
-                        <constructor-arg ref="shoes"/>
-                    </bean>
-                    <bean id="shoes" class="com.arash.models.circulardep.Shoes">
-                        <constructor-arg ref="student"/>
-                    </bean>
+                <bean id="student" class="com.arash.models.circulardep.Student">
+                <constructor-arg ref="shoes"/>
+                </bean>
+                <bean id="shoes" class="com.arash.models.circulardep.Shoes">
+                <constructor-arg ref="student"/>
+                </bean>
                 `}
                 </Xml>
             </FlexRow>
@@ -944,49 +872,49 @@ function getXmlCircularDependencies() {
                 <FlexRow>
                     <Java title={true} description={'use setter instead of constructor'}>
                         {`
-                        public class Student {
-                            private Shoes shoes;
-                        
-                            public void setShoes(Shoes shoes) {
-                                this.shoes = shoes;
-                            }
-                        }
-                        
-                        public class Shoes {
-                            private Student student;
-                        
-                            public Shoes(Student student) {
-                                this.student = student;
-                            }
-                        }
-                        
-                        ------------------------------------------
-                        
-                        //usage
-                        ApplicationContext ctx;
-                        ctx = ContextProvider.getXmlContext();
-                        
-                        //correct order
-                        Student student = ctx.getBean(Student.class);
-                        Shoes shoes= (Shoes) ctx.getBean("shoes");
-                        
-                        //incorrect order
-                        Shoes shoes= (Shoes) ctx.getBean("shoes");
-                        Student student = ctx.getBean(Student.class);
-                        `}
+                public class Student {
+                private Shoes shoes;
+
+                public void setShoes(Shoes shoes) {
+                this.shoes = shoes;
+                }
+                }
+
+                public class Shoes {
+                private Student student;
+
+                public Shoes(Student student) {
+                this.student = student;
+                }
+                }
+
+                ------------------------------------------
+
+                //usage
+                ApplicationContext ctx;
+                ctx = ContextProvider.getXmlContext();
+
+                //correct order
+                Student student = ctx.getBean(Student.class);
+                Shoes shoes= (Shoes) ctx.getBean("shoes");
+
+                //incorrect order
+                Shoes shoes= (Shoes) ctx.getBean("shoes");
+                Student student = ctx.getBean(Student.class);
+                `}
                     </Java>
                     <Xml title={true}
                          description={'one property & one constructor'}>
                         {`
-                        <bean id="student"
-                                class="com.arash.models.circulardep.Student">
-                            <property name="shoes" ref="shoes"/>
-                        </bean>
-                        
-                        <bean id="shoes"
-                                class="com.arash.models.circulardep.Shoes">
-                            <constructor-arg ref="student"/>
-                        </bean>`}
+                <bean id="student"
+                class="com.arash.models.circulardep.Student">
+                <property name="shoes" ref="shoes"/>
+                </bean>
+
+                <bean id="shoes"
+                class="com.arash.models.circulardep.Shoes">
+                <constructor-arg ref="student"/>
+                </bean>`}
                     </Xml>
                 </FlexRow>
             </Bullet><br/>
@@ -996,34 +924,34 @@ function getXmlCircularDependencies() {
                 <FlexRow>
                     <Java title={true} description={'only student drops its constructor'}>
                         {`
-                        public class Student {
-                            private Shoes shoes;
-                        
-                            public void setShoes(Shoes shoes) {
-                                this.shoes = shoes;
-                            }
-                        }
-                        
-                        public class Shoes {
-                            private Student student;
-                        
-                            public Shoes(Student student) {
-                                this.student = student;
-                            }
-                        }
-                        `}
+                public class Student {
+                private Shoes shoes;
+
+                public void setShoes(Shoes shoes) {
+                this.shoes = shoes;
+                }
+                }
+
+                public class Shoes {
+                private Student student;
+
+                public Shoes(Student student) {
+                this.student = student;
+                }
+                }
+                `}
                     </Java>
                     <Xml title={true} description={'define who has to laod at first'}>
                         {`
-                         <bean id="student" lazy-init="false"
-                                class="com.arash.models.circulardep.Student">
-                             <property name="student" ref="shoes"/>
-                         </bean>
-                        
-                         <bean id="shoes" lazy-init="true"
-                                class="com.arash.models.circulardep.Shoes">
-                             <constructor-arg ref="student"/>
-                         </bean>`}
+                <bean id="student" lazy-init="false"
+                class="com.arash.models.circulardep.Student">
+                <property name="student" ref="shoes"/>
+                </bean>
+
+                <bean id="shoes" lazy-init="true"
+                class="com.arash.models.circulardep.Shoes">
+                <constructor-arg ref="student"/>
+                </bean>`}
                     </Xml>
                 </FlexRow>
             </Bullet><br/>
@@ -1031,33 +959,33 @@ function getXmlCircularDependencies() {
                 <FlexRow>
                     <Java title={true} description={'save idref and init before use'}>
                         {`
-                        public class Student {
-                            private String shoesId;
-                            private Shoes shoes;
-                        
-                            public Student(String shoesId) {
-                                this.shoesId = shoesId;
-                            }
-                        
-                            public void init(){
-                                ApplicationContext ctx;
-                                ctx = ContextProvider.getXmlContext();
-                                shoes = (Shoes) ctx.getBean(shoesId);
-                            }
-                        }`}
+                public class Student {
+                private String shoesId;
+                private Shoes shoes;
+
+                public Student(String shoesId) {
+                this.shoesId = shoesId;
+                }
+
+                public void init(){
+                ApplicationContext ctx;
+                ctx = ContextProvider.getXmlContext();
+                shoes = (Shoes) ctx.getBean(shoesId);
+                }
+                }`}
                     </Java>
                     <Xml title={true} description={'pass idref instead of ref'}>
                         {`
-                        <bean id="student"
-                                class="com.arash.models.circulardep.Student">
-                            <constructor-arg>
-                                <idref bean="shoes"/>
-                            </constructor-arg>
-                        </bean>
-                        <bean id="shoes"
-                                class="com.arash.models.circulardep.Shoes">
-                            <constructor-arg ref="student"/>
-                        </bean>`}
+                <bean id="student"
+                class="com.arash.models.circulardep.Student">
+                <constructor-arg>
+                <idref bean="shoes"/>
+                </constructor-arg>
+                </bean>
+                <bean id="shoes"
+                class="com.arash.models.circulardep.Shoes">
+                <constructor-arg ref="student"/>
+                </bean>`}
                     </Xml>
                 </FlexRow>
             </Bullet><br/>
@@ -1065,34 +993,34 @@ function getXmlCircularDependencies() {
                 <FlexRow>
                     <Java title={true}>
                         {`
-                        public class Student {
-                            private Shoes shoes;
-                        
-                            public void setShoes(Shoes shoes) {
-                                this.shoes = shoes;
-                            }
-                        }
-                        
-                        public class Shoes {
-                            private Student student;
-                        
-                            public Shoes(Student student) {
-                                this.student = student;
-                            }
-                        }
-                        `}
+                public class Student {
+                private Shoes shoes;
+
+                public void setShoes(Shoes shoes) {
+                this.shoes = shoes;
+                }
+                }
+
+                public class Shoes {
+                private Student student;
+
+                public Shoes(Student student) {
+                this.student = student;
+                }
+                }
+                `}
                     </Java>
                     <Xml title={true} description={'define who depends on who'}>
                         {`
-                        <bean id="student"
-                                class="com.arash.models.circulardep.Student">
-                            <property name="student" ref="shoes"/>
-                        </bean>
-                    
-                        <bean id="shoes" depends-on="student"
-                                class="com.arash.models.circulardep.Shoes">
-                            <constructor-arg ref="student"/>
-                        </bean>`}
+                <bean id="student"
+                class="com.arash.models.circulardep.Student">
+                <property name="student" ref="shoes"/>
+                </bean>
+
+                <bean id="shoes" depends-on="student"
+                class="com.arash.models.circulardep.Shoes">
+                <constructor-arg ref="student"/>
+                </bean>`}
                     </Xml>
                 </FlexRow>
             </Bullet>
@@ -1107,32 +1035,32 @@ function getAnnotationCircularDependencies() {
                 <Blue>@Lazy</Blue> is available in spring too to load a programming element on demand
                 <Java>
                     {`
-                    @Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.FIELD})
-                    @Retention(RetentionPolicy.RUNTIME)
-                    @Documented
-                    public @interface Lazy {
-                        boolean value() default true;
-                    }`}
+                @Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.FIELD})
+                @Retention(RetentionPolicy.RUNTIME)
+                @Documented
+                public @interface Lazy {
+                boolean value() default true;
+                }`}
                 </Java>
             </InfoIcon>
             <Java description={'resolve both via constructor; won\'t work'}>
                 {`
                 @Component
                 public class Student {
-                    private Shoes shoes;
-                
-                    public Student(@Autowired Shoes shoes) {
-                        this.shoes = shoes;
-                    }
+                private Shoes shoes;
+
+                public Student(@Autowired Shoes shoes) {
+                this.shoes = shoes;
                 }
-                
+                }
+
                 @Component
                 public class Shoes {
-                    private Student student;
-                
-                    public Shoes(@Autowired Student student) {
-                        this.student = student;
-                    }
+                private Student student;
+
+                public Shoes(@Autowired Student student) {
+                this.student = student;
+                }
                 }`}
             </Java>
             <HorizontalLine/>
@@ -1140,17 +1068,17 @@ function getAnnotationCircularDependencies() {
                 {`
                 @Component
                 public class Student {
-                    private Shoes shoes;
-                    
-                     public Student(@Autowired Shoes shoes) {
-                        this.shoes = shoes;
-                    }
+                private Shoes shoes;
+
+                public Student(@Autowired Shoes shoes) {
+                this.shoes = shoes;
                 }
-                
+                }
+
                 @Component
                 public class Shoes {
-                    @Autowired
-                    private Student student;
+                @Autowired
+                private Student student;
                 }`}
             </Java>
         </Frame>
@@ -1163,30 +1091,30 @@ function getXmlLoadFromFile() {
             Let's have a property file containing:
             <GenericCode title={'jdbc.properties'}>
                 {`
-                    jdbc.driverClassName=com.mysql.jdbc.Driver
-                    jdbc.url=jdbc:mysql://localhost:3306/concretepage
-                    jdbc.username=root
-                    jdbc.password=`}
+                jdbc.driverClassName=com.mysql.jdbc.Driver
+                jdbc.url=jdbc:mysql://localhost:3306/concretepage
+                jdbc.username=root
+                jdbc.password=`}
             </GenericCode>
 
             Now it's time to load the file
             <Xml description={'using PropertySourcesPlaceholderConfigurer class'}>
                 {`
-                    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
-                        <property name="location" value="jdbc.properties"/>
-                    </bean>`}
+                <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+                <property name="location" value="jdbc.properties"/>
+                </bean>`}
             </Xml>
             <Xml description={'using spring itself place-holder manager'}>
                 {'<context:property-placeholder location="jdbc.properties"/>'}
             </Xml>
             <Xml description={'usage'}>
                 {`
-                    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-                        <property name="username" value="$\{jdbc.username}"/>
-                        <property name="password" value="$\{jdbc.password}"/>
-                        <property name="url" value="$\{jdbc.url}"/>
-                        <property name="driverClassName" value="$\{jdbc.driverClassName}"/>
-                    </bean>`}
+                <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+                <property name="username" value="$\{jdbc.username}"/>
+                <property name="password" value="$\{jdbc.password}"/>
+                <property name="url" value="$\{jdbc.url}"/>
+                <property name="driverClassName" value="$\{jdbc.driverClassName}"/>
+                </bean>`}
             </Xml>
         </Frame>
     )
@@ -1200,20 +1128,20 @@ function getJavaLoadFromFile() {
                 add <Blue>@PropertySource</Blue> to your configuration class and catch it by context.getEnvironment()
                 <Java>
                     {`
-                    @Configuration
-                    @ComponentScan("com.arash")
-                    @PropertySource("classpath:jdbc.properties")
-                    public class AppConfig {
-                    }
-                    
-                    //usage>>>
-                    ApplicationContext ctx = ContextProvider.getAnnotaionContext();
-                    Environment env = ctx.getEnvironment();
-                    System.out.println("driver: " + env.getProperty("jdbc.driverClassName"));
-                    System.out.println("url: "+env.getProperty("jdbc.url"));
-                    System.out.println("username: "+env.getProperty("jdbc.username"));
-                    System.out.println("password: "+env.getProperty("jdbc.password"));
-                    `}
+                @Configuration
+                @ComponentScan("com.arash")
+                @PropertySource("classpath:jdbc.properties")
+                public class AppConfig {
+                }
+
+                //usage>>>
+                ApplicationContext ctx = ContextProvider.getAnnotaionContext();
+                Environment env = ctx.getEnvironment();
+                System.out.println("driver: " + env.getProperty("jdbc.driverClassName"));
+                System.out.println("url: "+env.getProperty("jdbc.url"));
+                System.out.println("username: "+env.getProperty("jdbc.username"));
+                System.out.println("password: "+env.getProperty("jdbc.password"));
+                `}
                 </Java>
             </Bullet>
             <Bullet title={'2.'}>
@@ -1226,35 +1154,35 @@ function getJavaLoadFromFile() {
                 </Bullet>
                 <Java>
                     {`
-                    @Configuration
-                    @ComponentScan("com.arash")
-                    @PropertySources({
-                            @PropertySource("configs.properties"),
-                            @PropertySource("classpath:jdbc.properties")
-                    })
-                    public class AppConfig {
-                    
-                        @Bean
-                        public PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
-                            return new PropertySourcesPlaceholderConfigurer();
-                        }
-                    }
-                    
-                    // Notice that you must follow format "#{'$\{prop-name}'}" for @Value
-                    @Component
-                    public class JdbcProp {
-                        @Value("#{'$\{jdbc.driverClassName}'}")
-                        private String driverClassName;
-                    
-                        @Value("#{'$\{jdbc.url}'}")
-                        private String url;
-                    
-                        @Value("#{'$\{jdbc.username}'}")
-                        private String username;
-                    
-                        @Value("#{'$\{jdbc.password}'}")
-                        private String password;
-                    }`}
+                @Configuration
+                @ComponentScan("com.arash")
+                @PropertySources({
+                @PropertySource("configs.properties"),
+                @PropertySource("classpath:jdbc.properties")
+                })
+                public class AppConfig {
+
+                @Bean
+                public PropertySourcesPlaceholderConfigurer propertyConfigInDev() {
+                return new PropertySourcesPlaceholderConfigurer();
+                }
+                }
+
+                // Notice that you must follow format "#{'$\{prop-name}'}" for @Value
+                @Component
+                public class JdbcProp {
+                @Value("#{'$\{jdbc.driverClassName}'}")
+                private String driverClassName;
+
+                @Value("#{'$\{jdbc.url}'}")
+                private String url;
+
+                @Value("#{'$\{jdbc.username}'}")
+                private String username;
+
+                @Value("#{'$\{jdbc.password}'}")
+                private String password;
+                }`}
                 </Java>
             </Bullet>
             <HorizontalLine/>
@@ -1263,12 +1191,12 @@ function getJavaLoadFromFile() {
                 Through <Blue>@Value</Blue>
                 <Java>
                     {`
-                    @Component
-                    public class TextFile {
-                        @Value("classpath:data.bat")
-                        private String value;
-                    }
-                    `}
+                @Component
+                public class TextFile {
+                @Value("classpath:data.bat")
+                private String value;
+                }
+                `}
                 </Java>
             </Bullet>
             <Bullet title={'2.'}>
@@ -1276,15 +1204,15 @@ function getJavaLoadFromFile() {
                 Context has a Resource object embedded, So you can use that one too
                 <Java>
                     {`
-                    @Component
-                    public class AnyFile {
-                        @Autowired
-                        private ResourceLoader resourceLoader;
-                    
-                        public Resource getBigFile(){
-                            return resourceLoader.getResource("classpath:bigData.dat");
-                        }
-                    }`}
+                @Component
+                public class AnyFile {
+                @Autowired
+                private ResourceLoader resourceLoader;
+
+                public Resource getBigFile(){
+                return resourceLoader.getResource("classpath:bigData.dat");
+                }
+                }`}
                 </Java>
             </Bullet>
         </Frame>
@@ -1301,28 +1229,28 @@ function getXmlChangingMethodBody() {
                 Use "lookup" to inject a method body without implementing an abstract class<br/>
                 <Java>
                     {`
-                    public class CheeseBurger {
-                    }
-                    
-                    public class MushroomBurger {
-                    }
-                    
-                    public abstract class BurgerShop {
-                        public abstract MushroomBurger getMushroomBurger();
-                    
-                        public abstract CheeseBurger getCheeseBurger();
-                    }
-                    `}
+                public class CheeseBurger {
+                }
+
+                public class MushroomBurger {
+                }
+
+                public abstract class BurgerShop {
+                public abstract MushroomBurger getMushroomBurger();
+
+                public abstract CheeseBurger getCheeseBurger();
+                }
+                `}
                 </Java>
                 <Xml>
                     {`
-                    <bean id="cheeseBurger" class="com.arash.models.lookup.CheeseBurger"/>
-                    <bean id="mushroomBurger" class="com.arash.models.lookup.MushroomBurger"/>
-                    <bean id="burgerShop" class="com.arash.models.lookup.BurgerShop">
-                        <lookup-method bean="cheeseBurger" name="getCheeseBurger"/>
-                        <lookup-method bean="mushroomBurger" name="getMushroomBurger"/>
-                    </bean>
-                    `}
+                <bean id="cheeseBurger" class="com.arash.models.lookup.CheeseBurger"/>
+                <bean id="mushroomBurger" class="com.arash.models.lookup.MushroomBurger"/>
+                <bean id="burgerShop" class="com.arash.models.lookup.BurgerShop">
+                <lookup-method bean="cheeseBurger" name="getCheeseBurger"/>
+                <lookup-method bean="mushroomBurger" name="getMushroomBurger"/>
+                </bean>
+                `}
                 </Xml>
             </Bullet>
             <HorizontalLine/>
@@ -1331,27 +1259,27 @@ function getXmlChangingMethodBody() {
                 Use "method replacer" to replace a method with the desired one by implementing MethodReplacer
                 <Java>
                     {`
-                    public class MyCar {
-                        public String getMyFavoriteCar() {
-                            return "Pagani";
-                        }
-                    }
-                    
-                    public class MyReplacer implements MethodReplacer {
-                        @Override
-                        public Object reimplement(Object o, Method method, Object[] objects) throws Throwable {
-                            return "Lamborghini";
-                        }
-                    }
-                    `}
+                public class MyCar {
+                public String getMyFavoriteCar() {
+                return "Pagani";
+                }
+                }
+
+                public class MyReplacer implements MethodReplacer {
+                @Override
+                public Object reimplement(Object o, Method method, Object[] objects) throws Throwable {
+                return "Lamborghini";
+                }
+                }
+                `}
                 </Java>
                 <Xml>
                     {`
-                    <bean id="replacer" class="com.arash.models.replacer.MyReplacer"/>
-                    <bean id="myCar" class="com.arash.models.replacer.MyCar">
-                        <replaced-method name="getMyFavoriteCar" replacer="replacer"/>
-                    </bean>
-                    `}
+                <bean id="replacer" class="com.arash.models.replacer.MyReplacer"/>
+                <bean id="myCar" class="com.arash.models.replacer.MyCar">
+                <replaced-method name="getMyFavoriteCar" replacer="replacer"/>
+                </bean>
+                `}
                 </Xml>
             </Bullet>
         </Frame>
@@ -1364,39 +1292,39 @@ function getCollections() {
             <Xml>
                 {`
                 <bean id="propCollection" class="com.arash.models.collections.PropertyCollection">
-                    <property name="map">
-                        <props>
-                            <prop key="key1">value1</prop>
-                            <prop key="key2">value2</prop>
-                        </props>
-                    </property>
+                <property name="map">
+                <props>
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+                </props>
+                </property>
                 </bean>
-                
+
                 <bean id="mapCollection" class="com.arash.models.collections.MapCollection">
-                    <property name="map">
-                        <map>
-                            <entry key="key1" value="value1"/>
-                            <entry key="key2" value="value2"/>
-                        </map>
-                    </property>
+                <property name="map">
+                <map>
+                <entry key="key1" value="value1"/>
+                <entry key="key2" value="value2"/>
+                </map>
+                </property>
                 </bean>
-                
+
                 <bean id="listCollection" class="com.arash.models.collections.ListCollection">
-                    <property name="map">
-                        <list>
-                            <value>entry1</value>
-                            <ref bean="bean1"/>
-                        </list>
-                    </property>
+                <property name="map">
+                <list>
+                <value>entry1</value>
+                <ref bean="bean1"/>
+                </list>
+                </property>
                 </bean>
-                
+
                 <bean id="setCollection" class="com.arash.models.collections.SetCollection">
-                    <property name="map">
-                        <set>
-                            <value>entry1</value>
-                            <ref bean="bean1"/>
-                        </set>
-                    </property>
+                <property name="map">
+                <set>
+                <value>entry1</value>
+                <ref bean="bean1"/>
+                </set>
+                </property>
                 </bean>`}
             </Xml>
         </Frame>
@@ -1415,121 +1343,121 @@ function getSpel() {
                 <Bold>java:</Bold>
                 <Java>
                     {`
-                    ExpressionParser parser = new SpelExpressionParser();
-                    Expression exp = parser.parseExpression("'Hello World'");
-                    String message = (String) exp.getValue();`}
+                ExpressionParser parser = new SpelExpressionParser();
+                Expression exp = parser.parseExpression("'Hello World'");
+                String message = (String) exp.getValue();`}
                 </Java>
             </Bullet>
             <Bullet title={'2.'} level={1}>
                 <Bold>xml:</Bold>
                 <Xml>
                     {`
-                    <!--calculate some value by spel-->
-                    <bean id="numberGuess" class="com.arash.models.ANumber">
-                    <property name="randomNumber" value="#{T(java.lang.Math).random() * 100.0}"/>
-                    </bean>
+                <!--calculate some value by spel-->
+                <bean id="numberGuess" class="com.arash.models.ANumber">
+                <property name="randomNumber" value="#{T(java.lang.Math).random() * 100.0}"/>
+                </bean>
 
-                    <!--using a property of another class-->
-                    <bean id="shapeGuess" class="com.arash.models.ANumber">
-                    <property name="randomNumber" value="#{someClass.prop}"/>
-                    </bean>`}
+                <!--using a property of another class-->
+                <bean id="shapeGuess" class="com.arash.models.ANumber">
+                <property name="randomNumber" value="#{someClass.prop}"/>
+                </bean>`}
                 </Xml>
             </Bullet>
             <Bullet title={'1.'} level={1}>
                 <Bold>annotation:</Bold>
                 <Java>
                     {`
-                    public class ANumber {
-                    @Value("900")
-                    private int randomNumber;
+                public class ANumber {
+                @Value("900")
+                private int randomNumber;
 
-                    public void setRandomNumber(int randomNumber) {
-                    this.randomNumber = randomNumber;
-                    }
-                    }`}
+                public void setRandomNumber(int randomNumber) {
+                this.randomNumber = randomNumber;
+                }
+                }`}
                 </Java>
             </Bullet>
             <HorizontalLine/>
             <Java>
                 {`
-                    /*** literal expression ***/
-                    “'Hello World'”
-                    "6.0221415E+23"
-                    "0x7FFFFFFF"
-                    "true"
-                    "null"
+                /*** literal expression ***/
+                “'Hello World'”
+                "6.0221415E+23"
+                "0x7FFFFFFF"
+                "true"
+                "null"
 
-                    /*** properties, arrays, lists, maps, indexers ***/
-                    "Birthdate.Year + 1900"
-                    "Members[0].Inventions[6]"
-                    "Officers['president'].PlaceOfBirth.City"
+                /*** properties, arrays, lists, maps, indexers ***/
+                "Birthdate.Year + 1900"
+                "Members[0].Inventions[6]"
+                "Officers['president'].PlaceOfBirth.City"
 
-                    StandardEvaluationContext context = new StandardEvaluationContext();
+                StandardEvaluationContext context = new StandardEvaluationContext();
 
-                    /*** inline lists, Maps ***/
-                    List numbers = (List) parser.parseExpression("{1,2,3,4}").getValue(context);
-                    List listOfLists = (List) parser.parseExpression("{{'a','b'},{'x','y'}}").getValue(context);
-                    Map lst = (Map) parser.parseExpression("{'k1':'v1','k2':'v2'}").getValue(context);
+                /*** inline lists, Maps ***/
+                List numbers = (List) parser.parseExpression("{1,2,3,4}").getValue(context);
+                List listOfLists = (List) parser.parseExpression("{{'a','b'},{'x','y'}}").getValue(context);
+                Map lst = (Map) parser.parseExpression("{'k1':'v1','k2':'v2'}").getValue(context);
 
-                    /*** array construction ***/
-                    int[] numbers1 = (int[]) parser.parseExpression("new int[4]").getValue(context);
-                    int[] numbers2 = (int[]) parser.parseExpression("new int[]{1,2,3}").getValue(context);
-                    int[][] numbers3 = (int[][]) parser.parseExpression("new int[4][5]").getValue(context);
+                /*** array construction ***/
+                int[] numbers1 = (int[]) parser.parseExpression("new int[4]").getValue(context);
+                int[] numbers2 = (int[]) parser.parseExpression("new int[]{1,2,3}").getValue(context);
+                int[][] numbers3 = (int[][]) parser.parseExpression("new int[4][5]").getValue(context);
 
-                    /*** methods ***/
-                    String c = parser.parseExpression("'abc'.substring(2, 3)").getValue(String.class);
+                /*** methods ***/
+                String c = parser.parseExpression("'abc'.substring(2, 3)").getValue(String.class);
 
-                    /*** operators ***/
-                    boolean a = parser.parseExpression("2 == 2").getValue(Boolean.class); //true
-                    boolean b = parser.parseExpression("2 < -5.0").getValue(Boolean.class); //false
-                    boolean c = parser.parseExpression("'black' < 'block'").getValue(Boolean.class); //true
-                    boolean d = parser.parseExpression("'5.00' matches '^-?\\\\d+(\\\\.\\\\d{2})?$'").getValue(Boolean.class); //true
-                    boolean e = parser.parseExpression("true and false").getValue(Boolean.class); //false
-                    String expression = "isMember('Nikola Tesla') and isMember('Mihajlo Pupin')";
-                    boolean f = parser.parseExpression("!true").getValue(Boolean.class); //false
-                    int two = parser.parseExpression("1 + 1").getValue(Integer.class); // 2
-                    String g = parser.parseExpression("'test' + ' ' + 'string'").getValue(String.class);  // 'test string'
-                    double h = parser.parseExpression("1000.00 - 1e4").getValue(Double.class); // -9000
-                    String i = parser.parseExpression("Name = 'Alexandar Seovic'").getValue(context, String.class);
+                /*** operators ***/
+                boolean a = parser.parseExpression("2 == 2").getValue(Boolean.class); //true
+                boolean b = parser.parseExpression("2 < -5.0").getValue(Boolean.class); //false
+                boolean c = parser.parseExpression("'black' < 'block'").getValue(Boolean.class); //true
+                boolean d = parser.parseExpression("'5.00' matches '^-?\\\\d+(\\\\.\\\\d{2})?$'").getValue(Boolean.class); //true
+                boolean e = parser.parseExpression("true and false").getValue(Boolean.class); //false
+                String expression = "isMember('Nikola Tesla') and isMember('Mihajlo Pupin')";
+                boolean f = parser.parseExpression("!true").getValue(Boolean.class); //false
+                int two = parser.parseExpression("1 + 1").getValue(Integer.class); // 2
+                String g = parser.parseExpression("'test' + ' ' + 'string'").getValue(String.class);  // 'test string'
+                double h = parser.parseExpression("1000.00 - 1e4").getValue(Double.class); // -9000
+                String i = parser.parseExpression("Name = 'Alexandar Seovic'").getValue(context, String.class);
 
-                    /*** types ***/
-                    Class dateClass = parser.parseExpression("T(java.util.Date)").getValue(Class.class);
-                    Class stringClass = parser.parseExpression("T(String)").getValue(Class.class);
-                    boolean j = parser.parseExpression("T(java.math.RoundingMode).CEILING < T(java.math.RoundingMode).FLOOR").getValue(Boolean.class); //true
+                /*** types ***/
+                Class dateClass = parser.parseExpression("T(java.util.Date)").getValue(Class.class);
+                Class stringClass = parser.parseExpression("T(String)").getValue(Class.class);
+                boolean j = parser.parseExpression("T(java.math.RoundingMode).CEILING < T(java.math.RoundingMode).FLOOR").getValue(Boolean.class); //true
 
-                    /*** constructors ***/
-                    Inventor einstein = parser.parseExpression("new com.arash.Inventor('Albert Einstein', 'German')").getValue(Inventor.class);
+                /*** constructors ***/
+                Inventor einstein = parser.parseExpression("new com.arash.Inventor('Albert Einstein', 'German')").getValue(Inventor.class);
 
-                    /*** variables ***/
-                    Inventor tesla = new Inventor("Nikola Tesla", "Serbian");
-                    StandardEvaluationContext context2 = new StandardEvaluationContext(tesla);
-                    context2.setVariable("newName", "Mike Tesla");
-                    parser.parseExpression("Name = #newName").getValue(context);
-                    System.out.println(tesla.getName()); // "Mike Tesla"
+                /*** variables ***/
+                Inventor tesla = new Inventor("Nikola Tesla", "Serbian");
+                StandardEvaluationContext context2 = new StandardEvaluationContext(tesla);
+                context2.setVariable("newName", "Mike Tesla");
+                parser.parseExpression("Name = #newName").getValue(context);
+                System.out.println(tesla.getName()); // "Mike Tesla"
 
-                    /*** another sample ***/
-                    List<Integer> primes = new ArrayList<Integer>();
-                    primes.addAll(Arrays.asList(2, 3, 5, 7, 11, 13, 17));
-                    context2.setVariable("primes", primes);
-                    List<Integer> primes2 = (List<Integer>) parser.parseExpression("#primes.?[#this>10]").getValue(context); // select of numbers > 10
+                /*** another sample ***/
+                List<Integer> primes = new ArrayList<Integer>();
+                primes.addAll(Arrays.asList(2, 3, 5, 7, 11, 13, 17));
+                context2.setVariable("primes", primes);
+                List<Integer> primes2 = (List<Integer>) parser.parseExpression("#primes.?[#this>10]").getValue(context); // select of numbers > 10
 
-                    /*** functions ***/
-                    context2.registerFunction("reverseString", StringUtils.class.getDeclaredMethod("reverseString", new Class[]{String.class}));
-                    String helloWorldReversed = parser.parseExpression("#reverseString('hello')").getValue(context, String.class);
-                    context2.setBeanResolver(new MyBeanResolver());
-                    Object bean = parser.parseExpression("@foo").getValue(context);
+                /*** functions ***/
+                context2.registerFunction("reverseString", StringUtils.class.getDeclaredMethod("reverseString", new Class[]{String.class}));
+                String helloWorldReversed = parser.parseExpression("#reverseString('hello')").getValue(context, String.class);
+                context2.setBeanResolver(new MyBeanResolver());
+                Object bean = parser.parseExpression("@foo").getValue(context);
 
-                    /*** ternary Operator (If - Then - Else) ***/
-                    String falseString = parser.parseExpression("false ? 'trueExp' : 'falseExp'").getValue(String.class);
+                /*** ternary Operator (If - Then - Else) ***/
+                String falseString = parser.parseExpression("false ? 'trueExp' : 'falseExp'").getValue(String.class);
 
-                    /*** collection Selection ***/
-                    List<Inventor> list = (List<Inventor>) parser.parseExpression("Members.?[Nationality == 'Serbian']").getValue(context2);
-                    Map newMap = (Map) parser.parseExpression("map.?[value<27]").getValue();
-                    List placesOfBirth = (List) parser.parseExpression("Members.![placeOfBirth.city]");
+                /*** collection Selection ***/
+                List<Inventor> list = (List<Inventor>) parser.parseExpression("Members.?[Nationality == 'Serbian']").getValue(context2);
+                Map newMap = (Map) parser.parseExpression("map.?[value<27]").getValue();
+                List placesOfBirth = (List) parser.parseExpression("Members.![placeOfBirth.city]");
 
 
-                    /*** expression templating ***/
-                    String randomPhrase = parser.parseExpression("random number is #{T(java.lang.Math).random()}", new TemplateParserContext()).getValue(String.class);
+                /*** expression templating ***/
+                String randomPhrase = parser.parseExpression("random number is #{T(java.lang.Math).random()}", new TemplateParserContext()).getValue(String.class);
                 `}
             </Java>
         </Frame>
@@ -1553,11 +1481,11 @@ function getScopes() {
                 {`
                 @Configuration
                 public class AppConfig {
-                    @Bean()
-                    @Scope("prototype")
-                    private Bean1 getBean1(){
-                        return new Bean1();
-                    }
+                @Bean()
+                @Scope("prototype")
+                private Bean1 getBean1(){
+                return new Bean1();
+                }
                 }`}
             </Java>
             <Java description={'annotation configuration'}>
@@ -1589,25 +1517,25 @@ function getScopeIssue() {
                         {`
                 public class PrototypeClass {
                 }
-                
+
                 public class SingletonClass {
-                    private PrototypeClass prototypeClass;
-                    
-                    public PrototypeClass getPrototypeClass() {
-                        return prototypeClass;
-                    }
-                    
-                    public void setPrototypeClass(PrototypeClass prototypeClass) {
-                        this.prototypeClass = prototypeClass;
-                    }
+                private PrototypeClass prototypeClass;
+
+                public PrototypeClass getPrototypeClass() {
+                return prototypeClass;
+                }
+
+                public void setPrototypeClass(PrototypeClass prototypeClass) {
+                this.prototypeClass = prototypeClass;
+                }
                 }`}
                     </Java>
                     <Xml>
                         {`
-                    <bean id="singletonClass" class="com.arash.models.scopes.SingletonClass" scope="singleton">
-                        <property name="prototypeClass" ref="prototypeClass"/>
-                    </bean>
-                    <bean id="prototypeClass" class="com.arash.models.scopes.PrototypeClass" scope="prototype"/>`}
+                <bean id="singletonClass" class="com.arash.models.scopes.SingletonClass" scope="singleton">
+                <property name="prototypeClass" ref="prototypeClass"/>
+                </bean>
+                <bean id="prototypeClass" class="com.arash.models.scopes.PrototypeClass" scope="prototype"/>`}
                     </Xml>
                 </FlexRow>
                 <Java description={'usage:'}>
@@ -1615,10 +1543,10 @@ function getScopeIssue() {
                 ApplicationContext ctx = ContextProvider.getXmlContext();
                 SingletonClass sc = ctx.getBean("singletonClass", SingletonClass.class);
                 Stream
-                        .generate(sc::getPrototypeClass)
-                        .limit(2)
-                        .forEach(System.out::println);
-                
+                .generate(sc::getPrototypeClass)
+                .limit(2)
+                .forEach(System.out::println);
+
                 result: >>>
                 com.arash.models.scopes.PrototypeClass@76ed1b7c
                 com.arash.models.scopes.PrototypeClass@76ed1b7c
@@ -1636,25 +1564,25 @@ function getScopeIssue() {
                 <Important>Put the proxy on shorter-life time class</Important>
                 <Xml title={1}>
                     {`
-                    <bean id="singletonClass" class="com.arash.models.scopes.SingletonClass" scope="singleton">
-                        <property name="prototypeClass" ref="prototypeClass"/>
-                    </bean>
-                    <bean id="prototypeClass" class="com.arash.models.scopes.PrototypeClass" scope="prototype">
-                        <aop:scoped-proxy/>
-                    </bean>`}
+                <bean id="singletonClass" class="com.arash.models.scopes.SingletonClass" scope="singleton">
+                <property name="prototypeClass" ref="prototypeClass"/>
+                </bean>
+                <bean id="prototypeClass" class="com.arash.models.scopes.PrototypeClass" scope="prototype">
+                <aop:scoped-proxy/>
+                </bean>`}
                 </Xml>
                 <Java title={1}>
                     {`
-                    @Component
-                    @Singleton
-                    public class SingletonClass {
-                    }
-                    
-                    @Component
-                    @Scope(value = "prototype",proxyMode = ScopedProxyMode.TARGET_CLASS)
-                    public class PrototypeClass {
-                    }
-                    `}
+                @Component
+                @Singleton
+                public class SingletonClass {
+                }
+
+                @Component
+                @Scope(value = "prototype",proxyMode = ScopedProxyMode.TARGET_CLASS)
+                public class PrototypeClass {
+                }
+                `}
                 </Java>
             </Bullet>
             <div style={{maxWidth: '40rem'}}>
@@ -1681,42 +1609,42 @@ function getBeanAware() {
             <Java>
                 {`
                 public class MyBean implements Phased, BeanNameAware, BeanFactoryAware, ApplicationContextAware,
-                                                BeanPostProcessor, InitializingBean, DisposableBean {
-                    /*Phased*/
-                    @Override
-                    public int getPhase() {return 0;}
-                
-                    /*BeanNameAware*/
-                    @Override
-                    public void setBeanName(String s) {}
-                
-                    /*BeanFactoryAware*/
-                    @Override
-                    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {}
-                
-                    /*ApplicationContextAware*/
-                    @Override
-                    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {}
-                
-                    /*BeanPostProcessor.preInitialization*/
-                    @Override
-                    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-                        return null;
-                    }
-                
-                    /*InitializingBean*/
-                    @Override
-                    public void afterPropertiesSet() throws Exception {}
-                
-                    /*BeanPostProcessor.postInitialization*/
-                    @Override
-                    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-                        return null;
-                    }
-                
-                    /*DisposableBean*/
-                    @Override
-                    public void destroy() throws Exception {}
+                BeanPostProcessor, InitializingBean, DisposableBean {
+                /*Phased*/
+                @Override
+                public int getPhase() {return 0;}
+
+                /*BeanNameAware*/
+                @Override
+                public void setBeanName(String s) {}
+
+                /*BeanFactoryAware*/
+                @Override
+                public void setBeanFactory(BeanFactory beanFactory) throws BeansException {}
+
+                /*ApplicationContextAware*/
+                @Override
+                public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {}
+
+                /*BeanPostProcessor.preInitialization*/
+                @Override
+                public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+                return null;
+                }
+
+                /*InitializingBean*/
+                @Override
+                public void afterPropertiesSet() throws Exception {}
+
+                /*BeanPostProcessor.postInitialization*/
+                @Override
+                public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+                return null;
+                }
+
+                /*DisposableBean*/
+                @Override
+                public void destroy() throws Exception {}
                 }`}
             </Java>
             <Important>To listen to all beans destruction: <Bold>context.registerShutDownHook()</Bold></Important>
@@ -1724,42 +1652,42 @@ function getBeanAware() {
             <FlexRow>
                 <Xml description={'pom.xml'}>
                     {`
-                    <dependency>
-                        <groupId>org.apache.james</groupId>
-                        <artifactId>james-server-lifecycle-spring</artifactId>
-                        <version>3.0-beta4</version>
-                    </dependency>
+                <dependency>
+                <groupId>org.apache.james</groupId>
+                <artifactId>james-server-lifecycle-spring</artifactId>
+                <version>3.0-beta4</version>
+                </dependency>
                 `}
                 </Xml>
                 <Java description={'annotation'}>
                     {`
-                    public class MyBean2 {
-                        
-                        @PostConstruct
-                        void afterContruct(){}
-        
-                        @PreDestroy
-                        void preDestroy(){}
-                    }`}
+                public class MyBean2 {
+
+                @PostConstruct
+                void afterContruct(){}
+
+                @PreDestroy
+                void preDestroy(){}
+                }`}
                 </Java>
             </FlexRow>
             <Java title={1}>
                 {`
-                    @Configuration
-                    public class AppConfig {
-                        
-                        @Bean(initMethod = "")
-                        public Bean1 getBean1(){
-                            return new Bean1();
-                        }
-                    }`}
+                @Configuration
+                public class AppConfig {
+
+                @Bean(initMethod = "")
+                public Bean1 getBean1(){
+                return new Bean1();
+                }
+                }`}
             </Java>
             <Xml description={'Via xml'}>
                 {`
                 <!-- post-init -->
                 <bean init-bean="..."/>
                 <bean init-method="..."/>
-                
+
                 <!-- to init all bean as the same -->
                 <beans default-init-method="unique method"/>
 
@@ -1778,36 +1706,36 @@ function getTemplateClass() {
             <FlexRow>
                 <Java>
                     {`
-                    public class Student {
-                    private String name;
-                    private int age;
-                    private String hairColor;
+                public class Student {
+                private String name;
+                private int age;
+                private String hairColor;
 
-                    public void setName(String name) {
-                    this.name = name;
+                public void setName(String name) {
+                this.name = name;
                 }
 
-                    public void setAge(int age) {
-                    this.age = age;
+                public void setAge(int age) {
+                this.age = age;
                 }
 
-                    public void setHairColor(String hairColor) {
-                    this.hairColor = hairColor;
+                public void setHairColor(String hairColor) {
+                this.hairColor = hairColor;
                 }
                 }`}
                 </Java>
                 <Xml>
                     {`
-                    <!-- declare an abstract class -->
-                    <bean id="templatePerson" abstract="true">
-                    <property name="name" value="arash"/>
-                    <property name="age" value="33"/>
-                    </bean>
+                <!-- declare an abstract class -->
+                <bean id="templatePerson" abstract="true">
+                <property name="name" value="arash"/>
+                <property name="age" value="33"/>
+                </bean>
 
-                    <!-- define the abstract class as parent -->
-                    <bean id="student" class="com.arash.models.Student" parent="templatePerson">
-                    <property name="hairColor" value="black"/>
-                    </bean>`}
+                <!-- define the abstract class as parent -->
+                <bean id="student" class="com.arash.models.Student" parent="templatePerson">
+                <property name="hairColor" value="black"/>
+                </bean>`}
                 </Xml>
             </FlexRow>
 
@@ -1852,17 +1780,17 @@ function getEvent() {
                 {`
                 @Component
                 public class RegisterPersonEventListener implements ApplicationListener<ContextStartedEvent> {
-                
-                    @Override
-                    public void onApplicationEvent(ContextStartedEvent contextStartedEvent) {
-                        System.out.println("context started");
-                    }
+
+                @Override
+                public void onApplicationEvent(ContextStartedEvent contextStartedEvent) {
+                System.out.println("context started");
                 }
-                
+                }
+
                 //usage>>>
                 ConfigurableApplicationContext ctx= (ConfigurableApplicationContext) ContextProvider.getAnnotaionContext();
                 ctx.start();
-                
+
                 //output>>>
                 context started
                 `}
@@ -1871,40 +1799,40 @@ function getEvent() {
             To raise custom event:
             <Java>
                 {`
-                // event object 
+                // event object
                 public class RegisterPersonEvent extends ApplicationEvent {
-                    public String registeredBy;
-                    
-                    public RegisterPersonEvent(Object source, String registeredBy) {
-                        super(source);
-                        this.registeredBy = registeredBy;
-                    }
+                public String registeredBy;
+
+                public RegisterPersonEvent(Object source, String registeredBy) {
+                super(source);
+                this.registeredBy = registeredBy;
                 }
-                
+                }
+
                 // publisher object
                 @Component
                 public class RegisterPersonEventPublisher implements ApplicationEventPublisherAware {
-                    /*you can also autowire this field and ignore 'ApplicationEventPublisherAware' implementation*/                
-                    private ApplicationEventPublisher publisher;
-                
-                    @Override
-                    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-                        this.publisher = applicationEventPublisher;
-                    }
-                
-                    public void send(String registeredBy) {
-                        publisher.publishEvent(new RegisterPersonEvent(this, registeredBy));
-                    }
+                /*you can also autowire this field and ignore 'ApplicationEventPublisherAware' implementation*/
+                private ApplicationEventPublisher publisher;
+
+                @Override
+                public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+                this.publisher = applicationEventPublisher;
                 }
-                
+
+                public void send(String registeredBy) {
+                publisher.publishEvent(new RegisterPersonEvent(this, registeredBy));
+                }
+                }
+
                 // listener object
                 @Component
                 public class RegisterPersonEventListener implements ApplicationListener<RegisterPersonEvent> {
-                
-                    @Override
-                    public void onApplicationEvent(RegisterPersonEvent registerPersonEvent) {
-                        System.out.println("register person raised by " + registerPersonEvent.registeredBy);
-                    }
+
+                @Override
+                public void onApplicationEvent(RegisterPersonEvent registerPersonEvent) {
+                System.out.println("register person raised by " + registerPersonEvent.registeredBy);
+                }
                 }
                 `}
             </Java>
@@ -1914,10 +1842,10 @@ function getEvent() {
             <Java>
                 {`
                 /*
-                 * in some versions, name of the listener is important 
-                 * and you must follow rule "process"+EventName
-                 * In this way listener is selected with the argument
-                 */
+                * in some versions, name of the listener is important
+                * and you must follow rule "process"+EventName
+                * In this way listener is selected with the argument
+                */
                 @EventListener
                 public void processUserRegistrationEvent(UserRegistrationEvent event) {}
                 `}
@@ -1954,43 +1882,43 @@ function getAsyncJob() {
             <FlexRow>
                 <Java description={'Configuring asynchronous operation via java'}>
                     {`
-                    @Configuration
-                    @ComponentScan("com.arash")
-                    @EnableAsync
-                    public class AnnoConfig {
-                    
-                        @Bean(name = "executor")//give it a name
-                        public Executor getAsyncExecutor() {
-                            ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-                            //configure executor as you want
-                            executor.setCorePoolSize(2);
-                            executor.setMaxPoolSize(10);
-                            executor.setKeepAliveSeconds(20);
-                            executor.setQueueCapacity(10);
-                            executor.setThreadNamePrefix("listener");
-                            executor.initialize();
-                            return executor;
-                        }
-                    }
-                    
-                    @Component
-                    public class Counter {
-                        @Async("executor") //this name points to the defined executor.
-                        public void startCounting(int start, int end, String msg) throws InterruptedException {
-                            System.out.println("counter: " + Thread.currentThread().getName());
-                            for (int i = start; i < end; i++) {
-                                System.out.println(msg + " -> " + i);
-                                Thread.currentThread().sleep(1000);
-                            }
-                        }
-                    }
-                    `}
+                @Configuration
+                @ComponentScan("com.arash")
+                @EnableAsync
+                public class AnnoConfig {
+
+                @Bean(name = "executor")//give it a name
+                public Executor getAsyncExecutor() {
+                ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+                //configure executor as you want
+                executor.setCorePoolSize(2);
+                executor.setMaxPoolSize(10);
+                executor.setKeepAliveSeconds(20);
+                executor.setQueueCapacity(10);
+                executor.setThreadNamePrefix("listener");
+                executor.initialize();
+                return executor;
+                }
+                }
+
+                @Component
+                public class Counter {
+                @Async("executor") //this name points to the defined executor.
+                public void startCounting(int start, int end, String msg) throws InterruptedException {
+                System.out.println("counter: " + Thread.currentThread().getName());
+                for (int i = start; i < end; i++) {
+                System.out.println(msg + " -> " + i);
+                Thread.currentThread().sleep(1000);
+                }
+                }
+                }
+                `}
                 </Java>
                 <Xml description={'Configuring asynchronous operation via xml'}>
                     {`
-                    <task:executor id="executor1" pool-size="10" queue-capacity="10"/>
-                    <task:annotation-driven executor="executor1"/>
-                    `}
+                <task:executor id="executor1" pool-size="10" queue-capacity="10"/>
+                <task:annotation-driven executor="executor1"/>
+                `}
                 </Xml>
             </FlexRow>
         </Frame>

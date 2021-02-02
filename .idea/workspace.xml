@@ -5,20 +5,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="source cleared a little bit">
+    <list default="true" id="cfc68f6d-6f10-4eae-8efc-7c6559e817c8" name="Default Changelist" comment="Shape.Line changed to support multi offset&#10;Shape.Text changed to support lazy render&#10;Shape.* changed to support laze label render&#10;path added but needs more work">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/caption.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/draw-box-handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box-wrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/caption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-caption.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/extended-line.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-line.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/extended/node.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-node.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/content.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/draw-box-wrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/draw-box-wrapper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/line.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/rectangle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/shape.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/simple/path.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/simple/path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-path.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawbox/wrappered/wrapper-path.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contents/git/git-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/git/git-cheats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contents/git/git-components.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/git/git-components.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contents/spring5/core/core-cheats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contents/spring5/core/core-cheats.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/images/ApplicationContext.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/res/images/ApplicationContext.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/images/application-context-structure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +63,8 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -71,13 +74,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,7 +112,8 @@
       <workItem from="1611925470644" duration="10897000" />
       <workItem from="1612020365223" duration="21222000" />
       <workItem from="1612048610850" duration="4754000" />
-      <workItem from="1612107803071" duration="19683000" />
+      <workItem from="1612107803071" duration="20584000" />
+      <workItem from="1612183656955" duration="27403000" />
     </task>
     <task id="LOCAL-00001" summary="new line with qCurve fixed and tested and applied">
       <created>1612029218510</created>
@@ -123,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612031726881</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Shape.Line changed to support multi offset&#10;Shape.Text changed to support lazy render&#10;Shape.* changed to support laze label render&#10;path added but needs more work">
+      <created>1612145518327</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1612145518327</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +167,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new line with qCurve fixed and tested and applied" />
     <MESSAGE value="source cleared a little bit" />
-    <option name="LAST_COMMIT_MESSAGE" value="source cleared a little bit" />
+    <MESSAGE value="Shape.Line changed to support multi offset&#10;Shape.Text changed to support lazy render&#10;Shape.* changed to support laze label render&#10;path added but needs more work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shape.Line changed to support multi offset&#10;Shape.Text changed to support lazy render&#10;Shape.* changed to support laze label render&#10;path added but needs more work" />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="137" width="536" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611931668928">
@@ -169,6 +183,10 @@
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="25" y="246" width="1341" height="287" key="FileDocumentManager.FileCacheConflict/25.0.1341.768@25.0.1341.768" timestamp="1611931723843" />
+    <state x="199" y="21" width="992" height="733" key="SettingsEditor" timestamp="1612229382651">
+      <screen x="25" y="0" width="1341" height="768" />
+    </state>
+    <state x="199" y="21" width="992" height="733" key="SettingsEditor/25.0.1341.768@25.0.1341.768" timestamp="1612229382651" />
     <state width="498" height="445" key="SwitcherDM" timestamp="1612127888415">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
@@ -190,10 +208,10 @@
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="514" y="304" width="364" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/25.0.1341.768@25.0.1341.768" timestamp="1612029726834" />
-    <state x="402" y="142" width="586" height="546" key="find.popup" timestamp="1612143027515">
+    <state x="402" y="142" width="586" height="546" key="find.popup" timestamp="1612199865496">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
-    <state x="402" y="142" width="586" height="546" key="find.popup/25.0.1341.768@25.0.1341.768" timestamp="1612143027515" />
+    <state x="402" y="142" width="586" height="546" key="find.popup/25.0.1341.768@25.0.1341.768" timestamp="1612199865496" />
     <state x="128" y="92" width="1137" height="592" key="new project wizard" timestamp="1611768625843">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
@@ -202,9 +220,9 @@
       <screen x="25" y="0" width="1341" height="768" />
     </state>
     <state x="353" y="169" key="run.anything.popup/25.0.1341.768@25.0.1341.768" timestamp="1612137618946" />
-    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1612141191904">
+    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1612194114750">
       <screen x="25" y="0" width="1341" height="768" />
     </state>
-    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup/25.0.1341.768@25.0.1341.768" timestamp="1612141191904" />
+    <state x="358" y="89" width="672" height="678" key="search.everywhere.popup/25.0.1341.768@25.0.1341.768" timestamp="1612194114750" />
   </component>
 </project>

@@ -506,7 +506,7 @@ function getVisualizeBasicCommands() {
                style={{marginLeft: '3px'}}><Blue>https://git-school.github.io/visualizing-git</Blue></a>
             <Title1>Basic commands:</Title1>
             <div className={'flex-row'}>
-                <DrawBoxComponent wh={[340, 250]} shapeFactory=
+                <DrawBoxComponent wh={[340, 250]} className={'git-chart'} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
@@ -529,7 +529,7 @@ function getVisualizeBasicCommands() {
                     }>
                     <Title2>commit:</Title2> Each commit creates a node pointing to its previous one.<br/>
                 </DrawBoxComponent>
-                <DrawBoxComponent wh={[740, 170]} shapeFactory=
+                <DrawBoxComponent wh={[740, 170]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
@@ -563,7 +563,7 @@ function getVisualizeBasicCommands() {
                     <Title2>checkout:</Title2> switch to a specific branch with its <Bold>name</Bold> or
                     its <Bold>hashcode</Bold> (see '*' after branch name).<br/>
                 </DrawBoxComponent>
-                <DrawBoxComponent wh={[640, 340]} shapeFactory=
+                <DrawBoxComponent wh={[640, 340]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [100, 30]})
@@ -596,7 +596,7 @@ function getVisualizeBasicCommands() {
                     <Title2>merge:</Title2> mix two different branches. The target branch will me mixed up with the
                     current one.<br/>
                 </DrawBoxComponent>
-                <DrawBoxComponent wh={[650, 430]} shapeFactory=
+                <DrawBoxComponent wh={[650, 430]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [100, 30]})
@@ -657,7 +657,7 @@ function getVisualizeBasicCommands() {
             </div>
             <Title1>Moving around:</Title1>
             <div className={'flex-row'}>
-                <DrawBoxComponent wh={[860, 340]} shapeFactory=
+                <DrawBoxComponent wh={[860, 340]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
@@ -719,7 +719,7 @@ function getVisualizeBasicCommands() {
                     <Bullet title={'1.'}>Moving upwards one commit at a time with {'^'}</Bullet>
                     <Bullet title={'2.'}>Moving upwards a number of times with {'~<num>'}</Bullet>
                 </DrawBoxComponent>
-                <DrawBoxComponent wh={[400, 250]} shapeFactory=
+                <DrawBoxComponent wh={[400, 250]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
@@ -744,7 +744,7 @@ function getVisualizeBasicCommands() {
                     }>
                     <Title2>reassign a branch to a commit:</Title2><br/> git branch -f main HEAD~2<br/>
                 </DrawBoxComponent>
-                <DrawBoxComponent wh={[880, 430]} shapeFactory=
+                <DrawBoxComponent wh={[880, 430]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [30, 30]})
@@ -824,7 +824,7 @@ function getVisualizeBasicCommands() {
             </div>
             <Title1>Next level:</Title1>
             <div className={'flex-row'}>
-                <DrawBoxComponent wh={[650, 430]} shapeFactory=
+                <DrawBoxComponent wh={[650, 430]} className={'git-chart'} shapeFactory=
                     {
                         new DrawBoxWrapper()
                             .addShape({shape: 'node', id: 'c0', label: 'c0', pos: [100, 30]})

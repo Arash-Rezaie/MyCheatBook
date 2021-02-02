@@ -61,4 +61,8 @@ export class Utils {
         }
         return true;
     }
+
+    static last(arr) {
+        return arr[arr.length - 1];
+    }
 }

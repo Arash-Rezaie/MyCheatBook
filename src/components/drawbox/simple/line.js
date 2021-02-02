@@ -14,13 +14,15 @@ class Point {
     }
 
     locateByPoint(point) {
+        this.pos[0] += this.offset[0];
+        this.pos[1] += this.offset[1];
     }
 
     getPosition() {
         return this.pos;
     }
 
-    getAnchorPointByAngle(angle) {
+    getAnchorPointByAngle(angle, point) {
         return this.pos;
     }
 
@@ -29,8 +31,6 @@ class Point {
     }
 
     locateAnchor(...points) {
-        this.pos[0] += this.offset[0];
-        this.pos[1] += this.offset[1];
     }
 
     applyShapeOffset(shapeOffset) {
@@ -61,8 +61,9 @@ class AnglePoint extends Point {
     }
 
     locateByPoint(point) {
-        let anchor = point.getAnchorPointByAngle(this.angle);
+        let anchor = point.getAnchorPointByAngle(this.angle, this);
         this.pos = Utils.getPointByAngle(anchor, this.angle, this.distance);
+        super.locateByPoint(point);
     }
 }
 
@@ -76,11 +77,17 @@ class ShapePoint extends Point {
 
     locateByPoint(point) {
         this.pos = this.shape.getCenterPoint();
+        super.locateByPoint(point);
     }
 
-    getAnchorPointByAngle(angle) {
-        if (this.cache[angle] == null)
+    getAnchorPointByAngle(angle, point) {
+        if (this.cache[angle] == null) {
             this.cache[angle] = {'pos': this.shape.getExternalPoint(angle, this.gap)};
+            this.cache[angle]['pos'][0] += this.offset[0];
+            this.cache[angle]['pos'][1] += this.offset[1];
+            if (point != null)
+                this.cache[angle]['point'] = point
+        }
         return this.cache[angle]['pos'];
     }
 
@@ -97,11 +104,8 @@ class ShapePoint extends Point {
             angle = Utils.getAngleByPoint(this.shape.getCenterPoint(), point.getPosition());
 
             //store angle-pos pair
-            this.getAnchorPointByAngle(angle);
+            this.getAnchorPointByAngle(angle, point);
         }
-
-        //store angle-point pair
-        this.cache[angle]['point'] = point;
 
         return angle;
     }
@@ -129,8 +133,6 @@ class ShapePoint extends Point {
         if (angles.length > 1)
             angles = this.getAvgAngle(angles);
         this.anchor = this.getAnchorPointByAngle(angles);
-        this.anchor[0] += this.offset[0];
-        this.anchor[1] += this.offset[1];
     }
 
     applyShapeOffset(shapeOffset) {
@@ -181,15 +183,15 @@ export class Line extends Shape {
     getPointObject(point) {
         let p;
         switch (this.getTypeOf(point)) {
-            case "number,number"://[x,y]
+            case "number"://[x,y]
                 p = new Point(point);
                 p.setOffset(point[2], point[3]);
                 return p;
-            case "string,number"://[intR,length] or [intD,length]
+            case "string"://[intR,length] or [intD,length]
                 p = new AnglePoint(point);
                 p.setOffset(point[2], point[3]);
                 return p;
-            case "object,number"://[shape,gap]
+            case "object"://[shape,gap]
                 p = new ShapePoint(point);
                 p.setOffset(point[2], point[3]);
                 return p;
@@ -199,7 +201,7 @@ export class Line extends Shape {
     }
 
     getTypeOf(point) {
-        return typeof point[0] + ',' + typeof point[1]
+        return typeof point[0]
     }
 
     render(canvasCtx) {
